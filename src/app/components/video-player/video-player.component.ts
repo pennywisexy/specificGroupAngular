@@ -12,10 +12,10 @@ export class VideoPlayerComponent implements OnInit {
     private data: GetDataService
   ) { }
 
-  public film;
+  public movie;
 
   ngOnInit(): void {
-    this.data.currentFilm.subscribe(film => this.film = film);
+    this.data.currentMovie.subscribe(movie => this.movie = movie);
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="filmList d-flex p-2 justify-content-between
 bg-light flex-wrap">
-  <div class="film1 d-flex p-2 justify-content-between flex-column bg-light w-25" *ngFor="let item of films"
-    (click)="setFilm(item)">
+  <div class="film1 d-flex p-2 justify-content-between flex-column bg-light w-25" *ngFor="let item of movies"
+    (click)="setMovie(item)">
     <h1>{{item.title}}</h1>
     <h2>{{item.subtitle}}</h2>
     <div class="previewFilm1 preview">

@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilmListComponent implements OnInit {
 
-  public films: Array<any>
+  public movies: Array<any>
 
   constructor(
     private data: GetDataService
@@ -16,7 +16,7 @@ export class FilmListComponent implements OnInit {
 
   ngOnInit(): void {
     this.data.getFilms()
-    .subscribe(films => this.films = films.categories[0].videos)
+    .subscribe(movies => this.movies = movies.categories[0].videos)
   }
 
   public setFilm(film) {
