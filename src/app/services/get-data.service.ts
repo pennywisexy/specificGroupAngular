@@ -17,7 +17,4 @@ export class GetDataService {
   getFilms(): Observable<Movie> {
     return this.http.get<Movie>(this.moviesUrl);
   }
-  public setCurrentFilm(movie) {
-    this.currentMovie.next(movie);
-  }
 }

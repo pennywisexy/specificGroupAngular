@@ -1,5 +1,6 @@
 import { GetDataService } from './../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-video-player',
