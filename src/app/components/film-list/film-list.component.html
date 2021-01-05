@@ -1,24 +1,20 @@
 <div class="filmList d-flex p-2 justify-content-between
 bg-light flex-wrap">
-  <div class="film1 d-flex p-2 justify-content-between flex-column bg-light w-25" *ngFor="let item of movies"
+  <div class="film1 d-flex p-2 justify-content-between flex-column bg-light w-25 cursor-pointer" *ngFor="let item of movies"
     (click)="setMovie(item)">
     <h1>{{item.title}}</h1>
     <h2>{{item.subtitle}}</h2>
     <div class="previewFilm1 preview">
       <img class="w-100" src={{item.thumb}} />
     </div>
-    <!-- <div class="disable">{{item.description}}</div> -->
-
-    <!-- <button type="button" class="btn btn-outline-secondary" ngbPopover='{{item.description}}'triggers="mouseenter:mouseleave" popoverTitle={{item.title}}>
-      Description!
-    </button> -->
     <button type="button"
             class="btn btn-outline-secondary"
             data-container="body"
             data-trigger="focus"
             ngbPopover='{{item.description}}'
             data-toggle="popover"
-            placement="bottom">
+            placement="bottom"
+            >
       Description!
     </button>
   </div>

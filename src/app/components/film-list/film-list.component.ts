@@ -20,6 +20,7 @@ export class FilmListComponent implements OnInit {
   }
 
   public setMovie(movie) {
+    console.log()
     this.data.currentMovie.next(movie)
   }
 
