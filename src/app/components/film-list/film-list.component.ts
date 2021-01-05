@@ -15,7 +15,8 @@ export class FilmListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.films = this.data.getFilms;
+    this.data.getFilms()
+    .subscribe(films => this.films = films.categories[0].videos)
   }
 
   public setFilm(film) {

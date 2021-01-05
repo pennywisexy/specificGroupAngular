@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import data from '../../assets/data.json';
-
+import { BehaviorSubject, Observable } from 'rxjs';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import { Film } from './films';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'any'
 })
 export class GetDataService {
-  private films = data.categories[0].videos;
+  private filmsUrl = '../../assets/data.json';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
   public currentFilm: BehaviorSubject<object> = new BehaviorSubject({});
 
+  constructor (private http: HttpClient) {}
 
-  constructor() {
+  getFilms(): Observable<Film[]> {
+    return this.http.get<Film[]>(this.filmsUrl);
   }
-
-  public get getFilms() {
-    return this.films;
-  }
-
   public setCurrentFilm(film) {
     this.currentFilm.next(film);
   }
-
 }
