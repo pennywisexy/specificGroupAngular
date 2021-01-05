@@ -7,12 +7,6 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
-
-// import { AngularFireModule } from '@angular/fire';
-// import { AngularFirestoreModule } from '@angular/fire/firestore';
-// import { environment } from '../environments/environment';
-// import { AngularFireDatabaseModule } from '@angular/fire/database';
-
 @NgModule({
   declarations: [
     AppComponent,
