@@ -9,7 +9,16 @@ bg-light flex-wrap">
     </div>
     <!-- <div class="disable">{{item.description}}</div> -->
 
-    <button type="button" class="btn btn-outline-secondary" ngbPopover='{{item.description}}'triggers="mouseenter:mouseleave" popoverTitle={{item.title}}>
+    <!-- <button type="button" class="btn btn-outline-secondary" ngbPopover='{{item.description}}'triggers="mouseenter:mouseleave" popoverTitle={{item.title}}>
+      Description!
+    </button> -->
+    <button type="button"
+            class="btn btn-outline-secondary"
+            data-container="body"
+            data-trigger="focus"
+            ngbPopover='{{item.description}}'
+            data-toggle="popover"
+            placement="bottom">
       Description!
     </button>
   </div>
