@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilmListComponent implements OnInit {
 
-  public films = [];
+  public films: Array<any>
 
   constructor(
     private data: GetDataService

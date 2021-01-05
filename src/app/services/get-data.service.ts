@@ -14,8 +14,8 @@ export class GetDataService {
 
   constructor (private http: HttpClient) {}
 
-  getFilms(): Observable<Film[]> {
-    return this.http.get<Film[]>(this.filmsUrl);
+  getFilms(): Observable<Film> {
+    return this.http.get<Film>(this.filmsUrl);
   }
   public setCurrentFilm(film) {
     this.currentFilm.next(film);
