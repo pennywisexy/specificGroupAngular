@@ -30,21 +30,18 @@ export class FilmListComponent implements OnInit {
   }
 
   public modalDescription(event, description) {
-    // const modalDescription = document.createElement("div");
-    // modalDescription.className = "modal-description";
     const modal = document.querySelector('.modal-description');
     const modals = (document.querySelectorAll('.modal-description'));
     const buttons = document.querySelectorAll('button');
 
     for (let i = 0; i < buttons.length; i++) {
-        if (event.target === buttons[i]) {
-          modals[i].innerHTML = description;
-          modals[i].classList.toggle('modal-description-active');
-        }
-        if (event.target !== buttons[i]) {
-          console.log(buttons[i]);
-          modals[i].className = ('modal-description');
-        }
-  }
+      if (event.target === buttons[i]) {
+        modals[i].innerHTML = description;
+        modals[i].classList.toggle('modal-description-active');
+      }
+      if (event.target !== buttons[i]) {
+        modals[i].className = ('modal-description');
+      }
+    }
   }
 }
