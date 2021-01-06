@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilmListComponent implements OnInit {
 
-  public movies: Array<any>
+  public movies: Array<any>;
 
   constructor(
     private data: GetDataService
@@ -20,8 +20,7 @@ export class FilmListComponent implements OnInit {
   }
 
   public setMovie(movie) {
-    console.log()
-    this.data.currentMovie.next(movie)
+    this.data.currentMovie.next(movie);
   }
 
 }
