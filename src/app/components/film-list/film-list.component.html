@@ -11,11 +11,16 @@ bg-light flex-wrap">
             class="btn btn-outline-secondary"
             data-container="body"
             data-trigger="focus"
-            ngbPopover='{{item.description}}'
+            on-click="modalDescription($event, item.description)"
             data-toggle="popover"
             placement="bottom"
             >
       Description!
+
     </button>
+    <div class="modal-description"></div>
   </div>
 </div>
+
+
+<!-- ngbPopover='{{item.description}}' -->

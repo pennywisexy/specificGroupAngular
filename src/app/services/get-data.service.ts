@@ -12,7 +12,7 @@ export class GetDataService {
   };
   public currentMovie: BehaviorSubject<object> = new BehaviorSubject({});
 
-  constructor (private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   getFilms(): Observable<Movie> {
     return this.http.get<Movie>(this.moviesUrl);
