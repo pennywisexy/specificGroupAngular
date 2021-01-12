@@ -1,12 +1,17 @@
 import { GetDataService } from './../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-film-list',
   templateUrl: './film-list.component.html',
   styleUrls: ['./film-list.component.css']
 })
 export class FilmListComponent implements OnInit {
+  isActiveButton: boolean = false;
+  showDescription: string = '';
+  title: string = '';
 
   public movies: Array<{
     description: string,
@@ -29,19 +34,19 @@ export class FilmListComponent implements OnInit {
     this.data.currentMovie.next(movie);
   }
 
-  public modalDescription(event, description) {
-    const modal = document.querySelector('.modal-description');
-    const modals = (document.querySelectorAll('.modal-description'));
-    const buttons = document.querySelectorAll('button');
-
-    for (let i = 0; i < buttons.length; i++) {
-      if (event.target === buttons[i]) {
-        modals[i].innerHTML = description;
-        modals[i].classList.toggle('modal-description-active');
-      }
-      if (event.target !== buttons[i]) {
-        modals[i].className = ('modal-description');
-      }
+  public modalDescription(item): void {
+    if(item.title !== this.title) {
+      this.title = item.title;
+      this.showDescription = item.description;
+      this.isActiveButton = true;
+    }else {
+      this.title = item.title;
+      this.showDescription = item.description;
+      this.isActiveButton = !this.isActiveButton;
     }
   }
 }
+
+
+
+// [ngClass]="{'active': isActiveButton}"

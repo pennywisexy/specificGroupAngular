@@ -10,14 +10,14 @@ bg-light flex-wrap">
     <button type="button"
             class="btn btn-outline-secondary"
             data-container="body"
-            data-trigger="focus"
-            on-click="modalDescription($event, item.description)"
-            data-toggle="popover"
+            (click)="modalDescription(item, $event)"
             placement="bottom"
             >
       Description!
 
     </button>
-    <div class="modal-description"></div>
+      <div [id]="item.title" [class]="item.title" [ngClass]="{'modal-description-active' : isActiveButton}" *ngIf="isActiveButton && item.title === title">
+        {{showDescription}}
+      </div>
   </div>
 </div>
