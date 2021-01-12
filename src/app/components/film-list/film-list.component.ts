@@ -30,7 +30,7 @@ export class FilmListComponent implements OnInit {
     .subscribe(movies => this.movies = movies.categories[0].videos);
   }
 
-  public setMovie(movie) {
+  public setMovie(movie): void {
     this.data.currentMovie.next(movie);
   }
 
