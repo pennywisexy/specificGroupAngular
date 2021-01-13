@@ -40,13 +40,7 @@ export class FilmListComponent implements OnInit {
       this.showDescription = item.description;
       this.isActiveButton = true;
     }else {
-      this.title = item.title;
-      this.showDescription = item.description;
       this.isActiveButton = !this.isActiveButton;
     }
   }
 }
-
-
-
-// [ngClass]="{'active': isActiveButton}"
