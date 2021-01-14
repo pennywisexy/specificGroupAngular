@@ -12,8 +12,6 @@ export class FilmListComponent implements OnInit {
 
   title = '';
 
-  @Output() movieNewWindowDescription = '';
-
   public movies: Array<{
     description: string,
     sources: [string],
