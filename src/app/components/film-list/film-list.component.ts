@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service';
 @Component({
   selector: 'app-film-list',
@@ -12,6 +12,8 @@ export class FilmListComponent implements OnInit {
 
   title = '';
 
+  @Output() movieNewWindowDescription = '';
+
   public movies: Array<{
     description: string,
     sources: [string],
@@ -21,12 +23,13 @@ export class FilmListComponent implements OnInit {
   }>;
 
   constructor(
-    private data: GetDataService,
+    private data?: GetDataService,
   ) { }
 
   ngOnInit(): void {
     this.data.getFilms()
       .subscribe((movies) => this.movies = movies.categories[0].videos);
+    this.data.dataForMovieNewWindow = '';
   }
 
   public setMovie(movie): void {
@@ -41,5 +44,9 @@ export class FilmListComponent implements OnInit {
     } else {
       this.isActiveButton = !this.isActiveButton;
     }
+  }
+
+  public movieNewWindow(item): void {
+    this.data.dataForMovieNewWindow = item.description;
   }
 }

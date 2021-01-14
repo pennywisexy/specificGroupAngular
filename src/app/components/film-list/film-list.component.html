@@ -2,7 +2,12 @@
 bg-light flex-wrap">
   <div class="film1 d-flex p-2 justify-content-between flex-column bg-light w-25 cursor-pointer" *ngFor="let item of movies"
     (click)="setMovie(item)">
-    <h1>{{item.title}}</h1>
+    <a [routerLink]="['/movie']"
+    (click)="setMovie(item)"
+    (click)="movieNewWindow(item)"
+    >
+      <h1>{{item.title}}</h1>
+    </a>
     <h2>{{item.subtitle}}</h2>
     <div class="previewFilm1 preview">
       <img class="w-100" src={{item.thumb}} />

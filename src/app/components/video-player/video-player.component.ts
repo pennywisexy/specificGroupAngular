@@ -7,7 +7,7 @@ import { GetDataService } from '../../services/get-data.service';
 })
 export class VideoPlayerComponent implements OnInit {
   constructor(
-    private data: GetDataService,
+    public data: GetDataService,
   ) { }
 
   public movie;
