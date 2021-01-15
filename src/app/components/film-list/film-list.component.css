@@ -1,8 +1,8 @@
-h1{
+.title{
     font-size: 1.4rem;
 }
 
-h2{
+.subtitle{
   font-size: 1.2rem;
 }
 
@@ -40,7 +40,7 @@ h2{
   transition: .1s;
 }
 
-a {
+.title-link {
   text-decoration: none;
   color: #000000;
 }
