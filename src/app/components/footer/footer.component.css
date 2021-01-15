@@ -1,13 +1,13 @@
-img {
-  width: 25vw;
+.footer-logo {
+  width: 15vw;
 }
 
-a {
+contact-item. {
   color: #215A93;
   text-decoration: none;
 }
 
-a:first-child {
+.address {
   font-weight: bold;
 }
 
