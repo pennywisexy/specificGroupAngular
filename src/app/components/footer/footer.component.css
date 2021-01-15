@@ -1,0 +1,18 @@
+img {
+  width: 25vw;
+}
+
+a {
+  color: #215A93;
+  text-decoration: none;
+}
+
+a:first-child {
+  font-weight: bold;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5%;
+}
