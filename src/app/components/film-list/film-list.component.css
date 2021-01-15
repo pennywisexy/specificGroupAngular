@@ -19,6 +19,8 @@
   opacity: 0;
   visibility: hidden;
   z-index: -1;
+  background-color: #ccc;
+
 }
 
 .modal-description-active {
@@ -29,18 +31,26 @@
   position: absolute;
   opacity: 0;
   visibility: visible;
+  background-color: #ccc;
 }
 
 .modal-description-active {
   opacity:1;
   transition: .6s;
+
 }
 
 .modal-description {
   transition: .1s;
+
 }
 
 .title-link {
   text-decoration: none;
   color: #000000;
+}
+
+.description {
+  background: #cccccc;
+  opacity: .9;
 }

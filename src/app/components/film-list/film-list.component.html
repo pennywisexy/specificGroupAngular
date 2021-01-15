@@ -24,7 +24,7 @@ bg-light flex-wrap">
 
     </button>
       <div [id]="item.title" [class]="item.title" [ngClass]="{'modal-description-active' : isActiveButton}" *ngIf="isActiveButton && item.title === title">
-        {{showDescription}}
+        <p class="description">{{showDescription}}</p>
       </div>
   </div>
 </div>
