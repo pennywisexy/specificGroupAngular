@@ -45,6 +45,7 @@ export class FilmListComponent implements OnInit {
   }
 
   public movieNewWindow(item): void {
+    this.data.currentMovie.next(item);
     this.data.dataForMovieNewWindow = item.description;
   }
 }
