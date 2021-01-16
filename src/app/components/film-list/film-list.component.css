@@ -45,10 +45,10 @@
 
 .title-link {
   text-decoration: none;
-  color: var(--base-text-color);
+  color: var(--base-text-color, black);
 }
 
 .description {
-  background: var(--base-bg-color);
+  background: var(--base-bg-color, #ccc);
   opacity: .9;
 }
