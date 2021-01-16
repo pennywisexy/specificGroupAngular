@@ -1,8 +1,10 @@
-h1{
-    font-size: 1.4rem;
+@import url('../../../theme.css');
+
+.title{
+  font-size: 1.4rem;
 }
 
-h2{
+.subtitle{
   font-size: 1.2rem;
 }
 
@@ -19,6 +21,7 @@ h2{
   opacity: 0;
   visibility: hidden;
   z-index: -1;
+
 }
 
 .modal-description-active {
@@ -32,10 +35,22 @@ h2{
 }
 
 .modal-description-active {
-  opacity:1;
+  opacity: 1;
   transition: .6s;
+
 }
 
 .modal-description {
   transition: .1s;
+
+}
+
+.title-link {
+  text-decoration: none;
+  color: var(--base-text-color);
+}
+
+.description {
+  background: var(--base-bg-color);
+  opacity: .9;
 }

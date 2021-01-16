@@ -12,6 +12,8 @@ export class GetDataService {
   };
   public currentMovie: BehaviorSubject<object> = new BehaviorSubject({});
 
+  dataForMovieNewWindow = '';
+
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<Movie> {
