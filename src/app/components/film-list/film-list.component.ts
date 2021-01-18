@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service';
 @Component({
   selector: 'app-film-list',
@@ -12,21 +12,21 @@ export class FilmListComponent implements OnInit {
 
   title = '';
 
-  public movies: Array<{
-    description: string,
-    sources: [string],
-    subtitle: string,
-    thumb: string,
-    title: string
-  }>;
+  // public movies: Array<{
+  //   description: string,
+  //   sources: [string],
+  //   subtitle?: string,
+  //   thumb?: string,
+  //   title: string
+  // }>;
 
   constructor(
-    private data?: GetDataService,
+    public data?: GetDataService,
   ) { }
 
   ngOnInit(): void {
     this.data.getFilms()
-      .subscribe((movies) => this.movies = movies.categories[0].videos);
+      .subscribe((movies) => this.data.movies = movies.categories[0].videos);
     this.data.dataForMovieNewWindow = '';
   }
 

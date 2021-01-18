@@ -1,6 +1,7 @@
+import { Movie } from './../../services/movies';
+import { GetDataService } from './../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
@@ -10,20 +11,22 @@ export class EditPageComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor() { }
+  constructor(public data?: GetDataService) { }
 
   ngOnInit(): void {
+    this.data.getFilms()
+      .subscribe((movies) => this.data.movies = movies.categories[0].videos);
     this.form = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      sources: new FormControl(null, Validators.required)
+      description: new FormControl('', Validators.required),
+      sources: new FormControl('', Validators.required),
+      title: new FormControl('', Validators.required)
     });
   }
 
   submit(): void {
-    console.log('form: ', this.form.controls);
     const formData = {...this.form.value};
-    console.log('form data: ', formData);
+    console.log('form data: ', this.data.movies);
+    this.data.movies.push(formData);
   }
 
 }

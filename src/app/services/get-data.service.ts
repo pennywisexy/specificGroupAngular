@@ -14,6 +14,14 @@ export class GetDataService {
 
   dataForMovieNewWindow = '';
 
+  public movies: Array<{
+    description: string,
+    sources: [string],
+    subtitle?: string,
+    thumb?: string,
+    title: string
+  }>;
+
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<Movie> {

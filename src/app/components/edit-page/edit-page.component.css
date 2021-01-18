@@ -1,6 +1,7 @@
 .container {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
-  height: 60vh;
   padding: 1rem;
 }
 
@@ -71,4 +72,21 @@
 
 .input-text.ng-valid.ng-touched {
   border: 1px solid greenyellow;
+}
+
+.movies-list, .movie-item {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.movie-item {
+  width: 100vw;
+  background-color: #ccc;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1rem;
 }

@@ -36,4 +36,15 @@
     <button class="btn" type="submit" [disabled]="form.invalid">Add Movie</button>
 
   </form>
+
+  <div class="movies-list" *ngFor="let item of this.data.movies">
+    <div class="movie-item">
+      <h1 class="title">{{item.title}}</h1>
+      <p class="description">{{item.description}}</p>
+      <p class="url">
+        {{item.sources}}
+      </p>
+    </div>
+  </div>
+
 </div>
