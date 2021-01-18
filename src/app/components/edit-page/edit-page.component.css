@@ -1,3 +1,63 @@
 .container {
   width: 100vw;
+  height: 55vh;
+  padding: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #333333;
+  color: #fff;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.input-text {
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  border: #ccc 1px dotted;
+  margin: 0.7rem 0;
+}
+
+.form-control {
+  display: flex;
+  margin-top: 0.8rem;
+  margin-bottom: 3rem;
+  flex-direction: column;
+
+}
+
+.head {
+  display: block;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: .5rem;
+}
+
+.input-text {
+  margin-bottom: 0;
+}
+
+.validation {
+  color: red;
 }
