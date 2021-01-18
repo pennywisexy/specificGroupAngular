@@ -16,6 +16,7 @@ export class EditPageComponent implements OnInit {
   ngOnInit(): void {
     this.data.getFilms()
       .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+
     this.form = new FormGroup({
       description: new FormControl('', Validators.required),
       sources: new FormControl('', Validators.required),
@@ -25,7 +26,6 @@ export class EditPageComponent implements OnInit {
 
   submit(): void {
     const formData = {...this.form.value};
-    console.log('form data: ', this.data.movies);
     this.data.movies.push(formData);
   }
 
