@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EditPageComponent } from './components/edit-page/edit-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './components/footer/footer.component';
     VideoPlayerComponent,
     MovieNewWindowComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditPageComponent
   ],
   imports: [
     BrowserModule,
