@@ -23,7 +23,8 @@ export class EditPageComponent implements OnInit {
       description: new FormControl('', Validators.required),
       sources: new FormControl('', Validators.required),
       title: new FormControl('', Validators.required),
-      thumb: new FormControl('https://cdn.shopify.com/s/files/1/0169/6995/7440/products/F07645L00_5010993767397_pkg_20_Online_300DPI_2000x.jpg?v=1602854860')
+      thumb: new FormControl('https://render.fineartamerica.com/images/rendered/default/greeting-card/images-medium-5/captain-america-shield-digital-painting-georgeta-blanaru.jpg?&targetx=0&targety=-100&imagewidth=700&imageheight=700&modelwidth=700&modelheight=500&backgroundcolor=161718&orientation=0'),
+      subtitle: new FormControl('', Validators.required)
     });
   }
 

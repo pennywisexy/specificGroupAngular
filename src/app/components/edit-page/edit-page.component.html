@@ -14,6 +14,18 @@
     </div>
 
     <div class="form-control">
+      <label class="head">Title</label>
+      <input class="input-text" type="subtitle" placeholder="Subtitle" formControlName="subtitle">
+      <div
+        class="validation"
+        *ngIf="form.get('subtitle').invalid && form.get('subtitle').touched">
+        <small>
+          Field title cannot be empty.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-control">
       <label class="head">Description</label>
       <input class="input-text" type="description" placeholder="Description" formControlName="description">
       <div class="validation"
@@ -40,6 +52,7 @@
   <div class="movies-list" *ngFor="let item of this.data.movies">
     <div class="movie-item">
       <h1 class="title">{{item.title}}</h1>
+      <h1 class="title subtitle">{{item.title}}</h1>
       <p class="description">{{item.description}}</p>
       <p class="url">
         {{item.sources}}
