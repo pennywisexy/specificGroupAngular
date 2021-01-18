@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: 55vh;
+  height: 60vh;
   padding: 1rem;
 }
 
@@ -33,10 +33,11 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
+  height: 27rem;
 }
 
 .form-control {
@@ -60,16 +61,14 @@
 
 .validation {
   color: red;
+  height: 2rem;
 }
 
 
-.input-text.ng-invalid {
+.input-text.ng-invalid.ng-touched {
   border: 1px solid red;
 }
 
-.input-text.ng-valid {
+.input-text.ng-valid.ng-touched {
   border: 1px solid greenyellow;
-}
-.input-text.ng-untouched {
-  border: 1px solid #ccc;;
 }

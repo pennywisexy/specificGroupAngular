@@ -1,23 +1,36 @@
 <div class="container">
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-    <h1>Form add a movie</h1>
 
     <div class="form-control">
       <label class="head">Title</label>
       <input class="input-text" type="title" placeholder="Title" formControlName="title">
-      <div class="validation"></div>
+      <div
+        class="validation"
+        *ngIf="form.get('title').invalid && form.get('title').touched">
+        <small>
+          Field title cannot be empty.
+        </small>
+      </div>
     </div>
 
     <div class="form-control">
       <label class="head">Description</label>
       <input class="input-text" type="description" placeholder="Description" formControlName="description">
-      <div class="validation"></div>
+      <div class="validation"
+      *ngIf="form.get('description').invalid && form.get('description').touched">
+        <small>
+          Field description cannot be empty.
+        </small>
+      </div>
     </div>
 
     <div class="form-control">
       <label class="head">Movie Link</label>
       <input class="input-text" type="sources" placeholder="Movie Link" formControlName="sources">
-      <div class="validation"></div>
+      <div class="validation"
+      *ngIf="form.get('sources').invalid && form.get('sources').touched">
+        <small>Field movie link cannot be empty.</small>
+      </div>
     </div>
 
     <button class="btn" type="submit" [disabled]="form.invalid">Add Movie</button>
