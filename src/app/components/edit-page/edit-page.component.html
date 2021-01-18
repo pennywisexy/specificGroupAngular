@@ -15,7 +15,7 @@
 
     <div class="form-control">
       <label class="head">Title</label>
-      <input class="input-text" type="subtitle" placeholder="Subtitle" formControlName="subtitle">
+      <input class="input-text" type="text" placeholder="Subtitle" formControlName="subtitle">
       <div
         class="validation"
         *ngIf="form.get('subtitle').invalid && form.get('subtitle').touched">
@@ -27,7 +27,7 @@
 
     <div class="form-control">
       <label class="head">Description</label>
-      <input class="input-text" type="description" placeholder="Description" formControlName="description">
+      <input class="input-text" type="text" placeholder="Description" formControlName="description">
       <div class="validation"
       *ngIf="form.get('description').invalid && form.get('description').touched">
         <small>
@@ -38,25 +38,28 @@
 
     <div class="form-control">
       <label class="head">Movie Link</label>
-      <input class="input-text" type="sources" placeholder="Movie Link" formControlName="sources">
+      <input class="input-text" type="url" placeholder="Movie Link" formControlName="sources">
       <div class="validation"
       *ngIf="form.get('sources').invalid && form.get('sources').touched">
         <small>Field movie link cannot be empty.</small>
       </div>
     </div>
 
-    <button class="btn" type="submit" [disabled]="form.invalid">Add Movie</button>
-
+    <button *ngIf="!editBtn; else edit" class="btn" type="submit" [disabled]="form.invalid">Add Movie</button>
+    <ng-template #edit>
+      <button (click)="editChangedMovie()" class="btn" type="submit" [disabled]="form.invalid">Edit Movie</button>
+    </ng-template>
   </form>
 
-  <div class="movies-list" *ngFor="let item of this.data.movies">
+  <div class="movies-list" *ngFor="let item of this.data.movies | keyvalue">
     <div class="movie-item">
-      <h1 class="title">{{item.title}}</h1>
-      <h1 class="title subtitle">{{item.title}}</h1>
-      <p class="description">{{item.description}}</p>
+      <h1 class="title">{{item.value.title}}</h1>
+      <h3 class="title subtitle">{{item.value.subtitle}}</h3>
+      <p class="description">{{item.value.description}}</p>
       <p class="url">
-        {{item.sources}}
+        {{item.value.sources}}
       </p>
+      <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">Edit Movie</button>
     </div>
   </div>
 
