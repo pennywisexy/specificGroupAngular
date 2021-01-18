@@ -1,26 +1,26 @@
 <div class="container">
-  <form class="card">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <h1>Form add a movie</h1>
 
     <div class="form-control">
       <label class="head">Title</label>
-      <input class="input-text" type="text" placeholder="Title">
+      <input class="input-text" type="title" placeholder="Title" formControlName="title">
       <div class="validation"></div>
     </div>
 
     <div class="form-control">
       <label class="head">Description</label>
-      <input class="input-text" type="password" placeholder="Description">
+      <input class="input-text" type="description" placeholder="Description" formControlName="description">
       <div class="validation"></div>
     </div>
 
     <div class="form-control">
       <label class="head">Movie Link</label>
-      <input class="input-text" type="password" placeholder="Movie Link">
+      <input class="input-text" type="sources" placeholder="Movie Link" formControlName="sources">
       <div class="validation"></div>
     </div>
 
-    <button class="btn">Add Movie</button>
+    <button class="btn" type="submit" [disabled]="form.invalid">Add Movie</button>
 
   </form>
 </div>

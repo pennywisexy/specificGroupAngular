@@ -61,3 +61,15 @@
 .validation {
   color: red;
 }
+
+
+.input-text.ng-invalid {
+  border: 1px solid red;
+}
+
+.input-text.ng-valid {
+  border: 1px solid greenyellow;
+}
+.input-text.ng-untouched {
+  border: 1px solid #ccc;;
+}
