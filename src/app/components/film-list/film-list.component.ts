@@ -25,8 +25,13 @@ export class FilmListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.data.getFilms()
-      .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+    this.data.getFilms();
+
+    if(this.data.movies === undefined) {
+      this.data.getFilms()
+        .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+    }
+
     this.data.dataForMovieNewWindow = '';
   }
 
