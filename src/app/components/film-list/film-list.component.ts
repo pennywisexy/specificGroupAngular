@@ -12,22 +12,14 @@ export class FilmListComponent implements OnInit {
 
   title = '';
 
-  // public movies: Array<{
-  //   description: string,
-  //   sources: [string],
-  //   subtitle?: string,
-  //   thumb?: string,
-  //   title: string
-  // }>;
-
   constructor(
-    public data?: GetDataService,
+    public data: GetDataService,
   ) { }
 
   ngOnInit(): void {
     this.data.getFilms();
 
-    if(this.data.movies === undefined) {
+    if (this.data.movies === undefined) {
       this.data.getFilms()
         .subscribe((movies) => this.data.movies = movies.categories[0].videos);
     }
@@ -42,7 +34,7 @@ export class FilmListComponent implements OnInit {
   public modalDescription(item): void {
     if (item.title !== this.title) {
       this.title = item.title;
-      this.showDescription = item.description;
+      this.showDescription = item.description.substr(0, 30) + '...';
       this.isActiveButton = true;
     } else {
       this.isActiveButton = !this.isActiveButton;
@@ -52,5 +44,9 @@ export class FilmListComponent implements OnInit {
   public movieNewWindow(item): void {
     this.data.currentMovie.next(item);
     this.data.dataForMovieNewWindow = item.description;
+  }
+
+  public showFullDescription(item): void {
+    this.showDescription = item.description;
   }
 }

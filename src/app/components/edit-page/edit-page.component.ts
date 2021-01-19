@@ -1,4 +1,3 @@
-import { Movie } from './../../services/movies';
 import { GetDataService } from './../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -17,10 +16,12 @@ export class EditPageComponent implements OnInit {
 
   itemKey;
 
-  constructor(public data?: GetDataService) { }
+  notification = false;
+
+  constructor(public data: GetDataService) { }
 
   ngOnInit(): void {
-    if(this.data.movies === undefined || this.data.movies.length === 3) {
+    if (this.data.movies === undefined) {
       this.data.getFilms()
         .subscribe((movies) => this.data.movies = movies.categories[0].videos);
     }
@@ -36,8 +37,11 @@ export class EditPageComponent implements OnInit {
 
   submit(): void {
     this.formData = {...this.form.value};
-    this.data.movies.push(this.formData);
+    this.data.movies.unshift(this.formData);
     this.form.reset();
+    this.notification = true;
+
+    setTimeout(() => this.notification = false, 2000);
   }
 
   editMovie(item): void {

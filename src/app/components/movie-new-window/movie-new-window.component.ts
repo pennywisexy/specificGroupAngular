@@ -11,7 +11,7 @@ export class MovieNewWindowComponent implements OnInit {
 
   movieDescription = '';
 
-  constructor(private data?: GetDataService) {
+  constructor(private data: GetDataService) {
   }
 
   ngOnInit(): void {

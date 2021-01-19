@@ -23,7 +23,12 @@ bg-light flex-wrap">
       Description!
 
     </button>
-      <div [id]="item.title" [class]="item.title" [ngClass]="{'modal-description-active' : isActiveButton}" *ngIf="isActiveButton && item.title === title">
+      <div
+        [id]="item.title"
+        [class]="item.title"
+        [ngClass]="{'modal-description-active' : isActiveButton}"
+        *ngIf="isActiveButton && item.title === title"
+        (click)="showFullDescription(item)">
         <p class="description">{{showDescription}}</p>
       </div>
   </div>

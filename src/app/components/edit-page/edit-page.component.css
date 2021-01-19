@@ -1,3 +1,5 @@
+@import url('../../../theme.css');
+
 .container {
   display: flex;
   flex-direction: column;
@@ -7,8 +9,8 @@
 
 .btn {
   display: inline-block;
-  background: #333333;
-  color: #fff;
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
   border: none;
@@ -27,7 +29,7 @@
   width: 100%;
   padding: 0.4rem;
   font-size: 1.2rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--base-border-color);
   margin-bottom: 1rem;
 }
 
@@ -36,7 +38,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
-  border: #ccc 1px dotted;
+  border: var(--base-border-color) 1px dotted;
   margin: 0.7rem 0;
   height: 35rem;
 }
@@ -61,17 +63,17 @@
 }
 
 .validation {
-  color: red;
+  color: var(--base-invalid-color);
   height: 2rem;
 }
 
 
 .input-text.ng-invalid.ng-touched {
-  border: 1px solid red;
+  border: 1px solid var(--base-invalid-color);
 }
 
 .input-text.ng-valid.ng-touched {
-  border: 1px solid greenyellow;
+  border: 1px solid var(--base-valid-color);
 }
 
 .movies-list, .movie-item {
@@ -83,10 +85,31 @@
 
 .movie-item {
   width: 100vw;
-  background-color: #ccc;
+  background-color: var(--base-bg-color);
   flex-direction: column;
 }
 
 .title {
   font-size: 1rem;
+}
+
+.hint {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 0;
+}
+
+.hint-item {
+  color: var(--base-valid-color);
+}
+
+.hint-show {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 1;
+  transition: all .5s ease-out;
 }
