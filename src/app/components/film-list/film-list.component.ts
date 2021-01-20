@@ -29,9 +29,15 @@ export class FilmListComponent implements OnInit {
 
   public setMovie(movie): void {
     this.data.currentMovie.next(movie);
+
+    if(this.isActiveButton) {
+      this.isActiveButton = false
+    }
   }
 
-  public modalDescription(item): void {
+  public modalDescription(event, item): void {
+    event.stopPropagation();
+
     if (item.title !== this.title) {
       this.title = item.title;
       this.showDescription = item.description.substr(0, 30) + '...';
@@ -46,7 +52,9 @@ export class FilmListComponent implements OnInit {
     this.data.dataForMovieNewWindow = item.description;
   }
 
-  public showFullDescription(item): void {
+  public showFullDescription(event, item): void {
+    event.stopPropagation();
+
     this.showDescription = item.description;
   }
 }

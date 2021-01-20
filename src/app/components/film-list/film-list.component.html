@@ -1,5 +1,5 @@
 <app-video-player></app-video-player>
-<div class="filmList d-flex p-2 justify-content-between
+<div (click)="isActiveButton = false" class="filmList d-flex p-2 justify-content-between
 bg-light flex-wrap">
   <div class="film1 d-flex p-2 justify-content-between flex-column bg-light w-25 cursor-pointer" *ngFor="let item of this.data.movies"
     (click)="setMovie(item)">
@@ -17,7 +17,8 @@ bg-light flex-wrap">
     <button type="button"
             class="btn btn-outline-secondary"
             data-container="body"
-            (click)="modalDescription(item)"
+            (click)="modalDescription($event, item)"
+            id="description"
             placement="bottom"
             >
       Description!
@@ -28,7 +29,7 @@ bg-light flex-wrap">
         [class]="item.title"
         [ngClass]="{'modal-description-active' : isActiveButton}"
         *ngIf="isActiveButton && item.title === title"
-        (click)="showFullDescription(item)">
+        (click)="showFullDescription($event, item)">
         <p class="description">{{showDescription}}</p>
       </div>
   </div>
