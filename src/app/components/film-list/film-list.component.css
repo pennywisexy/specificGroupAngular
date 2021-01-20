@@ -32,17 +32,7 @@
   position: absolute;
   opacity: 0;
   visibility: visible;
-}
-
-.modal-description-active {
   opacity: 1;
-  transition: .6s;
-
-}
-
-.modal-description {
-  transition: .1s;
-
 }
 
 .title-link {

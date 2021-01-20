@@ -1,5 +1,29 @@
-<div class="img-container">
+<div class="container">
   <a [routerLink]="['/']">
     <div class="header-logo"></div>
   </a>
+  <div class="navbar">
+    <ul class="navbar-items">
+      <li class="navbar-item">
+        <button class="navbar-item__button">
+          <a
+            class="navbar-item__link"
+            [routerLink]="['/']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+          >Main Page</a>
+        </button>
+      </li>
+      <li class="navbar-item">
+        <button class="navbar-item__button">
+          <a
+            class="navbar-item__link"
+            [routerLink]="['/edit-page']"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}"
+            >Edit Page</a>
+        </button>
+      </li>
+    </ul>
+  </div>
 </div>

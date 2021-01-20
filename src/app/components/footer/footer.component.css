@@ -1,3 +1,5 @@
+@import url('../../../theme.css');
+
 .footer-logo {
   width: 15vw;
   height: 9vh;
@@ -7,7 +9,7 @@
 }
 
 .contact-item {
-  color: #215A93;
+  color: var(--contact-text-color);
   text-decoration: none;
 }
 

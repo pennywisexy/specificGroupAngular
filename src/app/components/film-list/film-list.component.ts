@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service';
 @Component({
   selector: 'app-film-list',
@@ -12,32 +12,35 @@ export class FilmListComponent implements OnInit {
 
   title = '';
 
-  public movies: Array<{
-    description: string,
-    sources: [string],
-    subtitle: string,
-    thumb: string,
-    title: string
-  }>;
-
   constructor(
-    private data?: GetDataService,
+    public data: GetDataService,
   ) { }
 
   ngOnInit(): void {
-    this.data.getFilms()
-      .subscribe((movies) => this.movies = movies.categories[0].videos);
+    this.data.getFilms();
+
+    if (this.data.movies === undefined) {
+      this.data.getFilms()
+        .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+    }
+
     this.data.dataForMovieNewWindow = '';
   }
 
   public setMovie(movie): void {
     this.data.currentMovie.next(movie);
+
+    if(this.isActiveButton) {
+      this.isActiveButton = false
+    }
   }
 
-  public modalDescription(item): void {
+  public modalDescription(event, item): void {
+    event.stopPropagation();
+
     if (item.title !== this.title) {
       this.title = item.title;
-      this.showDescription = item.description;
+      this.showDescription = item.description.substr(0, 30) + '...';
       this.isActiveButton = true;
     } else {
       this.isActiveButton = !this.isActiveButton;
@@ -47,5 +50,11 @@ export class FilmListComponent implements OnInit {
   public movieNewWindow(item): void {
     this.data.currentMovie.next(item);
     this.data.dataForMovieNewWindow = item.description;
+  }
+
+  public showFullDescription(event, item): void {
+    event.stopPropagation();
+
+    this.showDescription = item.description;
   }
 }
