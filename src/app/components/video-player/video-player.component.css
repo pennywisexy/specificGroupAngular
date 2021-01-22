@@ -7,3 +7,9 @@
   width: 50%;
   justify-content: flex-end;
 }
+
+.rate-movie__text {
+  font-size: 1.4rem;
+  margin-top: 1%;
+  margin-right: 4%;
+}

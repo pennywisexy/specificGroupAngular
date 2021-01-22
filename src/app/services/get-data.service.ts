@@ -14,6 +14,11 @@ export class GetDataService {
 
   dataForMovieNewWindow = '';
 
+  public ratingData: Array<{
+    title: string,
+    ratingValue: number
+  }>;
+
   public movies: Array<{
     description: string,
     sources: [string],

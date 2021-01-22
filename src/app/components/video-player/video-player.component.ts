@@ -14,9 +14,9 @@ export class VideoPlayerComponent implements OnInit {
 
 
   checkedcolor = "orange";
-  uncheckedcolor = "yellow";
+  uncheckedcolor = "#ccc";
   value = 0;
-  size = 50;
+  size = '30';
   totalstars = 5;
   readonly = 'false'
 
