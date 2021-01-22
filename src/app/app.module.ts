@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
+import { RatingPageComponent } from './components/rating-page/rating-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditPageComponent } from './components/edit-page/edit-page.component';
     MovieNewWindowComponent,
     HeaderComponent,
     FooterComponent,
-    EditPageComponent
+    EditPageComponent,
+    RatingPageComponent
   ],
   imports: [
     BrowserModule,

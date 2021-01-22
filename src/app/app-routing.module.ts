@@ -1,3 +1,4 @@
+import { RatingPageComponent } from './components/rating-page/rating-page.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
 import { FilmListComponent } from './components/film-list/film-list.component';
 import { MovieNewWindowComponent } from './components/movie-new-window/movie-new-window.component';
@@ -8,6 +9,7 @@ const routes: Routes = [
   {path: 'movie', component: MovieNewWindowComponent},
   {path: '', component: FilmListComponent},
   {path: 'edit-page', component: EditPageComponent},
+  {path: 'rating-page', component: RatingPageComponent},
 ];
 
 @NgModule({
