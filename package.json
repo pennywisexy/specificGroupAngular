@@ -25,6 +25,7 @@
     "angularfire2": "^5.4.2",
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
+    "ng-starrating": "^1.0.20",
     "rxjs": "~6.5.4",
     "save": "^2.4.0",
     "tslib": "^1.10.0",

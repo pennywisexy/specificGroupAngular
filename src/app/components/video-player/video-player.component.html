@@ -8,4 +8,16 @@
       [attr.poster]="movie.thumb ? movie.thumb : posterUrl"
       class='embed-responsive-item'
       autoplay='autoplay'></video></div>
+      <div class="rating">
+        <star-rating
+          *ngIf="movie.thumb"
+          [(value)]="value"
+          [(totalstars)]="totalstars"
+          checkedcolor="{{checkedcolor}}"
+          uncheckedcolor="{{uncheckedcolor}}"
+          size="{{size}}"
+          readonly={{readonly}}
+          (rate)="onRate($event)">
+        </star-rating>
+      </div>
 </div>

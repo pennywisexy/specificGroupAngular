@@ -148,7 +148,7 @@
     "universal-analytics" "0.4.20"
     "uuid" "7.0.2"
 
-"@angular/common@~9.1.1":
+"@angular/common@^9.0.1", "@angular/common@~9.1.1":
   "integrity" "sha512-XSIqkbM6VV1yixF9zuzeE5eqN1VsiXS517K2VU0XgCRSAzhVhLOeKsdYjeLf7PdSu/HgW/Tr81H+isi9A9I0YA=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-9.1.12.tgz"
   "version" "9.1.12"
@@ -176,7 +176,7 @@
   "resolved" "https://registry.npmjs.org/@angular/compiler/-/compiler-9.1.12.tgz"
   "version" "9.1.12"
 
-"@angular/core@~9.1.1":
+"@angular/core@^9.0.1", "@angular/core@~9.1.1":
   "integrity" "sha512-WVA/eh3fzjx0apOzkKot4YRRUsGkHj50zFQWrAOMgivGaj1YVrvhf+m3hpglj5fn/BkLiFDl8RT0wAE8z9X+gQ=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-9.1.12.tgz"
   "version" "9.1.12"
@@ -6425,6 +6425,11 @@
   "integrity" "sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw=="
   "resolved" "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   "version" "2.6.2"
+
+"ng-starrating@^1.0.20":
+  "integrity" "sha512-RQO9B/EVYHvu4oG8ZAR0sr91d1ouuyr4dzQDa4g1Bgi0tr4Ow6VGJKxrqhu2n8MgdLuaCWGvp9dhXWL1qxTw7Q=="
+  "resolved" "https://registry.npmjs.org/ng-starrating/-/ng-starrating-1.0.20.tgz"
+  "version" "1.0.20"
 
 "nice-try@^1.0.4":
   "integrity" "sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ=="

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service';
+import { StarRatingComponent } from 'ng-starrating';
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
@@ -11,11 +12,26 @@ export class VideoPlayerComponent implements OnInit {
 
   public movie;
 
+
+  checkedcolor = "orange";
+  uncheckedcolor = "yellow";
+  value = 0;
+  size = 50;
+  totalstars = 5;
+  readonly = 'false'
+
   constructor(
     public data: GetDataService,
   ) { }
 
   ngOnInit(): void {
     this.data.currentMovie.subscribe((movie) => this.movie = movie);
+  }
+
+  onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}): void {
+    alert(`Old Value:${$event.oldValue},
+      New Value: ${$event.newValue},
+      Checked Color: ${$event.starRating.checkedcolor},
+      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
   }
 }

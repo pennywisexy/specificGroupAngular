@@ -1,3 +1,9 @@
 .movie {
   width: 106% !important;
 }
+
+.rating {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}
