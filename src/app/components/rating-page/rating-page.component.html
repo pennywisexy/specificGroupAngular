@@ -1,8 +1,22 @@
 <div class="container">
+
   <div class="container-inner">
-    <p *ngIf="this.data.ratingData; else noRatings">Most popular movie: {{this.mostPopularMovieTitle}}</p>
+    <div class="dropdown">
+      <span>Hover to select the rating type</span>
+      <div class="dropdown-content">
+        <p class="dropdown-content__item" (click)="popularMovie()">Most popular movie</p>
+        <p class="dropdown-content__item" (click)="unpopularMovie()">Most unpopular movie</p>
+      </div>
+    </div>
+
+    <div *ngIf="this.data.ratingData; else noRatings">
+      <p *ngIf="popular">Most popular movie: {{this.mostPopularMovieTitle}}</p>
+      <p *ngIf="unpopular">Most unpopular movie: {{this.mostUnpopularMovieTitle}}</p>
+    </div>
     <ng-template #noRatings>
       <p>{{this.mostPopularMovieTitle}}</p>
     </ng-template>
   </div>
+
+
 </div>

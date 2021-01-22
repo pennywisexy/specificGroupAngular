@@ -9,20 +9,25 @@ import { Component, OnInit } from '@angular/core';
 export class RatingPageComponent implements OnInit {
 
   mostPopularMovieTitle: string;
+  mostUnpopularMovieTitle: string;
+
+  popular = false;
+  unpopular = false;
 
   constructor(public data: GetDataService) { }
 
   ngOnInit(): void {
-    this.mostPopularMovie();
+    this.ratingMovie();
   }
 
-  mostPopularMovie(): void {
+  ratingMovie(): void {
     const ratingArr = [];
     const ratingArrWithTitle = [];
     let average: number;
 
     if(this.data.ratingData === undefined) {
       this.mostPopularMovieTitle = 'No ratings yet';
+      this.mostUnpopularMovieTitle = 'No ratings yet';
       return
     }
 
@@ -39,7 +44,20 @@ export class RatingPageComponent implements OnInit {
       if (elem[1] === ratingArr[ratingArr.length - 1]) {
         this.mostPopularMovieTitle = elem[0];
       }
+      if (elem[1] === ratingArr[0]) {
+        this.mostUnpopularMovieTitle = elem[0];
+      }
     });
+  }
+
+  popularMovie(): void {
+    this.popular = true;
+    this.unpopular = false;
+  }
+
+  unpopularMovie(): void {
+    this.popular = false;
+    this.unpopular = true;
   }
 
 }
