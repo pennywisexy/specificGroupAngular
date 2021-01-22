@@ -1,4 +1,8 @@
 <div class="container">
-  <p>working</p>
-
+  <div class="container-inner">
+    <p *ngIf="this.data.ratingData; else noRatings">Most popular movie: {{this.mostPopularMovieTitle}}</p>
+    <ng-template #noRatings>
+      <p>{{this.mostPopularMovieTitle}}</p>
+    </ng-template>
+  </div>
 </div>

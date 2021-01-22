@@ -12,13 +12,14 @@ export class VideoPlayerComponent implements OnInit {
 
   public movie;
 
+  haveMovie = false;
 
   checkedcolor = "orange";
   uncheckedcolor = "#ccc";
   value = 0;
   size = '30';
   totalstars = 5;
-  readonly = 'false'
+  readonly = 'false';
 
   constructor(
     public data: GetDataService,
@@ -29,9 +30,28 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}): void {
-    alert(`Old Value:${$event.oldValue},
-      New Value: ${$event.newValue},
-      Checked Color: ${$event.starRating.checkedcolor},
-      Unchecked Color: ${$event.starRating.uncheckedcolor}`);
+
+    if (this.data.ratingData === undefined) {
+      this.data.ratingData = [{
+        title: this.movie.title,
+        ratingValue: [$event.newValue]
+      }];
+    } else {
+      this.haveMovie = false;
+
+      this.data.ratingData.forEach((obj) => {
+        if (obj.title === this.movie.title) {
+          obj.ratingValue.push($event.newValue);
+          this.haveMovie = true;
+        }
+      });
+
+      if (!this.haveMovie) {
+        this.data.ratingData.push({
+          title: this.movie.title,
+          ratingValue: [$event.newValue]
+        });
+      }
+    }
   }
 }

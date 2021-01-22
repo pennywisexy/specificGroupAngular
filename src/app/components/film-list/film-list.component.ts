@@ -31,7 +31,7 @@ export class FilmListComponent implements OnInit {
     this.data.currentMovie.next(movie);
 
     if(this.isActiveButton) {
-      this.isActiveButton = false
+      this.isActiveButton = false;
     }
   }
 

@@ -16,7 +16,7 @@ export class GetDataService {
 
   public ratingData: Array<{
     title: string,
-    ratingValue: number
+    ratingValue: [number]
   }>;
 
   public movies: Array<{
@@ -24,7 +24,8 @@ export class GetDataService {
     sources: [string],
     subtitle?: string,
     thumb?: string,
-    title: string
+    title: string,
+    ratingValue?: number
   }>;
 
   constructor(private http: HttpClient) {}

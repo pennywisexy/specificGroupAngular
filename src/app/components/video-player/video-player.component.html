@@ -8,7 +8,10 @@
       [attr.poster]="movie.thumb ? movie.thumb : posterUrl"
       class='embed-responsive-item'
       autoplay='autoplay'></video></div>
-      <div class="rating" *ngIf="movie.sources">
+      <div
+        class="rating"
+        *ngIf="movie.sources"
+        >
         <p class="rate-movie__text">Rate the movie: </p>
         <star-rating
           [(value)]="value"
