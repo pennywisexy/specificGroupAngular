@@ -7,11 +7,15 @@
       controls="controls"
       [attr.poster]="movie.thumb ? movie.thumb : posterUrl"
       class='embed-responsive-item'
-      autoplay='autoplay'></video></div>
+      autoplay='autoplay'></video>
+    </div>
       <div
         class="rating"
         *ngIf="movie.sources"
         >
+        <div class="toster" *ngIf="isRated">
+          <p class="toster-item">Rated</p>
+        </div>
         <p class="rate-movie__text">Rate the movie: </p>
         <star-rating
           [(value)]="value"
@@ -22,5 +26,8 @@
           readonly={{readonly}}
           (rate)="onRate($event)">
         </star-rating>
+
       </div>
+
+
 </div>

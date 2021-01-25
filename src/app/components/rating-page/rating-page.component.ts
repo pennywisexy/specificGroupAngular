@@ -11,8 +11,8 @@ export class RatingPageComponent implements OnInit {
   mostPopularMovieTitle: string;
   mostUnpopularMovieTitle: string;
 
-  popular = false;
-  unpopular = false;
+  isPopular = false;
+  isUnpopular = false;
 
   constructor(public data: GetDataService) { }
 
@@ -51,13 +51,13 @@ export class RatingPageComponent implements OnInit {
   }
 
   popularMovie(): void {
-    this.popular = true;
-    this.unpopular = false;
+    this.isPopular = true;
+    this.isUnpopular = false;
   }
 
   unpopularMovie(): void {
-    this.popular = false;
-    this.unpopular = true;
+    this.isPopular = false;
+    this.isUnpopular = true;
   }
 
 }

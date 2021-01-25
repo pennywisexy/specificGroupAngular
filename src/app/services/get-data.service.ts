@@ -28,6 +28,8 @@ export class GetDataService {
     ratingValue?: number
   }>;
 
+  public ratingValue = 3;
+
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<Movie> {

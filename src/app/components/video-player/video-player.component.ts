@@ -13,10 +13,11 @@ export class VideoPlayerComponent implements OnInit {
   public movie;
 
   haveMovie = false;
+  isRated = false;
 
-  checkedcolor = "orange";
-  uncheckedcolor = "#ccc";
-  value = 0;
+  checkedcolor = 'orange';
+  uncheckedcolor = '#ccc';
+  value = this.data.ratingValue;
   size = '30';
   totalstars = 5;
   readonly = 'false';
@@ -26,11 +27,13 @@ export class VideoPlayerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.data.currentMovie.subscribe((movie) => this.movie = movie);
+    this.data.currentMovie.subscribe((movie) => {
+      this.value = 1;
+      this.movie = movie;
+    });
   }
 
   onRate($event:{oldValue:number, newValue:number, starRating:StarRatingComponent}): void {
-
     if (this.data.ratingData === undefined) {
       this.data.ratingData = [{
         title: this.movie.title,
@@ -53,5 +56,17 @@ export class VideoPlayerComponent implements OnInit {
         });
       }
     }
+
+    this.ratingToster();
+
   }
+
+  ratingToster() {
+    this.isRated = true;
+
+    setTimeout(()=> {
+      this.isRated = false;
+    }, 1000);
+  }
+
 }

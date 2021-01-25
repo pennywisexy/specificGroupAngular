@@ -10,13 +10,12 @@
     </div>
 
     <div *ngIf="this.data.ratingData; else noRatings">
-      <p *ngIf="popular">Most popular movie: {{this.mostPopularMovieTitle}}</p>
-      <p *ngIf="unpopular">Most unpopular movie: {{this.mostUnpopularMovieTitle}}</p>
+      <p *ngIf="isPopular">Most popular movie: {{this.mostPopularMovieTitle}}</p>
+      <p *ngIf="isUnpopular">Most unpopular movie: {{this.mostUnpopularMovieTitle}}</p>
     </div>
     <ng-template #noRatings>
       <p>{{this.mostPopularMovieTitle}}</p>
     </ng-template>
   </div>
-
 
 </div>
