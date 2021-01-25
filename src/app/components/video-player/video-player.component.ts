@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service';
 import { StarRatingComponent } from 'ng-starrating';
+
 @Component({
   selector: 'app-video-player',
   templateUrl: './video-player.component.html',
@@ -28,7 +29,6 @@ export class VideoPlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.data.currentMovie.subscribe((movie) => {
-      this.value = 1;
       this.movie = movie;
     });
   }
@@ -56,12 +56,20 @@ export class VideoPlayerComponent implements OnInit {
         });
       }
     }
-
     this.ratingToster();
 
+    if(this.data.ratingData) {
+      this.data.ratingData.forEach((element) => {
+        if(this.movie.title === element.title) {
+          $event.starRating.value = element.ratingValue.reduce((pre, cur) => pre + cur) / element.ratingValue.length;
+        }
+      });
+    }
+
+    console.log()
   }
 
-  ratingToster() {
+  ratingToster(): void {
     this.isRated = true;
 
     setTimeout(()=> {

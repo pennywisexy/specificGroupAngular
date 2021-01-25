@@ -1,33 +1,27 @@
 <div class="d-flex justify-content-center flex-column align-items-center">
-    <div class="title text-center" ><h3>{{movie.title}}</h3></div>
-    <div class="d-flex embed-responsive embed-responsive-21by9 justify-content-center w-50"
-    [ngClass]="{'movie' : data.dataForMovieNewWindow}"
-    ><video
-      src="{{movie.sources}}"
-      controls="controls"
-      [attr.poster]="movie.thumb ? movie.thumb : posterUrl"
-      class='embed-responsive-item'
-      autoplay='autoplay'></video>
+  <div class="title text-center">
+    <h3>{{movie.title}}</h3>
+  </div>
+  <div class="d-flex embed-responsive embed-responsive-21by9 justify-content-center w-50"
+    [ngClass]="{'movie' : data.dataForMovieNewWindow}"><video src="{{movie.sources}}" controls="controls"
+      [attr.poster]="movie.thumb ? movie.thumb : posterUrl" class='embed-responsive-item' autoplay='autoplay'></video>
+  </div>
+  <div class="rating" *ngIf="movie.sources">
+    <div class="toster" *ngIf="isRated">
+      <p class="toster-item">Rated</p>
     </div>
-      <div
-        class="rating"
-        *ngIf="movie.sources"
-        >
-        <div class="toster" *ngIf="isRated">
-          <p class="toster-item">Rated</p>
-        </div>
-        <p class="rate-movie__text">Rate the movie: </p>
-        <star-rating
-          [(value)]="value"
-          [(totalstars)]="totalstars"
-          checkedcolor="{{checkedcolor}}"
-          uncheckedcolor="{{uncheckedcolor}}"
-          size="{{size}}"
-          readonly={{readonly}}
-          (rate)="onRate($event)">
-        </star-rating>
+    <p class="rate-movie__text">Rate the movie: </p>
+    <div
+      *ngFor="let item of this.data.movies"
+    >
+      <star-rating
+      *ngIf="item.title === movie.title"
+      [(value)]="this.data.ratingValue" [(totalstars)]="totalstars" checkedcolor="{{checkedcolor}}"
+      uncheckedcolor="{{uncheckedcolor}}" size="{{size}}" readonly={{readonly}} (rate)="onRate($event)">
+    </star-rating>
+    </div>
 
-      </div>
 
+  </div>
 
 </div>

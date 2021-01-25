@@ -33,6 +33,8 @@ export class FilmListComponent implements OnInit {
     if(this.isActiveButton) {
       this.isActiveButton = false;
     }
+
+    this.rating(movie);
   }
 
   public modalDescription(event, item): void {
@@ -56,5 +58,15 @@ export class FilmListComponent implements OnInit {
     event.stopPropagation();
 
     this.showDescription = item.description;
+  }
+
+  public rating(movie): void {
+    if(this.data.ratingData) {
+      this.data.ratingData.forEach((element) => {
+        if(movie.title === element.title) {
+          this.data.ratingValue = element.ratingValue.reduce((pre, cur) => pre + cur) / element.ratingValue.length;
+        }
+      });
+    }
   }
 }
