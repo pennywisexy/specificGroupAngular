@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-movie-new-window',
   templateUrl: './movie-new-window.component.html',
-  styleUrls: ['./movie-new-window.component.css']
+  styleUrls: ['./movie-new-window.component.scss']
 })
 
 export class MovieNewWindowComponent implements OnInit {
