@@ -9,8 +9,8 @@
 
 .btn {
   display: inline-block;
-  background: $btn-bg-color;
-  color: $btn-text-color;
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
   padding: 0.4rem 1.3rem;
   font-size: 1rem;
   border: none;
@@ -30,7 +30,7 @@
   width: 100%;
   padding: 0.4rem;
   font-size: 1.2rem;
-  border: 1px solid $base-border-color;
+  border: 1px solid var(--base-border-color);
   margin-bottom: 1rem;
 }
 
@@ -39,7 +39,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1rem;
-  border: $base-border-color 1px dotted;
+  border: var(--base-border-color) 1px dotted;
   margin: 0.7rem 0;
   height: 35rem;
 }
@@ -64,17 +64,17 @@
 }
 
 .validation {
-  color: $base-invalid-color;
+  color: var(--base-invalid-color);
   height: 2rem;
 }
 
 
 .input-text.ng-invalid.ng-touched {
-  border: 1px solid $base-invalid-color;
+  border: 1px solid var(--base-invalid-color);
 }
 
 .input-text.ng-valid.ng-touched {
-  border: 1px solid $base-valid-color;
+  border: 1px solid var(--base-valid-color);
 }
 
 .movies-list, .movie-item {
@@ -86,7 +86,7 @@
 
 .movie-item {
   width: 100vw;
-  background-color: $base-bg-color;
+  background-color: var(--base-bg-color);
   flex-direction: column;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .hint-item {
-  color: $base-valid-color;
+  color: var(--base-valid-color);
 }
 
 .hint-show {

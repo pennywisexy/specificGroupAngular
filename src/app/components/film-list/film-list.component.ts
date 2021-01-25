@@ -1,3 +1,4 @@
+import { Movie } from './../../services/movies';
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service';
 @Component({
@@ -29,7 +30,7 @@ export class FilmListComponent implements OnInit {
 
   }
 
-  public setMovie(movie): void {
+  public setMovie(movie: object): void {
     this.data.currentMovie.next(movie);
 
     if (this.isActiveButton) {
@@ -39,7 +40,7 @@ export class FilmListComponent implements OnInit {
     this.rating(movie);
   }
 
-  public modalDescription(event, item): void {
+  public modalDescription(event: { stopPropagation: () => void; }, item: { title: string; description: string; }): void {
     event.stopPropagation();
 
     if (item.title !== this.title) {
@@ -56,7 +57,7 @@ export class FilmListComponent implements OnInit {
     this.data.dataForMovieNewWindow = item.description;
   }
 
-  public showFullDescription(event, item): void {
+  public showFullDescription(event: { stopPropagation: () => void; }, item: { description: string; }): void {
     event.stopPropagation();
 
     this.showDescription = item.description;

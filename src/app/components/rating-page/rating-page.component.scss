@@ -23,7 +23,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  background-color: $dropdown-bg-color;
+  background-color: var(--dropdown-bg-color);
   width: 80%;
   text-align: center;
   border-radius: 10px;
@@ -32,7 +32,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: $dropdown-bg-color;
+  background-color: var(--dropdown-bg-color);
   min-width: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   padding: 12px 0;
@@ -50,7 +50,7 @@
 }
 
 .dropdown-content__item {
-  background-color: $base-bg-color;
+  background-color: var(--base-bg-color);
   border-radius: 10px;
 }
 

@@ -34,9 +34,6 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   onRate($event: {oldValue: number, newValue: number, starRating: StarRatingComponent}): void {
-
-
-
     if (this.data.ratingData === undefined) {
       this.data.ratingData = [{
         title: this.movie.title,

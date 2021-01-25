@@ -34,14 +34,14 @@
 
 .navbar-item__link {
   text-decoration: none;
-  color: $base-text-color;
+  color: var(--base-text-color);
   font-size: 1.2rem;
 }
 
 .navbar-item__link:hover {
   transition: all .1s ease-out;
-  color: $base-text-color;
-  text-shadow: 0 0 2px $base-text-color, 0 0 1px $base-text-color;
+  color: var(--base-text-color);
+  text-shadow: 0 0 2px var(--base-text-color), 0 0 1px var(--base-text-color);
 }
 
 .navbar-item__link.active {

@@ -37,10 +37,10 @@
 
 .title-link {
   text-decoration: none;
-  color: $base-text-color;
+  color: var(--base-text-color);
 }
 
 .description {
-  background: $base-bg-color;
+  background: var(--base-bg-color);
   opacity: .9;
 }
