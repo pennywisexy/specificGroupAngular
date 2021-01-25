@@ -1,4 +1,4 @@
-@import url('../../../theme.css');
+@import '../../../theme.scss';
 
 .footer-logo {
   width: 15vw;
@@ -9,7 +9,7 @@
 }
 
 .contact-item {
-  color: var(--contact-text-color);
+  color: $contact-text-color;
   text-decoration: none;
 }
 

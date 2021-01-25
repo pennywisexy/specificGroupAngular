@@ -1,4 +1,4 @@
-@import url('../../../theme.css');
+@import '../../../theme.scss';
 
 .title{
   font-size: 1.4rem;
@@ -37,10 +37,10 @@
 
 .title-link {
   text-decoration: none;
-  color: var(--base-text-color);
+  color: $base-text-color;
 }
 
 .description {
-  background: var(--base-bg-color);
+  background: $base-bg-color;
   opacity: .9;
 }

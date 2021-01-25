@@ -1,4 +1,4 @@
-@import url('../../../theme.css');
+@import '../../../theme.scss';
 
 .movie {
   width: 106% !important;
@@ -17,5 +17,5 @@
 }
 
 .toster-item {
-  color: var(--base-valid-color);
+  color: $base-valid-color;
 }
