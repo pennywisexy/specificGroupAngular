@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './rating-page.component.html',
   styleUrls: ['./rating-page.component.scss']
 })
+
 export class RatingPageComponent implements OnInit {
 
   mostPopularMovieTitle: string;
   mostUnpopularMovieTitle: string;
 
-  isPopular = false;
-  isUnpopular = false;
+  isPopular = true;
 
   constructor(public data: GetDataService) { }
 
@@ -50,14 +50,8 @@ export class RatingPageComponent implements OnInit {
     });
   }
 
-  popularMovie(): void {
-    this.isPopular = true;
-    this.isUnpopular = false;
-  }
-
-  unpopularMovie(): void {
-    this.isPopular = false;
-    this.isUnpopular = true;
+  setRatedMovie(): void {
+    this.isPopular = !this.isPopular;
   }
 
 }

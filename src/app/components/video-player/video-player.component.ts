@@ -65,8 +65,6 @@ export class VideoPlayerComponent implements OnInit {
         }
       });
     }
-
-    console.log();
   }
 
   ratingToster(): void {
