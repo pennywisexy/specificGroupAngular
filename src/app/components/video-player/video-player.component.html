@@ -11,16 +11,12 @@
       <p class="toster-item">Rated</p>
     </div>
     <p class="rate-movie__text">Rate the movie: </p>
-    <div
-      *ngFor="let item of this.data.movies"
-    >
-      <star-rating
-      *ngIf="item.title === movie.title"
-      [(value)]="this.data.ratingValue" [(totalstars)]="totalstars" checkedcolor="{{checkedcolor}}"
-      uncheckedcolor="{{uncheckedcolor}}" size="{{size}}" readonly={{readonly}} (rate)="onRate($event)">
-    </star-rating>
+    <div *ngFor="let item of this.data.movies">
+      <star-rating *ngIf="item.title === movie.title" [(value)]="this.data.ratingValue" [(totalstars)]="totalstars"
+        checkedcolor="{{checkedcolor}}" uncheckedcolor="{{uncheckedcolor}}" size="{{size}}" readonly={{readonly}}
+        (rate)="onRate($event)">
+      </star-rating>
     </div>
-
 
   </div>
 

@@ -28,7 +28,7 @@ export class GetDataService {
     ratingValue?: number
   }>;
 
-  public ratingValue;
+  public ratingValue: number;
 
   constructor(private http: HttpClient) {}
 

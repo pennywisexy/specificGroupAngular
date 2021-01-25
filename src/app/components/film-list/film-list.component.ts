@@ -25,6 +25,8 @@ export class FilmListComponent implements OnInit {
     }
 
     this.data.dataForMovieNewWindow = '';
+    this.data.currentMovie.subscribe(movie => this.rating(movie));
+
   }
 
   public setMovie(movie): void {
@@ -64,7 +66,7 @@ export class FilmListComponent implements OnInit {
     if (this.data.ratingData) {
       this.data.ratingData.forEach((element) => {
         if (movie.title === element.title) {
-          this.data.ratingValue = element.ratingValue.reduce((pre, cur) => pre + cur) / element.ratingValue.length;
+          this.data.ratingValue = element.ratingValue.reduce((pre, cur) => pre + cur) / (element.ratingValue.length - 1);
         }
       });
     }

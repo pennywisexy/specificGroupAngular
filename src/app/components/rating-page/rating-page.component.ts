@@ -1,5 +1,6 @@
 import { GetDataService } from './../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-rating-page',
@@ -10,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class RatingPageComponent implements OnInit {
 
   mostPopularMovieTitle: string;
+  mostPopularMoviePoint: number;
   mostUnpopularMovieTitle: string;
+  mostUnpopularMoviePoint: number;
 
   isPopular = true;
 
@@ -32,10 +35,13 @@ export class RatingPageComponent implements OnInit {
     }
 
     this.data.ratingData.forEach((obj) => {
-      average = obj.ratingValue.reduce((pre, cur) => pre + cur);
-      average = average / obj.ratingValue.length;
-      ratingArr.push(average);
-      ratingArrWithTitle.push([obj.title, average]);
+      if (obj.ratingValue.length !== 1) {
+        average = obj.ratingValue.reduce((pre, cur) => pre + cur);
+        average = average / (obj.ratingValue.length - 1);
+        ratingArr.push(average);
+        ratingArrWithTitle.push([obj.title, average]);
+      }
+
     });
 
     ratingArr.sort();
@@ -43,9 +49,11 @@ export class RatingPageComponent implements OnInit {
     ratingArrWithTitle.forEach((elem) => {
       if (elem[1] === ratingArr[ratingArr.length - 1]) {
         this.mostPopularMovieTitle = elem[0];
+        this.mostPopularMoviePoint = elem[1].toFixed(2);
       }
       if (elem[1] === ratingArr[0]) {
         this.mostUnpopularMovieTitle = elem[0];
+        this.mostUnpopularMoviePoint = elem[1].toFixed(2);
       }
     });
   }

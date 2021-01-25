@@ -4,14 +4,20 @@
     <div class="dropdown">
       <span>Hover to select the rating type</span>
       <div class="dropdown-content">
-        <p class="dropdown-content__item" (click)="setRatedMovie()">Most popular movie</p>
-        <p class="dropdown-content__item" (click)="setRatedMovie()">Most unpopular movie</p>
+        <p class="dropdown-content__item" (click)="isPopular = true">Most popular movie</p>
+        <p class="dropdown-content__item" (click)="isPopular = false">Most unpopular movie</p>
       </div>
     </div>
 
     <div *ngIf="this.data.ratingData; else noRatings">
-      <p *ngIf="isPopular">Most popular movie: {{this.mostPopularMovieTitle}}</p>
-      <p *ngIf="!isPopular">Most unpopular movie: {{this.mostUnpopularMovieTitle}}</p>
+      <p
+        *ngIf="isPopular">Most popular movie: {{mostPopularMovieTitle}}
+          <br>Movie rating: {{mostPopularMoviePoint}} points
+      </p>
+      <p
+        *ngIf="!isPopular">Most unpopular movie: {{mostUnpopularMovieTitle}}
+          <br>Movie rating: {{mostUnpopularMoviePoint}} points
+      </p>
     </div>
     <ng-template #noRatings>
       <p>{{this.mostPopularMovieTitle}}</p>

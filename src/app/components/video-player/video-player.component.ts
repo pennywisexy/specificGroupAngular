@@ -34,11 +34,25 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   onRate($event: {oldValue: number, newValue: number, starRating: StarRatingComponent}): void {
+
+
+
     if (this.data.ratingData === undefined) {
       this.data.ratingData = [{
         title: this.movie.title,
         ratingValue: [$event.newValue]
       }];
+
+      this.data.movies.forEach((movie) => {
+        if (this.data.ratingData[0].title !== movie.title) {
+          this.data.ratingData.push({
+            title: movie.title,
+            ratingValue: [0]
+          });
+        }else {
+          this.data.ratingData[0].ratingValue.push(0);
+        }
+      });
     } else {
       this.haveMovie = false;
 
@@ -56,12 +70,14 @@ export class VideoPlayerComponent implements OnInit {
         });
       }
     }
-    this.ratingToster();
 
+
+
+    this.ratingToster();
     if (this.data.ratingData) {
       this.data.ratingData.forEach((element) => {
         if (this.movie.title === element.title) {
-          $event.starRating.value = element.ratingValue.reduce((pre, cur) => pre + cur) / element.ratingValue.length;
+          $event.starRating.value = element.ratingValue.reduce((pre, cur) => pre + cur) / (element.ratingValue.length - 1);
         }
       });
     }
