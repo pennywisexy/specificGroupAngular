@@ -30,7 +30,7 @@ export class FilmListComponent implements OnInit {
   public setMovie(movie): void {
     this.data.currentMovie.next(movie);
 
-    if(this.isActiveButton) {
+    if (this.isActiveButton) {
       this.isActiveButton = false;
     }
 
@@ -61,9 +61,9 @@ export class FilmListComponent implements OnInit {
   }
 
   public rating(movie): void {
-    if(this.data.ratingData) {
+    if (this.data.ratingData) {
       this.data.ratingData.forEach((element) => {
-        if(movie.title === element.title) {
+        if (movie.title === element.title) {
           this.data.ratingValue = element.ratingValue.reduce((pre, cur) => pre + cur) / element.ratingValue.length;
         }
       });

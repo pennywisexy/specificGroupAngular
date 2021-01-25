@@ -25,10 +25,10 @@ export class RatingPageComponent implements OnInit {
     const ratingArrWithTitle = [];
     let average: number;
 
-    if(this.data.ratingData === undefined) {
+    if (this.data.ratingData === undefined) {
       this.mostPopularMovieTitle = 'No ratings yet';
       this.mostUnpopularMovieTitle = 'No ratings yet';
-      return
+      return;
     }
 
     this.data.ratingData.forEach((obj) => {
