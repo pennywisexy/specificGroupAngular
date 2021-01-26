@@ -1,6 +1,5 @@
-import { GetDataService } from './../../services/get-data.service';
+import { GetDataService } from '../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-rating-page',

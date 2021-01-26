@@ -1,4 +1,4 @@
-import { Movie } from './../../services/movies';
+import { Movie } from '../../services/movies';
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../services/get-data.service';
 @Component({
@@ -30,7 +30,7 @@ export class FilmListComponent implements OnInit {
 
   }
 
-  public setMovie(movie: object): void {
+  public setMovie(movie: Movie): void {
     this.data.currentMovie.next(movie);
 
     if (this.isActiveButton) {
