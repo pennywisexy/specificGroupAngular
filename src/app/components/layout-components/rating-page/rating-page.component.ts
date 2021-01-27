@@ -20,7 +20,6 @@ export class RatingPageComponent implements OnInit {
   constructor(public data: GetDataService) { }
 
   ngOnInit(): void {
-    console.log(localStorage.key(0));
     this.ratingMovie();
   }
 
