@@ -13,12 +13,14 @@ export class RatingPageComponent implements OnInit {
   mostPopularMoviePoint: number;
   mostUnpopularMovieTitle: string;
   mostUnpopularMoviePoint: number;
+  mostPopularMovieRating: string;
 
   isPopular = true;
 
   constructor(public data: GetDataService) { }
 
   ngOnInit(): void {
+    console.log(localStorage.key(0));
     this.ratingMovie();
   }
 
@@ -30,6 +32,11 @@ export class RatingPageComponent implements OnInit {
     if (this.data.ratingData === undefined) {
       this.mostPopularMovieTitle = 'No ratings yet';
       this.mostUnpopularMovieTitle = 'No ratings yet';
+
+      if (localStorage.key(0) !== null) {
+        this.mostPopularMovieTitle = `Most popular movie: ${localStorage.key(0)}`;
+        this.mostPopularMovieRating = `Movie rating: ${localStorage.getItem(localStorage.key(0))} points`;
+      }
       return;
     }
 
@@ -49,6 +56,9 @@ export class RatingPageComponent implements OnInit {
       if (elem[1] === ratingArr[ratingArr.length - 1]) {
         this.mostPopularMovieTitle = elem[0];
         this.mostPopularMoviePoint = elem[1].toFixed(2);
+        localStorage.clear();
+        localStorage[this.mostPopularMovieTitle] = this.mostPopularMoviePoint;
+        localStorage[this.mostPopularMovieTitle] = this.mostPopularMoviePoint;
       }
       if (elem[1] === ratingArr[0]) {
         this.mostUnpopularMovieTitle = elem[0];
