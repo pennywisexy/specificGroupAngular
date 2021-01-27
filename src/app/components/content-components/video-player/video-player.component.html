@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center flex-column align-items-center">
+<div class="d-flex justify-content-center flex-column align-items-center video-player">
   <div class="title text-center">
     <h3>{{movie.title}}</h3>
   </div>
@@ -7,7 +7,7 @@
       [attr.poster]="movie.thumb ? movie.thumb : posterUrl" class='embed-responsive-item' autoplay='autoplay'></video>
   </div>
   <div class="rating" *ngIf="movie.sources">
-    <div *ngIf="isRated" class="toast">Movie rated</div>
+    <div *ngIf="isRated" class="toast">Movie rated!</div>
     <p class="rate-movie__text">Rate the movie: </p>
     <div *ngFor="let item of this.data.movies">
       <star-rating *ngIf="item.title === movie.title" [(value)]="this.data.ratingValue" [(totalstars)]="totalstars"
@@ -19,6 +19,3 @@
   </div>
 
 </div>
-
-
-<!-- *ngIf="isRated" -->

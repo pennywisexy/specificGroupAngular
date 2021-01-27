@@ -1,48 +1,45 @@
 @import '../../../../theme.scss';
 
-.movie {
-  width: 106% !important;
-}
+.video-player {
+  .movie {
+    width: 106% !important;
+  }
 
-.rating {
-  display: flex;
-  width: 50%;
-  justify-content: flex-end;
-}
+  .rating {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
 
-.rate-movie__text {
-  font-size: 1.4rem;
-  margin-top: 1%;
-  margin-right: 4%;
-}
+    .toast {
+      min-width: 10%;
+      background-color: var(--base-valid-color);
+      color: var(--btn-text-color);
+      font-size: 16px;
+      text-align: center;
+      border-radius: 10px;
+      padding: 16px;
+      position: fixed;
+      z-index: 1;
+      left: 85%;
+      bottom: 30px;
+      opacity: 1;
+      animation: fadein .5s, fadeout .5s 1.1s;
+    }
 
-.toster-item {
-  color: var(--base-valid-color);
-}
+    @keyframes fadein {
+      from {bottom: 0; opacity: 0;}
+      to {bottom: 30px; opacity: 1;}
+    }
 
+    @keyframes fadeout {
+      from {left: 85%; opacity: 1;}
+      to {left: 100%; opacity: 0;}
+    }
 
-.toast {
-  min-width: 10%;
-  background-color: var(--base-valid-color);
-  color: var(--btn-text-color);
-  font-size: 16px;
-  text-align: center;
-  border-radius: 10px;
-  padding: 16px;
-  position: fixed;
-  z-index: 1;
-  left: 85%;
-  bottom: 30px;
-  opacity: 1;
-  animation: fadein .5s, fadeout .5s 1.1s;
-}
-
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadeout {
-  from {left: 85%; opacity: 1;}
-  to {left: 100%; opacity: 0;}
+    .rate-movie__text {
+      font-size: 1.4rem;
+      margin-top: 1%;
+      margin-right: 4%;
+    }
+  }
 }

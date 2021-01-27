@@ -1,7 +1,7 @@
 <app-video-player></app-video-player>
-<div (click)="isActiveButton = false" class="filmList d-flex p-2 justify-content-between
+<div (click)="isActiveButton = false" class="movies-list d-flex p-2 justify-content-between
 bg-light flex-wrap">
-  <div class="film1 d-flex p-2 justify-content-between flex-column bg-light w-25 cursor-pointer" *ngFor="let item of this.data.movies"
+  <div class="movie-list__item d-flex p-2 justify-content-between flex-column bg-light w-25 cursor-pointer" *ngFor="let item of this.data.movies"
     (click)="setMovie(item)">
     <a
       class="title-link"
@@ -11,7 +11,7 @@ bg-light flex-wrap">
       <h1 class="title">{{item.title}}</h1>
     </a>
     <h2 class="subtitle">{{item.subtitle}}</h2>
-    <div class="previewFilm1 preview">
+    <div class="preview">
       <img class="w-100" src={{item.thumb}} />
     </div>
     <button type="button"
