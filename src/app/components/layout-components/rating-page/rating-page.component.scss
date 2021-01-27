@@ -2,6 +2,7 @@
 
 .container {
   display: flex;
+  flex-direction: column;
   width: 100vw;
   height: 60vh;
   justify-content: center;
@@ -56,6 +57,24 @@
             box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
           }
         }
+      }
+    }
+
+    .btn-item {
+      display: inline-block;
+      background: var(--btn-bg-color);
+      color: var(--btn-text-color);
+      padding: 0.4rem 1.3rem;
+      font-size: 1rem;
+      border: none;
+      margin-right: 0.5rem;
+      transition: opacity 0.2s ease-in;
+      outline: none;
+      width: 50%;
+      border-radius: 10px;
+
+      &:hover {
+        opacity: 0.8;
       }
     }
   }

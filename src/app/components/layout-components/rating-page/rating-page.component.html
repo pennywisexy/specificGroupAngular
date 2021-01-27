@@ -19,6 +19,12 @@
           <br>Movie rating: {{mostUnpopularMoviePoint}} points
       </p>
     </div>
+    <div *ngIf="false">
+      <p>{{mostPopularMovieTitle}}
+        <br>{{mostPopularMovieRating}}
+      </p>
+    </div>
+    <button class="btn-item" (click)="resetRating()">Reset rating</button>
     <ng-template #noRatings>
       <div>
         <p>{{mostPopularMovieTitle}}
@@ -27,5 +33,6 @@
       </div>
     </ng-template>
   </div>
+
 
 </div>

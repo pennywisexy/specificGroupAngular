@@ -1,3 +1,4 @@
+import { Movie } from './../../../services/movies';
 import { GetDataService } from '../../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,6 +15,8 @@ export class RatingPageComponent implements OnInit {
   mostUnpopularMovieTitle: string;
   mostUnpopularMoviePoint: number;
   mostPopularMovieRating: string;
+
+  savedRating: string;
 
   isPopular = true;
 
@@ -32,9 +35,9 @@ export class RatingPageComponent implements OnInit {
       this.mostPopularMovieTitle = 'No ratings yet';
       this.mostUnpopularMovieTitle = 'No ratings yet';
 
-      if (localStorage.key(0) !== null) {
-        this.mostPopularMovieTitle = `Most popular movie: ${localStorage.key(0)}`;
-        this.mostPopularMovieRating = `Movie rating: ${localStorage.getItem(localStorage.key(0))} points`;
+      if (localStorage.length !== 0) {
+        this.mostPopularMovieTitle = `Most popular movie: ${localStorage.title}`;
+        this.mostPopularMovieRating = `Movie rating: ${localStorage.ratingValue} points`;
       }
       return;
     }
@@ -55,9 +58,19 @@ export class RatingPageComponent implements OnInit {
       if (elem[1] === ratingArr[ratingArr.length - 1]) {
         this.mostPopularMovieTitle = elem[0];
         this.mostPopularMoviePoint = elem[1].toFixed(2);
+
         localStorage.clear();
-        localStorage[this.mostPopularMovieTitle] = this.mostPopularMoviePoint;
-        localStorage[this.mostPopularMovieTitle] = this.mostPopularMoviePoint;
+        localStorage.ratingValue = this.mostPopularMoviePoint;
+        localStorage.title = this.mostPopularMovieTitle;
+
+
+        const movie = this.data.movies.find(el => el.title === localStorage.title);
+
+        localStorage.description = movie.description;
+        localStorage.sources = movie.sources;
+        localStorage.subtitle = movie.subtitle;
+        localStorage.thumb = movie.thumb;
+
       }
       if (elem[1] === ratingArr[0]) {
         this.mostUnpopularMovieTitle = elem[0];
@@ -68,6 +81,10 @@ export class RatingPageComponent implements OnInit {
 
   setRatedMovie(): void {
     this.isPopular = !this.isPopular;
+  }
+
+  resetRating(): void {
+    localStorage.clear();
   }
 
 }

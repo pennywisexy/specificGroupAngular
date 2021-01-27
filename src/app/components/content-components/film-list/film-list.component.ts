@@ -21,16 +21,21 @@ export class FilmListComponent implements OnInit {
     this.data.getFilms();
 
     if (this.data.movies === undefined) {
+
+
       this.data.getFilms()
         .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+      if (localStorage.length !== 0) {
+        this.setMovie(localStorage);
+        this.rating(localStorage);
+      }
     }
 
     this.data.dataForMovieNewWindow = '';
     this.data.currentMovie.subscribe(movie => this.rating(movie));
-
   }
 
-  public setMovie(movie: Movie): void {
+  public setMovie(movie): void {
     this.data.currentMovie.next(movie);
 
     if (this.isActiveButton) {
