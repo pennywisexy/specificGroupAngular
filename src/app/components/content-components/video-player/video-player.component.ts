@@ -70,7 +70,7 @@ export class VideoPlayerComponent implements OnInit {
 
 
 
-    this.ratingToster();
+    this.ratingToast();
     if (this.data.ratingData) {
       this.data.ratingData.forEach((element) => {
         if (this.movie.title === element.title) {
@@ -80,12 +80,12 @@ export class VideoPlayerComponent implements OnInit {
     }
   }
 
-  ratingToster(): void {
+  ratingToast(): void {
     this.isRated = true;
 
     setTimeout(() => {
       this.isRated = false;
-    }, 1000);
+    }, 1500);
   }
 
 }

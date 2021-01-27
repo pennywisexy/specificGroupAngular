@@ -7,9 +7,7 @@
       [attr.poster]="movie.thumb ? movie.thumb : posterUrl" class='embed-responsive-item' autoplay='autoplay'></video>
   </div>
   <div class="rating" *ngIf="movie.sources">
-    <div class="toster" *ngIf="isRated">
-      <p class="toster-item">Rated</p>
-    </div>
+    <div *ngIf="isRated" class="toast">Movie rated</div>
     <p class="rate-movie__text">Rate the movie: </p>
     <div *ngFor="let item of this.data.movies">
       <star-rating *ngIf="item.title === movie.title" [(value)]="this.data.ratingValue" [(totalstars)]="totalstars"
@@ -21,3 +19,6 @@
   </div>
 
 </div>
+
+
+<!-- *ngIf="isRated" -->
