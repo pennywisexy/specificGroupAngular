@@ -1,6 +1,6 @@
-import { Movie } from '../../services/movies';
+import { Movie } from '../../../services/movies';
 import { Component, OnInit } from '@angular/core';
-import { GetDataService } from '../../services/get-data.service';
+import { GetDataService } from '../../../services/get-data.service';
 @Component({
   selector: 'app-film-list',
   templateUrl: './film-list.component.html',
