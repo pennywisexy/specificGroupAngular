@@ -20,8 +20,7 @@ export class FilmListComponent implements OnInit {
   ngOnInit(): void {
     this.data.getFilms();
 
-    if (this.data.movies === undefined) {
-
+    if (!this.data.movies) {
 
       this.data.getFilms()
         .subscribe((movies) => this.data.movies = movies.categories[0].videos);

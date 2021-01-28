@@ -78,6 +78,17 @@ export class VideoPlayerComponent implements OnInit {
         }
       });
     }
+
+    localStorage.title = this.movie.title;
+
+    const movie = this.data.movies.find(el => el.title === localStorage.title);
+
+    localStorage.ratingValue = $event.starRating.value;
+    localStorage.description = movie.description;
+    localStorage.sources = movie.sources;
+    localStorage.subtitle = movie.subtitle;
+    localStorage.thumb = movie.thumb;
+
   }
 
   ratingToast(): void {

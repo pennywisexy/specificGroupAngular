@@ -1,5 +1,5 @@
 <app-video-player></app-video-player>
-<div (click)="isActiveButton = false" class="movies-list d-flex p-2 justify-content-between
+<div class="movies-list d-flex p-2 justify-content-between
 bg-light flex-wrap">
   <div class="movie-list__item d-flex p-2 justify-content-between flex-column bg-light w-25 cursor-pointer" *ngFor="let item of this.data.movies"
     (click)="setMovie(item)">

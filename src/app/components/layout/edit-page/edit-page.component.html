@@ -52,17 +52,17 @@
     <div
       class="hint"
       [ngClass]="{'hint-show': notification}"
-      ><p class="hint-item">Movie Added</p></div>
+      ><div class="hint-item">Movie Added</div></div>
   </form>
 
   <div class="movies-list" *ngFor="let item of this.data.movies | keyvalue">
     <div class="movie-item">
       <h1 class="title">{{item.value.title}}</h1>
       <h3 class="title subtitle">{{item.value.subtitle}}</h3>
-      <p class="description">{{item.value.description}}</p>
-      <p class="url">
+      <div class="description">{{item.value.description}}</div>
+      <div class="url">
         {{item.value.sources}}
-      </p>
+      </div>
       <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">Edit Movie</button>
     </div>
   </div>

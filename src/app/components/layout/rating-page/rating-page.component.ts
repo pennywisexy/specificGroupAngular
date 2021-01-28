@@ -1,12 +1,16 @@
-import { Movie } from './../../../services/movies';
+import { FilmListComponent } from './../../content/film-list/film-list.component';
+import { Movie } from '../../../services/movies';
 import { GetDataService } from '../../../services/get-data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-rating-page',
   templateUrl: './rating-page.component.html',
   styleUrls: ['./rating-page.component.scss']
 })
+
+
 
 export class RatingPageComponent implements OnInit {
 
@@ -16,17 +20,26 @@ export class RatingPageComponent implements OnInit {
   mostUnpopularMoviePoint: number;
   mostPopularMovieRating: string;
 
-  savedRating: string;
+  isSavedRating = false;
 
   isPopular = true;
 
   isReset = false;
+
+  title: string;
+  thumb: string;
+  description: string;
 
   constructor(public data: GetDataService) { }
 
   ngOnInit(): void {
     this.isReset = false;
     this.ratingMovie();
+
+    if (localStorage.length !== 0) {
+      this.isSavedRating = true;
+      this.getMovie(localStorage.title);
+    }
   }
 
   ratingMovie(): void {
@@ -36,9 +49,8 @@ export class RatingPageComponent implements OnInit {
 
     if (this.data.ratingData === undefined) {
       this.mostPopularMovieTitle = 'No ratings yet';
-      this.mostUnpopularMovieTitle = 'No ratings yet';
       if (localStorage.length !== 0) {
-        this.mostPopularMovieTitle = `Most popular movie: ${localStorage.title}`;
+        this.mostPopularMovieTitle = localStorage.title;
         this.mostPopularMovieRating = `Movie rating: ${localStorage.ratingValue} points`;
       }
 
@@ -58,6 +70,7 @@ export class RatingPageComponent implements OnInit {
     });
 
     ratingArr.sort();
+    this.isSavedRating = false;
 
     ratingArrWithTitle.forEach((elem) => {
       if (elem[1] === ratingArr[ratingArr.length - 1]) {
@@ -65,6 +78,7 @@ export class RatingPageComponent implements OnInit {
         this.mostPopularMoviePoint = elem[1].toFixed(2);
 
         localStorage.clear();
+
         localStorage.ratingValue = this.mostPopularMoviePoint;
         localStorage.title = this.mostPopularMovieTitle;
 
@@ -75,11 +89,17 @@ export class RatingPageComponent implements OnInit {
         localStorage.sources = movie.sources;
         localStorage.subtitle = movie.subtitle;
         localStorage.thumb = movie.thumb;
-
       }
       if (elem[1] === ratingArr[0]) {
-        this.mostUnpopularMovieTitle = elem[0];
-        this.mostUnpopularMoviePoint = elem[1].toFixed(2);
+        const unPop = ratingArr.find(item => item !== ratingArr[ratingArr.length - 1]);
+
+        if (unPop) {
+          this.mostUnpopularMovieTitle = elem[0];
+          this.mostUnpopularMoviePoint = elem[1].toFixed(2);
+        } else {
+          this.mostUnpopularMovieTitle = '';
+        }
+
       }
     });
   }
@@ -90,12 +110,47 @@ export class RatingPageComponent implements OnInit {
 
   resetRating(): void {
     localStorage.clear();
-    this.data.ratingData.forEach((obj) => {
-      obj.ratingValue = [0];
-    });
+    this.isSavedRating = false;
+
+    if (this.data.ratingData) {
+      this.data.ratingData.forEach((obj) => {
+        obj.ratingValue = [0];
+      });
+    }
     this.isReset = true;
     this.mostPopularMovieTitle = 'No ratings yet';
     this.mostPopularMovieRating = '';
+  }
+
+  getMovie(title): void {
+    if (title && this.data.movies) {
+      this.data.movies.forEach(elem => {
+        if (elem.title === title) {
+          this.description = elem.description;
+          this.title = elem.title;
+          this.thumb = elem.thumb;
+        }
+      });
+    }
+
+    if (!this.data.movies && localStorage.length !== 0) {
+      this.description = localStorage.description;
+      this.title = localStorage.title;
+      this.thumb = localStorage.thumb;
+    }
+
+  }
+
+  getPopularMovie(title): void {
+    this.isPopular = true;
+
+    this.getMovie(title);
+  }
+
+  getUnpopularMovie(title): void {
+    this.isPopular = false;
+
+    this.getMovie(title);
   }
 
 }

@@ -8,9 +8,13 @@ $url: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbUAAABzCAMAAAAosmzyAAAAk1B
   margin-top: 5%;
 
   .contacts {
+    display: flex;
+    flex-direction: column;
+
     .contact-item {
       color: var(--contact-text-color);
       text-decoration: none;
+      padding: 5px;
     }
 
     .address {
@@ -18,7 +22,7 @@ $url: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbUAAABzCAMAAAAosmzyAAAAk1B
     }
   }
 
-  .footer-logo {
+  &-logo {
     width: 15vw;
     height: 9vh;
     background: url($url);

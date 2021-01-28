@@ -59,7 +59,7 @@
       justify-content: flex-end;
       opacity: 0;
 
-      .hint-item {
+      &-item {
         color: var(--base-valid-color);
       }
     }
@@ -100,7 +100,6 @@
     padding: 0.4rem 1.3rem;
     font-size: 1rem;
     border: none;
-    cursor: pointer;
     margin-right: 0.5rem;
     transition: opacity 0.2s ease-in;
     outline: none;
