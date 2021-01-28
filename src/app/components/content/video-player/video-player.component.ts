@@ -34,16 +34,16 @@ export class VideoPlayerComponent implements OnInit {
   }
 
   onRate($event: {oldValue: number, newValue: number, starRating: StarRatingComponent}): void {
-    if (this.data.ratingData === undefined) {
+    if (!this.data.ratingData) {
       this.data.ratingData = [{
         title: this.movie.title,
         ratingValue: [$event.newValue]
       }];
 
-      this.data.movies.forEach((movie) => {
-        if (this.data.ratingData[0].title !== movie.title) {
+      this.data.movies.forEach((movieItem) => {
+        if (this.data.ratingData[0].title !== movieItem.title) {
           this.data.ratingData.push({
-            title: movie.title,
+            title: movieItem.title,
             ratingValue: [0]
           });
         }else {

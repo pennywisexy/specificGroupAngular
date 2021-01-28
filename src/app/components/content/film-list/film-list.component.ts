@@ -1,4 +1,3 @@
-import { Movie } from '../../../services/movies';
 import { Component, OnInit } from '@angular/core';
 import { GetDataService } from '../../../services/get-data.service';
 @Component({
@@ -73,7 +72,7 @@ export class FilmListComponent implements OnInit {
           this.data.ratingValue = element.ratingValue.reduce((pre, cur) => pre + cur) / (element.ratingValue.length - 1);
         }
       });
-    } else if (!this.data.ratingData && localStorage.length !== 0) {
+    } else if (!this.data.ratingData && localStorage.length) {
       this.data.ratingData = [
         {
           title: movie.title,

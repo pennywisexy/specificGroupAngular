@@ -1,8 +1,5 @@
-import { FilmListComponent } from './../../content/film-list/film-list.component';
-import { Movie } from '../../../services/movies';
 import { GetDataService } from '../../../services/get-data.service';
-import { Component, OnInit, Output } from '@angular/core';
-import { element } from 'protractor';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-rating-page',
@@ -36,9 +33,11 @@ export class RatingPageComponent implements OnInit {
     this.isReset = false;
     this.ratingMovie();
 
-    if (localStorage.length !== 0) {
+    if (localStorage.length) {
       this.isSavedRating = true;
       this.getMovie(localStorage.title);
+    }else if (!localStorage.length) {
+      this.resetRating();
     }
   }
 
@@ -47,9 +46,10 @@ export class RatingPageComponent implements OnInit {
     const ratingArrWithTitle = [];
     let average: number;
 
-    if (this.data.ratingData === undefined) {
+    if (!this.data.ratingData) {
       this.mostPopularMovieTitle = 'No ratings yet';
-      if (localStorage.length !== 0) {
+
+      if (localStorage.length) {
         this.mostPopularMovieTitle = localStorage.title;
         this.mostPopularMovieRating = `Movie rating: ${localStorage.ratingValue} points`;
       }
@@ -122,7 +122,7 @@ export class RatingPageComponent implements OnInit {
     this.mostPopularMovieRating = '';
   }
 
-  getMovie(title): void {
+  getMovie(title: string): void {
     if (title && this.data.movies) {
       this.data.movies.forEach(elem => {
         if (elem.title === title) {
@@ -133,7 +133,7 @@ export class RatingPageComponent implements OnInit {
       });
     }
 
-    if (!this.data.movies && localStorage.length !== 0) {
+    if (!this.data.movies && localStorage.length) {
       this.description = localStorage.description;
       this.title = localStorage.title;
       this.thumb = localStorage.thumb;
