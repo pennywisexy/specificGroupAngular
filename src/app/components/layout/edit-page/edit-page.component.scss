@@ -1,11 +1,6 @@
 @import '../../../../theme.scss';
 
 .container {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  padding: 1rem;
-
   .card {
     display: flex;
     flex-direction: column;

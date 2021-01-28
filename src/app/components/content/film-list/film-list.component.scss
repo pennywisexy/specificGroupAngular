@@ -1,53 +1,62 @@
 @import '../../../../theme.scss';
 
 .movies-list {
+  margin: 10px;
 
-  &:hover {
-    cursor: pointer;
-  }
-
-  .title-link {
-    text-decoration: none;
-    color: var(--base-text-color);
-
-    .title{
-      font-size: 1.4rem;
-    }
-  }
-
-  .subtitle{
-    font-size: 1.2rem;
-  }
-
-  .modal-description {
-    display: flex;
-    width: 0;
-    height: 10%;
-    margin-top: 0;
-    position: absolute;
-    opacity: 0;
-    visibility: hidden;
-    z-index: -1;
-
-  }
-
-  .modal-description-active {
-    display: inline;
-    margin-top: 19rem;
-    width: 20%;
-    height: 0;
-    position: absolute;
-    opacity: 0;
-    visibility: visible;
-    opacity: 1;
+  &__item {
+    margin: 10px 5px;
 
     &:hover {
       cursor: pointer;
     }
 
-    .description {
-      background: var(--base-bg-color);
-      opacity: .9;
+    .title-link {
+      text-decoration: none;
+      color: var(--base-text-color);
+
+      .title{
+        font-size: 1.4rem;
+      }
+    }
+
+    .subtitle{
+      font-size: 1.2rem;
+    }
+
+    .modal-description {
+      display: flex;
+      width: 0;
+      height: 10%;
+      margin-top: 0;
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      z-index: -1;
+
+    }
+
+    .modal-description-active {
+      display: inline;
+      margin-top: 19rem;
+      width: 20%;
+      height: 0;
+      position: absolute;
+      opacity: 0;
+      visibility: visible;
+      opacity: 1;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      .description {
+        background: var(--base-bg-color);
+        opacity: .9;
+        margin-right: 14%;
+        padding: 10px 5px;
+      }
     }
   }
+
+
 }

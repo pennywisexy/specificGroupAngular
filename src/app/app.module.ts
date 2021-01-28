@@ -15,6 +15,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { EditPageComponent } from './components/layout/edit-page/edit-page.component';
 import { RatingPageComponent } from './components/layout/rating-page/rating-page.component';
 import { RatingModule } from 'ng-starrating';
+import { LayoutItemComponent } from './components/layout/layout-item/layout-item.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RatingModule } from 'ng-starrating';
     HeaderComponent,
     FooterComponent,
     EditPageComponent,
-    RatingPageComponent
+    RatingPageComponent,
+    LayoutItemComponent
   ],
   imports: [
     BrowserModule,
