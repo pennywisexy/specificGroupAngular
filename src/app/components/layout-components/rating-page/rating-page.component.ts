@@ -20,9 +20,12 @@ export class RatingPageComponent implements OnInit {
 
   isPopular = true;
 
+  isReset = false;
+
   constructor(public data: GetDataService) { }
 
   ngOnInit(): void {
+    this.isReset = false;
     this.ratingMovie();
   }
 
@@ -34,13 +37,15 @@ export class RatingPageComponent implements OnInit {
     if (this.data.ratingData === undefined) {
       this.mostPopularMovieTitle = 'No ratings yet';
       this.mostUnpopularMovieTitle = 'No ratings yet';
-
       if (localStorage.length !== 0) {
         this.mostPopularMovieTitle = `Most popular movie: ${localStorage.title}`;
         this.mostPopularMovieRating = `Movie rating: ${localStorage.ratingValue} points`;
       }
+
       return;
     }
+
+
 
     this.data.ratingData.forEach((obj) => {
       if (obj.ratingValue.length !== 1) {
@@ -85,6 +90,12 @@ export class RatingPageComponent implements OnInit {
 
   resetRating(): void {
     localStorage.clear();
+    this.data.ratingData.forEach((obj) => {
+      obj.ratingValue = [0];
+    });
+    this.isReset = true;
+    this.mostPopularMovieTitle = 'No ratings yet';
+    this.mostPopularMovieRating = '';
   }
 
 }

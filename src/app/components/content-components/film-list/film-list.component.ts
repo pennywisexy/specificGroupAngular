@@ -25,12 +25,11 @@ export class FilmListComponent implements OnInit {
 
       this.data.getFilms()
         .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+
       if (localStorage.length !== 0) {
         this.setMovie(localStorage);
-        this.rating(localStorage);
       }
     }
-
     this.data.dataForMovieNewWindow = '';
     this.data.currentMovie.subscribe(movie => this.rating(movie));
   }
@@ -70,6 +69,33 @@ export class FilmListComponent implements OnInit {
 
   public rating(movie): void {
     if (this.data.ratingData) {
+      this.data.ratingData.forEach((element) => {
+        if (movie.title === element.title) {
+          this.data.ratingValue = element.ratingValue.reduce((pre, cur) => pre + cur) / (element.ratingValue.length - 1);
+        }
+      });
+    } else if (!this.data.ratingData && localStorage.length !== 0) {
+      this.data.ratingData = [
+        {
+          title: movie.title,
+          ratingValue: [+movie.ratingValue]
+        }
+      ];
+
+      this.data.ratingData[0].ratingValue.push(0);
+
+      this.data.getFilms()
+        .subscribe((movies) => {
+          movies.categories[0].videos.forEach(item => {
+            if (this.data.ratingData[0].title !== item.title) {
+              this.data.ratingData.push({
+                title: item.title,
+                ratingValue: [0]
+              });
+            }
+          });
+        });
+
       this.data.ratingData.forEach((element) => {
         if (movie.title === element.title) {
           this.data.ratingValue = element.ratingValue.reduce((pre, cur) => pre + cur) / (element.ratingValue.length - 1);

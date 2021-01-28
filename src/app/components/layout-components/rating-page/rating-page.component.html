@@ -10,7 +10,8 @@
     </div>
 
     <div *ngIf="this.data.ratingData; else noRatings">
-      <p
+      <div *ngIf="!isReset; else noRatings">
+        <p
         *ngIf="isPopular">Most popular movie: {{mostPopularMovieTitle}}
           <br>Movie rating: {{mostPopularMoviePoint}} points
       </p>
@@ -18,11 +19,7 @@
         *ngIf="!isPopular">Most unpopular movie: {{mostUnpopularMovieTitle}}
           <br>Movie rating: {{mostUnpopularMoviePoint}} points
       </p>
-    </div>
-    <div *ngIf="false">
-      <p>{{mostPopularMovieTitle}}
-        <br>{{mostPopularMovieRating}}
-      </p>
+      </div>
     </div>
     <button class="btn-item" (click)="resetRating()">Reset rating</button>
     <ng-template #noRatings>
@@ -33,6 +30,4 @@
       </div>
     </ng-template>
   </div>
-
-
 </div>
