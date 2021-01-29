@@ -1,9 +1,4 @@
-@mixin shadow {
-  border-radius: 10px;
-  -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
-  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
-
-}
+@import '../../../../theme.scss';
 
 :host ::ng-deep .container {
   display: flex;
@@ -12,23 +7,15 @@
   padding: 1rem;
   border: 10px;
 
-  .card {
-    @include shadow();
-  }
-
-  .movie-item {
-    @include shadow();
-  }
-
 }
 
 :host ::ng-deep .movies-list {
 
   &__item {
-    @include shadow();
+    background-color: var(--base-bg-color);
 
     .description {
-      @include shadow();
+      background-color: var(--base-bg-color);
     }
   }
 
