@@ -50,6 +50,7 @@ export class RatingPageComponent implements OnInit {
       this.mostPopularMovieTitle = 'No ratings yet';
 
       if (localStorage.length) {
+        this.mostPopularMoviePoint = localStorage.ratingValue;
         this.mostPopularMovieTitle = localStorage.title;
         this.mostPopularMovieRating = `Movie rating: ${localStorage.ratingValue} points`;
       }
@@ -74,6 +75,7 @@ export class RatingPageComponent implements OnInit {
 
     ratingArrWithTitle.forEach((elem) => {
       if (elem[1] === ratingArr[ratingArr.length - 1]) {
+
         this.mostPopularMovieTitle = elem[0];
         this.mostPopularMoviePoint = elem[1].toFixed(2);
 

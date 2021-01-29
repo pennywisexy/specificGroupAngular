@@ -1,6 +1,6 @@
 <app-video-player></app-video-player>
-<div class="movies-list d-flex p-2 justify-content-between flex-wrap">
-  <div class="movies-list__item d-flex p-2 justify-content-between flex-column bg-light w-25 cursor-pointer" *ngFor="let item of this.data.movies"
+<div class="container movies-list d-flex p-2 justify-content-between flex-wrap">
+  <div class="movies-list__item d-flex justify-content-between flex-column w-25 cursor-pointer" *ngFor="let item of this.data.movies"
     (click)="setMovie(item)">
     <a
       class="title-link"
@@ -14,7 +14,7 @@
       <img class="w-100" src={{item.thumb}} />
     </div>
     <button type="button"
-            class="btn btn-outline-secondary"
+            class="btn"
             data-container="body"
             (click)="modalDescription($event, item)"
             id="description"

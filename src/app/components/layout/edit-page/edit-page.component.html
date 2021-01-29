@@ -57,8 +57,8 @@
 
   <div class="movies-list" *ngFor="let item of this.data.movies | keyvalue">
     <div class="movie-item">
-      <h1 class="title">{{item.value.title}}</h1>
-      <h3 class="title subtitle">{{item.value.subtitle}}</h3>
+      <h3 class="title">{{item.value.title}}</h3>
+      <h4 class="title subtitle">{{item.value.subtitle}}</h4>
       <div class="description">{{item.value.description}}</div>
       <div class="url">
         {{item.value.sources}}

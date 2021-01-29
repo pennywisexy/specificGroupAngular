@@ -1,6 +1,15 @@
 @import '../../../../theme.scss';
 
 .video-player {
+  padding-top: 10px;
+  background-color: var(--base-bg-footer);
+
+  .title {
+    &-item {
+      color: var(--contact-text-color);
+    }
+  }
+
   .movie {
     width: 106% !important;
   }
@@ -40,6 +49,7 @@
       font-size: 1.4rem;
       margin-top: 1%;
       margin-right: 4%;
+      color: var(--contact-text-color);
     }
   }
 }

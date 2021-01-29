@@ -1,10 +1,10 @@
 @import '../../../../theme.scss';
 
 .movies-list {
-  margin: 10px;
 
   &__item {
     margin: 10px 5px;
+    padding: 5px 10px 10px 10px;
 
     &:hover {
       cursor: pointer;
@@ -15,12 +15,28 @@
       color: var(--base-text-color);
 
       .title{
+        display: inline;
         font-size: 1.4rem;
+        color: var(--btn-text-color);
+        line-height: 35px;
+        background-color: var(--base-bg-header);
+      }
+
+      h1.title::after {
+        content: "";
+        background: #bfd5dd;
+        display: block;
+        height: 2px;
+        margin-bottom: 25px;
+        width: 99%;
+        margin-top: -10px;
+        margin-left: 1%
       }
     }
 
     .subtitle{
       font-size: 1.2rem;
+      color: var(--btn-text-color);
     }
 
     .modal-description {
@@ -54,6 +70,15 @@
         opacity: .9;
         margin-right: 14%;
         padding: 10px 5px;
+      }
+    }
+
+    .btn {
+      background-color: var(--base-bg-color);
+      color: var(--btn-text-color);
+
+      &:hover {
+        color: var(--base-text-color);
       }
     }
   }

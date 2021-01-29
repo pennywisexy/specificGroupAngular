@@ -1,41 +1,48 @@
-<div class="container">
-  <a [routerLink]="['/']">
-    <div class="header-logo">
-      <div class="header-logo__item"></div>
+  <div class="preheader"></div>
+<div class="wrapper">
+
+  <div class="container">
+    <a [routerLink]="['/']">
+      <div class="logo">
+        <div class="prelogo"></div>
+      <div class="header-logo">
+        <div class="header-logo__item"></div>
+      </div>
+      </div>
+    </a>
+    <div class="navbar">
+      <ul class="navbar-items">
+        <li class="navbar-item">
+          <button class="navbar-item__button">
+            <a
+              class="navbar-item__link"
+              [routerLink]="['/']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}"
+            >Main</a>
+          </button>
+        </li>
+        <li class="navbar-item">
+          <button class="navbar-item__button">
+            <a
+              class="navbar-item__link"
+              [routerLink]="['/edit-page']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}"
+              >Edit</a>
+          </button>
+        </li>
+        <li class="navbar-item">
+          <button class="navbar-item__button">
+            <a
+              class="navbar-item__link"
+              [routerLink]="['/rating-page']"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: true}"
+              >Rating</a>
+          </button>
+        </li>
+      </ul>
     </div>
-  </a>
-  <div class="navbar">
-    <ul class="navbar-items">
-      <li class="navbar-item">
-        <button class="navbar-item__button">
-          <a
-            class="navbar-item__link"
-            [routerLink]="['/']"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}"
-          >Main</a>
-        </button>
-      </li>
-      <li class="navbar-item">
-        <button class="navbar-item__button">
-          <a
-            class="navbar-item__link"
-            [routerLink]="['/edit-page']"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}"
-            >Edit</a>
-        </button>
-      </li>
-      <li class="navbar-item">
-        <button class="navbar-item__button">
-          <a
-            class="navbar-item__link"
-            [routerLink]="['/rating-page']"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: true}"
-            >Rating</a>
-        </button>
-      </li>
-    </ul>
   </div>
 </div>

@@ -2,8 +2,6 @@
 
 :host ::ng-deep .container {
   display: flex;
-  flex-direction: column;
-  width: 100vw;
   padding: 1rem;
   border: 10px;
 
@@ -12,7 +10,8 @@
 :host ::ng-deep .movies-list {
 
   &__item {
-    background-color: var(--base-bg-color);
+    background: linear-gradient(170deg, var(--base-bg-header) 20%, var(--btn-text-color));
+    border-radius: 2px;
 
     .description {
       background-color: var(--base-bg-color);

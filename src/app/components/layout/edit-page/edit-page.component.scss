@@ -1,6 +1,9 @@
 @import '../../../../theme.scss';
 
 .container {
+  display: flex;
+  flex-direction: column;
+
   .card {
     display: flex;
     flex-direction: column;
@@ -75,15 +78,17 @@
     display: flex;
     flex-flow: row wrap;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 2px;
 
     .movie-item {
       width: 100vw;
       background-color: var(--base-bg-color);
       flex-direction: column;
+      border-left: 25px solid #215a93;
 
-      .title {
-        font-size: 1rem;
+      .title, .description, .url {
+        // font-size: 1rem;
+        padding: 0 0 10px 0;
       }
     }
   }
