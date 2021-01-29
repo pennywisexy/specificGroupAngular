@@ -10,6 +10,7 @@
   justify-content: center;
   width: inherit;
   height: 60vh;
+  color: var(--btn-text-color);
 
   &-inner {
     @include flexible();
@@ -24,6 +25,7 @@
       width: 25%;
       height: 90%;
       background-color: var(--base-bg-color);
+      color: var(--btn-text-color);
 
       &-inner {
         position: relative;
