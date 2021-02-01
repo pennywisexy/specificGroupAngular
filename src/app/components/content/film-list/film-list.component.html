@@ -1,0 +1,35 @@
+<app-video-player></app-video-player>
+<div class="container movies-list d-flex p-2 justify-content-between flex-wrap">
+  <div class="movies-list__item d-flex justify-content-between flex-column w-25 cursor-pointer" *ngFor="let item of this.data.movies"
+    (click)="setMovie(item)">
+    <a
+      class="title-link"
+      [routerLink]="['/movie']"
+      (click)="movieNewWindow(item)"
+    >
+      <h1 class="title">{{item.title}}</h1>
+    </a>
+    <h2 class="subtitle">{{item.subtitle}}</h2>
+    <div class="preview">
+      <img class="w-100" src={{item.thumb}} />
+    </div>
+    <button type="button"
+            class="btn"
+            data-container="body"
+            (click)="modalDescription($event, item)"
+            id="description"
+            placement="bottom"
+            >
+      Description!
+
+    </button>
+    <div
+      [id]="item.title"
+      [class]="item.title"
+      [ngClass]="{'modal-description-active' : isActiveButton}"
+      *ngIf="isActiveButton && item.title === title"
+      (click)="showFullDescription($event, item)">
+      <p class="description">{{showDescription}}</p>
+    </div>
+  </div>
+</div>

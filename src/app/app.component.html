@@ -1,5 +1,9 @@
-<div class='container d-flex p-2 flex-column justify-content-between h-75'>
+<div class='d-flex flex-column justify-content-between h-75'>
     <app-header></app-header>
-    <router-outlet></router-outlet>
+
+    <app-layout-item>
+      <router-outlet></router-outlet>
+    </app-layout-item>
+
     <app-footer></app-footer>
 </div>

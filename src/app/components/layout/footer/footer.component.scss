@@ -1,0 +1,45 @@
+@import '../../../../theme.scss';
+
+$url: 'https://www.specific-group.by/fileadmin/user_upload/logos/logo_footer.png';
+
+
+
+.footer {
+  background-color: var(--base-bg-footer);
+  width: 100vw;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+
+    .other-info {
+      border-left: 2px solid var(--base-bg-header);
+      padding: 20px 0 0 20px;
+      margin: 70px 0;
+      .contacts {
+      display: flex;
+      flex-direction: column;
+
+        .contact-item {
+          color: var(--contact-text-color);
+          text-decoration: none;
+          padding: 5px;
+        }
+
+        .address {
+          font-weight: bold;
+        }
+      }
+
+      .footer-logo {
+        width: 15vw;
+        height: 9vh;
+        background: url($url);
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-bottom: 40px
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+@import '../../../../theme.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border: var(--base-border-color) 1px dotted;
+    margin: 0.7rem 0;
+    height: 35rem;
+
+    .form-control {
+      display: flex;
+      margin-top: 0.8rem;
+      margin-bottom: 4.3rem;
+      flex-direction: column;
+      border: none;
+
+      .head {
+        display: block;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-bottom: .5rem;
+      }
+
+      .input-text {
+        display: block;
+        width: 100%;
+        padding: 0.4rem;
+        font-size: 1.2rem;
+        border: 1px solid var(--base-border-color);
+        margin-bottom: 0;
+
+        &.ng-invalid.ng-touched {
+          border: 1px solid var(--base-invalid-color);
+        }
+
+        &.ng-valid.ng-touched {
+          border: 1px solid var(--base-valid-color);
+        }
+      }
+
+      .validation {
+        color: var(--base-invalid-color);
+        height: 2rem;
+      }
+    }
+
+    .hint {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-end;
+      opacity: 0;
+
+      &-item {
+        color: var(--base-valid-color);
+      }
+    }
+
+    .hint-show {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-end;
+      opacity: 1;
+      transition: all .5s ease-out;
+    }
+
+
+  }
+
+  .movies-list, .movie-item {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 1rem;
+    border-radius: 2px;
+
+    .movie-item {
+      width: 100vw;
+      background-color: var(--base-bg-color);
+      flex-direction: column;
+      border-left: 25px solid #215a93;
+
+      .title, .description, .url {
+        // font-size: 1rem;
+        padding: 0 0 10px 0;
+      }
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--btn-bg-color);
+    color: var(--btn-text-color);
+    padding: 0.4rem 1.3rem;
+    font-size: 1rem;
+    border: none;
+    margin-right: 0.5rem;
+    transition: opacity 0.2s ease-in;
+    outline: none;
+    width: 20%;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

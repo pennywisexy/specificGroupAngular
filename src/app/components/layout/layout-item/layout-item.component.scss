@@ -1,0 +1,23 @@
+@import '../../../../theme.scss';
+
+:host ::ng-deep .container {
+  display: flex;
+  padding: 1rem;
+  border: 10px;
+
+}
+
+:host ::ng-deep .movies-list {
+
+  &__item {
+    background: linear-gradient(170deg, var(--base-bg-header) 20%, var(--btn-text-color));
+    border-radius: 2px;
+
+    .description {
+      background-color: var(--base-bg-color);
+    }
+  }
+
+
+}
+

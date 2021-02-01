@@ -1,3 +1,4 @@
+import { User } from './user';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -14,13 +15,24 @@ export class GetDataService {
 
   dataForMovieNewWindow = '';
 
+  public ratingData: Array<{
+    title: string,
+    ratingValue: [number]
+  }>;
+
   public movies: Array<{
     description: string,
     sources: [string],
     subtitle?: string,
     thumb?: string,
-    title: string
+    title: string,
+    ratingValue?: number
   }>;
+
+  public ratingValue: number;
+
+  user: User;
+  isLogged = false;
 
   constructor(private http: HttpClient) {}
 
