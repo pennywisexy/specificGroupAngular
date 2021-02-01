@@ -1,4 +1,20 @@
 @import '../../../../theme.scss';
+@mixin btnStyles {
+  display: inline-block;
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+  width: 40%;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
 
 .container {
   display: flex;
@@ -78,20 +94,7 @@
       justify-content: center;
 
       .btn {
-        display: inline-block;
-        background: var(--btn-bg-color);
-        color: var(--btn-text-color);
-        padding: 0.4rem 1.3rem;
-        font-size: 1rem;
-        border: none;
-        margin-right: 0.5rem;
-        transition: opacity 0.2s ease-in;
-        outline: none;
-        width: 40%;
-
-        &:hover {
-          opacity: 0.8;
-        }
+        @include btnStyles();
       }
     }
 
@@ -118,6 +121,28 @@
         margin-top: -1px;
         z-index: 1;
       }
+    }
+  }
+
+  .btn {
+    @include btnStyles();
+  }
+
+  .wrong-log {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    opacity: 0;
+    color: var(--base-invalid-color);
+
+    &__show {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-end;
+      opacity: 1;
+      transition: all .5s ease-out;
     }
   }
 }
