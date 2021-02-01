@@ -68,6 +68,7 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
         .navbar-item {
           text-decoration: none;
           list-style-type: none;
+          display: inline-flex;
 
           &__button {
             text-decoration: none;

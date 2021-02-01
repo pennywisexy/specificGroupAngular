@@ -1,3 +1,4 @@
+import { User } from './user';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -29,6 +30,9 @@ export class GetDataService {
   }>;
 
   public ratingValue: number;
+
+  user: User;
+  isLogged = false;
 
   constructor(private http: HttpClient) {}
 

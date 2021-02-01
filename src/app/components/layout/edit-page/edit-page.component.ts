@@ -69,4 +69,8 @@ export class EditPageComponent implements OnInit {
     this.form.reset();
   }
 
+  redirect(): void {
+    location.replace('/registration');
+  }
+
 }

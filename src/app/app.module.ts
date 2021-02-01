@@ -16,6 +16,7 @@ import { EditPageComponent } from './components/layout/edit-page/edit-page.compo
 import { RatingPageComponent } from './components/layout/rating-page/rating-page.component';
 import { RatingModule } from 'ng-starrating';
 import { LayoutItemComponent } from './components/layout/layout-item/layout-item.component';
+import { RegistrationPageComponent } from './components/layout/registration-page/registration-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LayoutItemComponent } from './components/layout/layout-item/layout-item
     FooterComponent,
     EditPageComponent,
     RatingPageComponent,
-    LayoutItemComponent
+    LayoutItemComponent,
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,

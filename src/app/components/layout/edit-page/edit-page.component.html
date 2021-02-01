@@ -1,4 +1,6 @@
-<div class="container">
+<div
+  *ngIf="this.data.isLogged; else registration"
+  class="container">
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
 
     <div class="form-control">
@@ -68,3 +70,7 @@
   </div>
 
 </div>
+
+<ng-template #registration>
+  <div class="container">{{redirect()}}</div>
+</ng-template>
