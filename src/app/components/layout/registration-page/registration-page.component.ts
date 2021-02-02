@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { GetDataService } from './../../../services/get-data.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -14,18 +15,18 @@ export class RegistrationPageComponent implements OnInit {
   isReg = false;
   wrongLog = false;
 
-  constructor(public data: GetDataService) { }
+  constructor(public data: GetDataService, private router: Router) { }
 
   ngOnInit(): void {
-      this.form = new FormGroup({
-        email: new FormControl(null, [
-          Validators.required,
-          Validators.email]),
-        password: new FormControl(null, [
-          Validators.required,
-          Validators.minLength(6)
-        ])
-      });
+    this.form = new FormGroup({
+      email: new FormControl(null, [
+        Validators.required,
+        Validators.email]),
+      password: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6)
+      ])
+    });
 
 
   }
@@ -39,11 +40,13 @@ export class RegistrationPageComponent implements OnInit {
     this.form.reset();
 
     if (this.data.userRegData) {
-      const regUser = this.data.userRegData.find((item) => item.email === this.data.user.email)
+      const regUser = this.data.userRegData.find((item) => item.email === this.data.user.email);
 
       if (regUser) {
+        this.data.user.name = `${regUser['first-name']} ${regUser['last-name']}`;
         this.wrongLog = false;
         this.data.isLogged = true;
+        this.router.navigate(['/edit-page']);
       } else {
         this.wrongLog = true;
       }
@@ -53,7 +56,7 @@ export class RegistrationPageComponent implements OnInit {
 
     setTimeout(() => {
       this.wrongLog = false;
-    }, 1500)
+    }, 1500);
   }
 
   registrationForm(): void {
@@ -98,12 +101,15 @@ export class RegistrationPageComponent implements OnInit {
 
     this.formReg.reset();
     this.isReg = false;
-    console.log(this.data.userRegData)
 
   }
 
   backToLogging(): void {
     this.isReg = false;
+  }
+
+  redirect(): void {
+    this.router.navigate(['/edit-page']);
   }
 
 }

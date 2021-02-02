@@ -1,6 +1,6 @@
 <div class="container">
   <form class="card" *ngIf="!isReg; else regForm" [formGroup]="form" (ngSubmit)="submit()">
-    <h2>Login</h2>
+    <h2 class="card-title">Sign-In</h2>
 
     <div
       class="form-control"
@@ -78,7 +78,7 @@
 
 <ng-template #regForm>
   <form class="card" [formGroup]="formReg" (ngSubmit)="registration()">
-    <h2>Registration</h2>
+    <h2 class="card-title">Create account</h2>
 
     <div
       class="form-control"
@@ -122,7 +122,7 @@
         >Field password can not be empty.</small>
         <small
           *ngIf="formReg.get('password').errors.minlength"
-        >The password must be at least {{formReg.get('password').errors.minlength.requiredLength}} characters long. He is now {{form.get('password').errors.minlength.actualLength}} characters.</small>
+        >The password must be at least {{formReg.get('password').errors.minlength.requiredLength}} characters long. He is now {{formReg.get('password').errors.minlength.actualLength}} characters.</small>
       </div>
     </div>
       <div

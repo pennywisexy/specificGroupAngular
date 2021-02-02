@@ -1,20 +1,5 @@
 @import '../../../../theme.scss';
-@mixin btnStyles {
-  display: inline-block;
-  background: var(--btn-bg-color);
-  color: var(--btn-text-color);
-  padding: 0.4rem 1.3rem;
-  font-size: 1rem;
-  border: none;
-  margin-right: 0.5rem;
-  transition: opacity 0.2s ease-in;
-  outline: none;
-  width: 40%;
 
-  &:hover {
-    opacity: 0.8;
-  }
-}
 
 .container {
   display: flex;
@@ -28,7 +13,10 @@
     padding: 1rem;
     border: var(--base-border-color) 1px dotted;
     margin: 0.7rem 0;
-    // height: 25rem;
+
+    &-title {
+      color: var(--btn-text-color);
+    }
 
     .form-control {
       display: flex;
@@ -36,6 +24,7 @@
       margin-bottom: 4.3rem;
       flex-direction: column;
       border: none;
+      color: var(--btn-text-color);
 
       .head {
         display: block;

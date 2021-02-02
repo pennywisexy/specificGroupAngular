@@ -89,6 +89,60 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
               &.active {
                 color: var(--base-text-color);
               }
+
+              .profile {
+                max-width: 40px;
+                max-height: 40px;
+
+                &-img {
+                  width: 2rem;
+                  border-radius: 20px;
+                }
+              }
+            }
+          }
+
+          .profile-menu {
+            display: none;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            background-color: var(--base-bg-color);
+            color: var(--contact-text-color);
+            min-width: 300px;
+            min-height: 300px;
+            position: absolute;
+            top: 73%;
+            left: 34%;
+            z-index: 3;
+            border-radius: 2px;
+            -webkit-box-shadow: 0px 1px 15px -6px #000000;
+            box-shadow: 0px 1px 15px -6px #000000;
+
+            .profile {
+              &-img {
+                width: 3rem;
+                border-radius: 30px;
+              }
+            }
+
+            .btn {
+              @include btnStyles();
+            }
+
+            .info {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              align-items: center;
+
+              .devider {
+                width: 100%;
+              }
+            }
+
+            &.show {
+              display: flex;
             }
           }
         }
