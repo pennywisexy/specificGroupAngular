@@ -13,7 +13,6 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
   background-color: var(--base-bg-header);
   height: 11vh;
   width: 100vw;
-  // overflow: hidden;
   display: flex;
   align-items: center;
 
@@ -116,8 +115,8 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
             left: 34%;
             z-index: 3;
             border-radius: 2px;
-            -webkit-box-shadow: 0px 1px 15px -6px #000000;
-            box-shadow: 0px 1px 15px -6px #000000;
+            -webkit-box-shadow: 0px 1px 15px -6px var(--base-shadow-color);
+            box-shadow: 0px 1px 15px -6px var(--base-shadow-color);
 
             .profile {
               &-img {

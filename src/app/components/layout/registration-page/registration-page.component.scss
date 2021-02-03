@@ -91,7 +91,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #e7e7e7;
+      color: var(--base-devider-color);
       margin: 20px 0;
 
       &-item {
@@ -104,8 +104,7 @@
         background-color: transparent;
         display: block;
         height: 1px;
-        border-top: 1px solid #e7e7e7;
-        // position: absolute;
+        border-top: 1px solid var(--base-devider-color);
         top: 50%;
         margin-top: -1px;
         z-index: 1;

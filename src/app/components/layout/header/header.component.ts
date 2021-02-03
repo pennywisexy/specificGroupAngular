@@ -21,7 +21,7 @@ export class HeaderComponent {
     this.data.isLogged = false;
   }
 
-  showProfile(): void {
+  toggleProfileMenu(): void {
     this.profileShow = !this.profileShow;
 
   }
