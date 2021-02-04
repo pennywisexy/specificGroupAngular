@@ -1,3 +1,20 @@
+@mixin btnStyles {
+  display: inline-block;
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color);
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+  width: 40%;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 :host {
   --base-text-color: #000;
   --base-bg-color: #f6fafd;
@@ -15,5 +32,7 @@
   --base-bg-hover: #215a93;
   --base-text-hover: #ccc;
   --white-bg-color: white;
+  --base-shadow-color: #000000;
+  --base-devider-color: #e7e7e7;
 }
 

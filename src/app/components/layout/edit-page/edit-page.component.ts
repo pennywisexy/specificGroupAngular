@@ -1,6 +1,7 @@
 import { GetDataService } from '../../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
@@ -18,7 +19,7 @@ export class EditPageComponent implements OnInit {
 
   notification = false;
 
-  constructor(public data: GetDataService) { }
+  constructor(public data: GetDataService, private router: Router) { }
 
   ngOnInit(): void {
     if (this.data.movies === undefined) {
@@ -70,7 +71,7 @@ export class EditPageComponent implements OnInit {
   }
 
   redirect(): void {
-    location.replace('/registration');
+    this.router.navigate(['/registration']);
   }
 
 }

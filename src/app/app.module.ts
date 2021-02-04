@@ -1,3 +1,4 @@
+import { AppGuard } from './app.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -17,6 +18,8 @@ import { RatingPageComponent } from './components/layout/rating-page/rating-page
 import { RatingModule } from 'ng-starrating';
 import { LayoutItemComponent } from './components/layout/layout-item/layout-item.component';
 import { RegistrationPageComponent } from './components/layout/registration-page/registration-page.component';
+import { RegistrationComponent } from './components/layout/registration-page/registration/registration.component';
+import { LoginComponent } from './components/layout/registration-page/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { RegistrationPageComponent } from './components/layout/registration-page
     EditPageComponent,
     RatingPageComponent,
     LayoutItemComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import { RegistrationPageComponent } from './components/layout/registration-page
     ReactiveFormsModule,
     RatingModule
   ],
-  providers: [],
+  providers: [AppGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

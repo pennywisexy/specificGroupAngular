@@ -1,0 +1,104 @@
+<div class="container">
+  <form class="card" [formGroup]="this.parent.formReg" (ngSubmit)="registration()">
+    <h2 class="card-title">Create account</h2>
+
+    <div
+      class="form-control"
+      *ngIf="{invalid: this.parent.formReg.get('email').touched && this.parent.formReg.get('email').invalid}"
+    >
+      <label for="email">Email:</label>
+      <input
+        class="input-text"
+        id="email"
+        type="email"
+        formControlName="email">
+      <div
+        class="validation"
+        *ngIf="this.parent.formReg.get('email').touched && this.parent.formReg.get('email').invalid"
+      >
+        <small
+          *ngIf="this.parent.formReg.get('email').errors.required"
+        >Field email can not be empty.</small>
+        <small
+          *ngIf="this.parent.formReg.get('email').errors.email"
+        >Enter correct email.</small>
+      </div>
+    </div>
+
+    <div
+      class="form-control"
+      *ngIf="{invalid: this.parent.formReg.get('password').touched && this.parent.formReg.get('password').invalid}"
+      >
+      <label for="password">Password:</label>
+      <input
+        class="input-text"
+        id="password"
+        type="password"
+        formControlName="password">
+      <div
+        class="validation"
+        *ngIf="this.parent.formReg.get('password').touched && this.parent.formReg.get('password').invalid"
+      >
+        <small
+          *ngIf="this.parent.formReg.get('password').errors.required"
+        >Field password can not be empty.</small>
+        <small
+          *ngIf="this.parent.formReg.get('password').errors.minlength"
+        >The password must be at least {{this.parent.formReg.get('password').errors.minlength.requiredLength}} characters long. He is now {{this.parent.formReg.get('password').errors.minlength.actualLength}} characters.</small>
+      </div>
+    </div>
+      <div
+        class="form-control"
+        *ngIf="this.parent.isReg || {invalid: this.parent.formReg.get('first-name').touched && this.parent.formReg.get('first-name').invalid}"
+        >
+        <label for="first-name">First Name:</label>
+        <input
+          class="input-text"
+          id="first-name"
+          type="text"
+          formControlName="first-name">
+        <div
+          class="validation"
+          *ngIf="this.parent.formReg.get('first-name').touched && this.parent.formReg.get('first-name').invalid"
+        >
+          <small
+            *ngIf="this.parent.formReg.get('first-name').errors.required"
+          >Field first name can not be empty.</small>
+        </div>
+      </div>
+
+      <div
+        class="form-control"
+        *ngIf="this.parent.isReg || {invalid: this.parent.formReg.get('last-name').touched && this.parent.formReg.get('last-name').invalid}"
+        >
+        <label for="last-name">Last Name:</label>
+        <input
+          class="input-text"
+          id="last-name"
+          type="text"
+          formControlName="last-name">
+        <div
+          class="validation"
+          *ngIf="this.parent.formReg.get('last-name').touched && this.parent.formReg.get('last-name').invalid"
+        >
+          <small
+            *ngIf="this.parent.formReg.get('last-name').errors.required"
+          >Field last name can not be empty.</small></div>
+      </div>
+
+    <div class="btn-container">
+      <button
+        class="btn"
+        [disabled]="this.parent.formReg.invalid"
+        type="submit"
+      >Create account</button>
+
+    </div>
+  </form>
+  <button
+  class="btn"
+  type="button"
+  (click)="backToLogging()"
+  >Back to logging</button>
+
+</div>

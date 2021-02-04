@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  profileShow = false;
+
   constructor(public data: GetDataService) {
 
   }
@@ -16,5 +19,10 @@ export class HeaderComponent {
     delete this.data.user.password;
 
     this.data.isLogged = false;
+  }
+
+  toggleProfileMenu(): void {
+    this.profileShow = !this.profileShow;
+
   }
 }

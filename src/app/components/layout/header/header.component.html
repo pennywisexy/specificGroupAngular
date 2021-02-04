@@ -1,4 +1,4 @@
-  <div class="preheader"></div>
+<div class="preheader"></div>
 <div class="wrapper">
 
   <div class="container">
@@ -59,11 +59,27 @@
           class="navbar-item"
           *ngIf="this.data.isLogged"
         >
-        <button (click)="signOut()" class="navbar-item__button">
+        <button class="navbar-item__button" (click)="toggleProfileMenu()">
           <a
             class="navbar-item__link"
-            >Sign&nbsp;Out</a>
+          >
+            <div class="profile">
+              <img class="profile-img" src="https://www.iconspng.com/images/-abstract-user-icon-1/-abstract-user-icon-1.jpg" alt="profile">
+            </div>
+          </a>
         </button>
+        <div class="profile-menu" [ngClass]="{'show': profileShow}">
+          <div class="profile">
+            <img class="profile-img" src="https://www.iconspng.com/images/-abstract-user-icon-1/-abstract-user-icon-1.jpg" alt="profile">
+          </div>
+          <div class="info">
+            <hr class="devider">
+            <div class="name">{{this.data.user.name}}</div>
+            <div class="email">{{this.data.user.email}}</div>
+            <hr class="devider">
+          </div>
+          <button class="btn signOut" (click)="signOut()">Sign Out</button>
+        </div>
       </li>
       </ul>
     </div>
