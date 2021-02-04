@@ -1,6 +1,7 @@
 <app-video-player></app-video-player>
 <div class="container movies-list d-flex p-2 justify-content-between flex-wrap">
-  <div class="movies-list__item d-flex justify-content-between flex-column w-25 cursor-pointer" *ngFor="let item of this.data.movies"
+  <div class="movies-list__item d-flex justify-content-between flex-column w-25 cursor-pointer"
+    *ngFor="let item of this.data.movies | searchMovie:[data.searchBy, data.searchStr]"
     (click)="setMovie(item)">
     <a
       class="title-link"

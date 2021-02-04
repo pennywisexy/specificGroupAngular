@@ -26,6 +26,7 @@ export class GetDataService {
     subtitle?: string,
     thumb?: string,
     title: string,
+    genre?: string,
     ratingValue?: number
   }>;
 
@@ -34,6 +35,9 @@ export class GetDataService {
   user: User;
   userRegData: [RegistrationData];
   isLogged = false;
+
+  searchStr = '';
+  searchBy = 'title';
 
   constructor(private http: HttpClient) {}
 

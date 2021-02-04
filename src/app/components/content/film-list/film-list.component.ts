@@ -22,7 +22,13 @@ export class FilmListComponent implements OnInit {
     if (!this.data.movies) {
 
       this.data.getFilms()
-        .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+        .subscribe((movies) => {
+          this.data.movies = movies.categories[0].videos;
+          this.data.movies.forEach(movie => {
+            movie.genre = 'action';
+          });
+        });
+
 
       if (localStorage.length !== 0) {
         this.setMovie(localStorage);

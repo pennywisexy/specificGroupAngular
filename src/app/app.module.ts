@@ -1,3 +1,4 @@
+import { SearchPipe } from './search.pipe';
 import { AppGuard } from './app.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,6 +21,7 @@ import { LayoutItemComponent } from './components/layout/layout-item/layout-item
 import { RegistrationPageComponent } from './components/layout/registration-page/registration-page.component';
 import { RegistrationComponent } from './components/layout/registration-page/registration/registration.component';
 import { LoginComponent } from './components/layout/registration-page/login/login.component';
+import { SmartSearchComponent } from './components/layout/header/smart-search/smart-search.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { LoginComponent } from './components/layout/registration-page/login/logi
     LayoutItemComponent,
     RegistrationPageComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    SmartSearchComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

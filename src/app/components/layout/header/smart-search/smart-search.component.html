@@ -1,0 +1,27 @@
+
+  <div class="search">
+
+    <div class="form-control">
+      <input id="name" class="input-text" type="text" placeholder="Input text for search by {{this.data.searchBy}}" [(ngModel)]="this.data.searchStr">
+    </div>
+    <div class="buttons">
+    <button
+      class="btn"
+      type="button"
+      (click)="searchByTitle()">Search By Title</button>
+
+    <div class="devider"></div>
+
+    <button
+      class="btn"
+      type="button"
+      (click)="searchByDescription()">Search By Description</button>
+
+    <div class="devider"></div>
+
+    <button
+      class="btn"
+      type="button"
+      (click)="searchByGenre()">Search By Genre</button>
+    </div>
+  </div>
