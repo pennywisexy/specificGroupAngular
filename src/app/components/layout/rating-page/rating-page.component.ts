@@ -33,7 +33,7 @@ export class RatingPageComponent implements OnInit {
     this.isReset = false;
     this.ratingMovie();
 
-    if (localStorage.length) {
+    if (localStorage.title) {
       this.isSavedRating = true;
       this.getMovie(localStorage.title);
     }else if (!localStorage.length) {
@@ -49,7 +49,7 @@ export class RatingPageComponent implements OnInit {
     if (!this.data.ratingData) {
       this.mostPopularMovieTitle = 'No ratings yet';
 
-      if (localStorage.length) {
+      if (localStorage.title) {
         this.mostPopularMoviePoint = localStorage.ratingValue;
         this.mostPopularMovieTitle = localStorage.title;
         this.mostPopularMovieRating = `Movie rating: ${localStorage.ratingValue} points`;
@@ -79,7 +79,8 @@ export class RatingPageComponent implements OnInit {
         this.mostPopularMovieTitle = elem[0];
         this.mostPopularMoviePoint = elem[1].toFixed(2);
 
-        localStorage.clear();
+        localStorage.removeItem('ratingValue');
+        localStorage.removeItem('title');
 
         localStorage.ratingValue = this.mostPopularMoviePoint;
         localStorage.title = this.mostPopularMovieTitle;
@@ -111,7 +112,13 @@ export class RatingPageComponent implements OnInit {
   }
 
   resetRating(): void {
-    localStorage.clear();
+    localStorage.removeItem('title');
+    localStorage.removeItem('ratingValue');
+    localStorage.removeItem('description');
+    localStorage.removeItem('sources');
+    localStorage.removeItem('subtitle');
+    localStorage.removeItem('thumb');
+
     this.isSavedRating = false;
 
     if (this.data.ratingData) {
@@ -135,7 +142,7 @@ export class RatingPageComponent implements OnInit {
       });
     }
 
-    if (!this.data.movies && localStorage.length) {
+    if (!this.data.movies && localStorage.title) {
       this.description = localStorage.description;
       this.title = localStorage.title;
       this.thumb = localStorage.thumb;

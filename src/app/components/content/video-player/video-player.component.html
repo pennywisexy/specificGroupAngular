@@ -6,11 +6,15 @@
     class="d-flex embed-responsive embed-responsive-21by9 justify-content-center w-50"
     [ngClass]="{'movie' : data.dataForMovieNewWindow}">
       <video
+        #videoPlayer
         src="{{movie.sources}}"
         controls="controls"
         [attr.poster]="movie.thumb ? movie.thumb : posterUrl"
         class='embed-responsive-item video'
-        autoplay='autoplay'></video>
+
+        [autoplay]="true"
+        (timeupdate)="getCurrentTime($event)"
+        ></video>
   </div>
   <div class="rating" *ngIf="movie.sources">
     <div *ngIf="isRated" class="toast">Movie rated!</div>

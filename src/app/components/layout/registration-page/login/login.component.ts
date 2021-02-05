@@ -26,6 +26,11 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6)
       ])
     });
+
+    if (localStorage.userRegData) {
+      this.data.userRegData = JSON.parse(localStorage.userRegData);
+      this.submit();
+    }
   }
 
   submit(): void {
@@ -33,7 +38,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
+
     this.data.user = {...this.parent.form.value};
+    localStorage.user = JSON.stringify(this.data.user);
+
     this.parent.form.reset();
 
     if (this.data.userRegData) {
@@ -43,17 +51,22 @@ export class LoginComponent implements OnInit {
         this.data.user.name = `${regUser['first-name']} ${regUser['last-name']}`;
         this.wrongLog = false;
         this.data.isLogged = true;
+        localStorage.isLogged = true;
         this.router.navigate(['/edit-page']);
+        localStorage.lastUser = JSON.stringify(this.data.user);
       } else {
         this.wrongLog = true;
+        localStorage.removeItem('user');
+        localStorage.removeItem('lastUser');
       }
     } else {
       this.wrongLog = true;
+      localStorage.removeItem('user');
+      localStorage.removeItem('lastUser');
     }
 
     setTimeout(() => {
       this.wrongLog = false;
     }, 1500);
   }
-
 }

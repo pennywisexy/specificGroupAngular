@@ -39,9 +39,17 @@ export class GetDataService {
   searchStr = '';
   searchBy = 'title';
 
+  videoCurrentTime: string;
+
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<Movie> {
     return this.http.get<Movie>(this.moviesUrl);
+  }
+
+  logged(): void {
+    if (localStorage.isLogged === 'true') {
+      this.isLogged = true;
+    }
   }
 }

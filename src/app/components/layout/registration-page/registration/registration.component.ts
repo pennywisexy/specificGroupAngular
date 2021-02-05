@@ -23,8 +23,11 @@ export class RegistrationComponent {
         'last-name': this.parent.formReg.value['last-name']
       }];
 
+      localStorage.userRegData = JSON.stringify(this.data.userRegData);
+
     } else if (this.data.userRegData) {
       this.data.userRegData.push(this.parent.formReg.value);
+      localStorage.userRegData = JSON.stringify(this.data.userRegData);
     }
 
     this.parent.formReg.reset();

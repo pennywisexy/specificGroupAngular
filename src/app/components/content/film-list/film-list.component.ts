@@ -6,6 +6,7 @@ import { GetDataService } from '../../../services/get-data.service';
   styleUrls: ['./film-list.component.scss'],
 })
 export class FilmListComponent implements OnInit {
+
   isActiveButton = false;
 
   showDescription = '';

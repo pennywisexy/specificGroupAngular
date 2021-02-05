@@ -18,7 +18,7 @@
       <button class="btn-item" (click)="resetRating()">Reset rating</button>
     </div>
     <div class="rating">
-      <div *ngIf="this.data.ratingData; else noRatings">
+      <div *ngIf="this.data.ratingData && title; else noRatings">
         <div *ngIf="!isReset; else noRatings">
           <div class="rating-inner" *ngIf="isPopular">
            <div class="rating-inner__main">
@@ -39,7 +39,7 @@
         </div>
       </div>
       <ng-template #noRatings>
-        <div *ngIf="isSavedRating && !this.data.ratingData; else noSavedRatings">
+        <div *ngIf="isSavedRating && !this.data.ratingData && title; else noSavedRatings">
           <div *ngIf="!isReset; else noRatings">
             <div class="rating-inner" *ngIf="isPopular">
              <div class="rating-inner__main">
