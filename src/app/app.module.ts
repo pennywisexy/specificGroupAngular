@@ -1,3 +1,5 @@
+import { MoviesState } from './store/movies.state';
+import { environment } from './../environments/environment';
 import { SearchPipe } from './search.pipe';
 import { AppGuard } from './app.guard';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +24,9 @@ import { RegistrationPageComponent } from './components/layout/registration-page
 import { RegistrationComponent } from './components/layout/registration-page/registration/registration.component';
 import { LoginComponent } from './components/layout/registration-page/login/login.component';
 import { SmartSearchComponent } from './components/layout/header/smart-search/smart-search.component';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsEmitPluginModule } from '@ngxs-labs/emitter';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,12 @@ import { SmartSearchComponent } from './components/layout/header/smart-search/sm
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RatingModule
+    RatingModule,
+    NgxsModule.forRoot([MoviesState], {
+      developmentMode: !environment.production
+    }),
+    NgxsEmitPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
   ],
   providers: [AppGuard],
   bootstrap: [AppComponent]

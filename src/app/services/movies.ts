@@ -15,10 +15,11 @@ export interface Movie {
 }
 
 export interface Movies {
-  description: string;
-  sources: [string];
-  subtitle?: string;
-  thumb?: string;
-  title: string;
-  genre?: string;
+  description: string,
+  sources: [string],
+  subtitle?: string,
+  thumb?: string,
+  title: string,
+  genre?: string,
+  ratingValue?: number
 }

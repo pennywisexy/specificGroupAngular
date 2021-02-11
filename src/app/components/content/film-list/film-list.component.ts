@@ -1,11 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Movies } from './../../../services/movies';
+import { Observable } from 'rxjs';
+import { MoviesState } from './../../../store/movies.state';
+import { SetMovies } from './../../../store/movies.actions';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
 import { GetDataService } from '../../../services/get-data.service';
 @Component({
   selector: 'app-film-list',
   templateUrl: './film-list.component.html',
   styleUrls: ['./film-list.component.scss'],
 })
-export class FilmListComponent implements OnInit {
+export class FilmListComponent implements OnInit, AfterViewChecked {
+
+  @Select(MoviesState.getMovies) getMovies$: Observable<Movies[]>;
+  @Select(MoviesState.getVisibleMovies) filteredMovies$: Observable<Movies[]>;
 
   isActiveButton = false;
 
@@ -13,8 +21,11 @@ export class FilmListComponent implements OnInit {
 
   title = '';
 
+  movies: Movies[];
+
   constructor(
     public data: GetDataService,
+    private store: Store
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +39,7 @@ export class FilmListComponent implements OnInit {
           this.data.movies.forEach(movie => {
             movie.genre = 'action';
           });
+          this.store.dispatch(new SetMovies(JSON.parse(JSON.stringify(this.data.movies))));
         });
 
 
@@ -37,6 +49,20 @@ export class FilmListComponent implements OnInit {
     }
     this.data.dataForMovieNewWindow = '';
     this.data.currentMovie.subscribe(movie => this.rating(movie));
+    if (this.data.movies) {
+      this.store.dispatch(new SetMovies(JSON.parse(JSON.stringify(this.data.movies))));
+    }
+
+    this.getMovies$.subscribe(mov => this.movies = mov);
+  }
+
+  ngAfterViewChecked(): void {
+    let sub;
+    if (this.data.searchStr) {
+      sub = this.filteredMovies$.subscribe(filMov => this.movies = filMov);
+    } else if (sub && !this.data.searchStr) {
+      sub.unsubscribe();
+    }
   }
 
   public setMovie(movie): void {

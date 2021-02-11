@@ -1,7 +1,9 @@
+import { SetMovies } from './../../../store/movies.actions';
 import { GetDataService } from '../../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
@@ -19,7 +21,11 @@ export class EditPageComponent implements OnInit {
 
   notification = false;
 
-  constructor(public data: GetDataService, private router: Router) { }
+  constructor(
+    public data: GetDataService, 
+    private router: Router,
+    private store: Store
+  ) { }
 
   ngOnInit(): void {
     if (this.data.movies === undefined) {
@@ -39,6 +45,7 @@ export class EditPageComponent implements OnInit {
   submit(): void {
     this.formData = {...this.form.value};
     this.data.movies.unshift(this.formData);
+    this.store.dispatch(new SetMovies(JSON.parse(JSON.stringify(this.data.movies))));
     this.form.reset();
     this.notification = true;
 
