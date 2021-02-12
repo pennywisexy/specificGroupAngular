@@ -2,7 +2,7 @@
   <div class="search">
 
     <div class="form-control">
-      <input id="name" class="input-text" type="text" placeholder="Input text for search" [(ngModel)]="this.data.searchStr">
+      <input id="name" class="input-text" type="text" placeholder="Input text for search" (keyup)="setSearch()" [(ngModel)]="this.data.searchStr">
     </div>
     <div class="buttons">
     </div>

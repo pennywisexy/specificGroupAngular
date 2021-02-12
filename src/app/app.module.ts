@@ -1,6 +1,5 @@
 import { MoviesState } from './store/movies.state';
 import { environment } from './../environments/environment';
-import { SearchPipe } from './search.pipe';
 import { AppGuard } from './app.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -42,8 +41,7 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
     RegistrationPageComponent,
     RegistrationComponent,
     LoginComponent,
-    SmartSearchComponent,
-    SearchPipe
+    SmartSearchComponent
   ],
   imports: [
     BrowserModule,

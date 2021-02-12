@@ -22,17 +22,12 @@ export interface MoviesStateModel {
 @Injectable()
 export class MoviesState {
   @Receiver()
-  static setValue(ctx: StateContext<MoviesStateModel>, action: EmitterAction<string>): void {
-    ctx.setState({ filterValue: action.payload });
+  public static setFilterValue(ctx: StateContext<MoviesStateModel>, { payload }: EmitterAction<string>): void {
+    ctx.patchState({ filterValue: payload });
   }
   @Selector()
-  static getMovies(state: MoviesStateModel): Movies[] {
-    return state.movies;
-  }
-
-  @Selector()
-  static getFilter(state: MoviesStateModel): string {
-    return state.filter;
+  public static getFilter(state: MoviesStateModel): string {
+    return state.filterValue;
   }
   @Selector()
   static getVisibleMovies(state: MoviesStateModel, search = ''): Movies[] {
@@ -45,24 +40,12 @@ export class MoviesState {
       }
     });
   }
-  @Action(SetMovies)
-  setMovies({ setState }: StateContext<MoviesStateModel>, { payload }: SetMovies): void {
-    setState(
-      patch<MoviesStateModel>({
-        movies: payload 
-      })
-    );
+  @Receiver()
+  public static setMovies(ctx: StateContext<MoviesStateModel>, { payload }: EmitterAction<Movies[]>): void {
+    ctx.patchState({ movies: payload });
   }
-  @Action(SetFilter)
-  filter({ setState }: StateContext<MoviesStateModel>, { payload }: SetFilter): void {
-    setState(
-      patch<MoviesStateModel>({
-        filter: payload
-      })
-    );
-  }
-  @Action(SetFilterValue)
-  updateFilter({patchState}: StateContext<MoviesStateModel>, { payload }: SetFilterValue): void {
-    patchState({ filterValue: payload });
+  @Selector()
+  public static getMovies(state: MoviesStateModel): Movies[] {
+    return state.movies;
   }
 }

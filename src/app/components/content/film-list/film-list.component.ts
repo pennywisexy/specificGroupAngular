@@ -1,10 +1,10 @@
 import { Movies } from './../../../services/movies';
 import { Observable } from 'rxjs';
 import { MoviesState } from './../../../store/movies.state';
-import { SetMovies } from './../../../store/movies.actions';
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Select } from '@ngxs/store';
 import { GetDataService } from '../../../services/get-data.service';
+import { Emittable, Emitter } from '@ngxs-labs/emitter';
 @Component({
   selector: 'app-film-list',
   templateUrl: './film-list.component.html',
@@ -15,6 +15,9 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
   @Select(MoviesState.getMovies) getMovies$: Observable<Movies[]>;
   @Select(MoviesState.getVisibleMovies) filteredMovies$: Observable<Movies[]>;
 
+  @Emitter(MoviesState.setMovies) setMovies: Emittable<Movies[]>;
+
+
   isActiveButton = false;
 
   showDescription = '';
@@ -24,8 +27,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
   movies: Movies[];
 
   constructor(
-    public data: GetDataService,
-    private store: Store
+    public data: GetDataService
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +41,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
           this.data.movies.forEach(movie => {
             movie.genre = 'action';
           });
-          this.store.dispatch(new SetMovies(JSON.parse(JSON.stringify(this.data.movies))));
+          this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
         });
 
 
@@ -50,7 +52,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
     this.data.dataForMovieNewWindow = '';
     this.data.currentMovie.subscribe(movie => this.rating(movie));
     if (this.data.movies) {
-      this.store.dispatch(new SetMovies(JSON.parse(JSON.stringify(this.data.movies))));
+      this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
     }
 
     this.getMovies$.subscribe(mov => this.movies = mov);

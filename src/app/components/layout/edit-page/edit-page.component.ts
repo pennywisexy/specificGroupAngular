@@ -1,15 +1,22 @@
-import { SetMovies } from './../../../store/movies.actions';
+import { Movies } from './../../../services/movies';
+import { Observable } from 'rxjs';
+import { MoviesState } from './../../../store/movies.state';
 import { GetDataService } from '../../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from '@ngxs/store';
+import { Store, Select } from '@ngxs/store';
+import { Emittable, Emitter } from '@ngxs-labs/emitter';
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss']
 })
 export class EditPageComponent implements OnInit {
+  @Select(MoviesState.getMovies) getMovies$: Observable<Movies[]>;
+
+  @Emitter(MoviesState.setMovies) setMovies: Emittable<Movies[]>;
+
 
   form: FormGroup;
 
@@ -23,14 +30,16 @@ export class EditPageComponent implements OnInit {
 
   constructor(
     public data: GetDataService, 
-    private router: Router,
-    private store: Store
+    private router: Router
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     if (this.data.movies === undefined) {
       this.data.getFilms()
-        .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+        .subscribe((movies) => {
+          this.data.movies = movies.categories[0].videos;
+
+        });
     }
 
     this.form = new FormGroup({
@@ -45,7 +54,7 @@ export class EditPageComponent implements OnInit {
   submit(): void {
     this.formData = {...this.form.value};
     this.data.movies.unshift(this.formData);
-    this.store.dispatch(new SetMovies(JSON.parse(JSON.stringify(this.data.movies))));
+    this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
     this.form.reset();
     this.notification = true;
 
