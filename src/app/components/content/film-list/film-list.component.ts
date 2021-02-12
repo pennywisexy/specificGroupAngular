@@ -52,6 +52,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
       this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
     }
     this.getMovies$.subscribe(mov => this.movies = mov);
+    localStorage.locale = this.data.locale;
   }
 
   ngAfterViewChecked(): void {

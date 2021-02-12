@@ -41,6 +41,9 @@ export class GetDataService {
 
   videoCurrentTime: string;
 
+  locale = 'en';
+  isEnLocale = true;
+
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<Movie> {

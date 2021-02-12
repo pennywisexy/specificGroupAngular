@@ -26,6 +26,13 @@ import { SmartSearchComponent } from './components/layout/header/smart-search/sm
 import { NgxsModule } from '@ngxs/store';
 import { NgxsEmitPluginModule } from '@ngxs-labs/emitter';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import enLocale from '@angular/common/locales/en';
+import ruLocale from '@angular/common/locales/ru';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(enLocale, 'en');
+registerLocaleData(ruLocale, 'ru');
+
 
 @NgModule({
   declarations: [

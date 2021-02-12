@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   profileShow = false;
+  isEnLocale = this.data.isEnLocale;
 
   constructor(public data: GetDataService) {
 
@@ -18,6 +19,10 @@ export class HeaderComponent implements OnInit {
     if (localStorage.isLogged === 'true') {
       this.data.isLogged = localStorage.isLogged;
       this.data.user = JSON.parse(localStorage.lastUser);
+    }
+    if (localStorage.locale === 'ru') {
+      this.data.isEnLocale = false;
+      this.isEnLocale = false;
     }
   }
 
@@ -33,6 +38,17 @@ export class HeaderComponent implements OnInit {
 
   toggleProfileMenu(): void {
     this.profileShow = !this.profileShow;
+  }
 
+  enLocale(): void {
+    localStorage.locale = 'en';
+    this.isEnLocale = true;
+    this.data.isEnLocale = true;
+  }
+
+  ruLocale(): void {
+    localStorage.locale = 'ru';
+    this.isEnLocale = false;
+    this.data.isEnLocale = false;
   }
 }

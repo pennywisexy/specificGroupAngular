@@ -138,6 +138,12 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
               .devider {
                 width: 100%;
               }
+
+              .locale {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
             }
 
             &.show {
