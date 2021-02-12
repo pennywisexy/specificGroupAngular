@@ -1,20 +1,15 @@
-import { FilterType } from './../utils/filter-type.enum';
-import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { patch } from '@ngxs/store/operators';
+import { Selector, State, StateContext } from '@ngxs/store';
 import { Movies } from './../services/movies';
-import { SetFilter, SetFilterValue, SetMovies } from './movies.actions';
 import { EmitterAction, Receiver } from '@ngxs-labs/emitter';
 import { Injectable } from '@angular/core';
 
 export interface MoviesStateModel {
-    filter?: string;
     movies?: Movies[];
     filterValue?: string;
 }
 @State<MoviesStateModel>({
   name: 'store',
   defaults: {
-    filter: FilterType.SHOW_ALL,
     movies: [],
     filterValue: ''
   }

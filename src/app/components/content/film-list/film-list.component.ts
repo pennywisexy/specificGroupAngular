@@ -31,10 +31,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
   ) { }
 
   ngOnInit(): void {
-    this.data.getFilms();
-
     if (!this.data.movies) {
-
       this.data.getFilms()
         .subscribe((movies) => {
           this.data.movies = movies.categories[0].videos;
@@ -54,7 +51,6 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
     if (this.data.movies) {
       this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
     }
-
     this.getMovies$.subscribe(mov => this.movies = mov);
   }
 
