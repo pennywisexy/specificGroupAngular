@@ -60,6 +60,8 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
     localStorage.locale = this.data.locale;
   }
 
+
+
   ngAfterViewChecked(): void {
     let sub: Subscription;
     if (this.data.searchStr) {
