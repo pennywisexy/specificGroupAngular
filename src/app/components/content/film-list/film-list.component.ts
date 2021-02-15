@@ -104,6 +104,8 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
   }
 
   public rating(movie): void {
+    console.log(this.data.ratingData, movie);
+    
     if (this.data.ratingData) {
       this.data.ratingData.forEach((element) => {
         if (movie.title === element.title) {
@@ -111,6 +113,9 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
         }
       });
     } else if (!this.data.ratingData && localStorage.length) {
+      if (!movie.ratingValue) {
+        return;
+      }
       this.data.ratingData = [
         {
           title: movie.title,

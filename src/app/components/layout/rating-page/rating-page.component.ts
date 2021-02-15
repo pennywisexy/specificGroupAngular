@@ -119,6 +119,7 @@ export class RatingPageComponent implements OnInit {
     localStorage.removeItem('sources');
     localStorage.removeItem('subtitle');
     localStorage.removeItem('thumb');
+    localStorage.removeItem('lastMovie');
 
     this.isSavedRating = false;
 
