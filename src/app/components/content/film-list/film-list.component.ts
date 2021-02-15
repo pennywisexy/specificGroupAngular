@@ -69,6 +69,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
     } else if (sub && !this.data.searchStr) {
       sub.unsubscribe();
     }
+
   }
 
   public setMovie(movie): void {

@@ -11,8 +11,9 @@
         controls="controls"
         [attr.poster]="movie.thumb ? movie.thumb : posterUrl"
         class='embed-responsive-item video'
-
+        autoplay="true"
         [autoplay]="true"
+        muted
         (timeupdate)="getCurrentTime($event)"
         ></video>
   </div>

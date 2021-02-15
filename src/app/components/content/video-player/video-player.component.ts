@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { GetDataService } from '../../../services/get-data.service';
 import { StarRatingComponent } from 'ng-starrating';
 
@@ -7,7 +7,7 @@ import { StarRatingComponent } from 'ng-starrating';
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss'],
 })
-export class VideoPlayerComponent implements OnInit {
+export class VideoPlayerComponent implements OnInit, AfterViewInit {
 
   @ViewChild('videoPlayer') videoPlayer: ElementRef;
 
@@ -38,6 +38,11 @@ export class VideoPlayerComponent implements OnInit {
       this.movie = movie;
     });
     this.isCurrentTime = true;
+  }
+
+  ngAfterViewInit(): void {
+    this.videoPlayer.nativeElement.muted = true;
+    this.videoPlayer.nativeElement.play();
   }
 
   onRate($event: {oldValue: number, newValue: number, starRating: StarRatingComponent}): void {
