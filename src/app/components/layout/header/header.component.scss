@@ -11,7 +11,7 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
 
 .wrapper {
   background-color: var(--base-bg-header);
-  height: 11vh;
+  height: 74px;
   width: 100vw;
   display: flex;
   align-items: center;
@@ -24,9 +24,9 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
 
     .logo {
       display: flex;
-      height: 19vh;
-      width: 16vw;
-      margin-top: 14%;
+      height: 132px;
+      width: 220px;
+      margin-top: 33px;
 
       .prelogo {
         background: url('https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Public/Images/theme/logodreieck.png');
@@ -37,8 +37,8 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
       }
 
       .header-logo {
-        width: 100%;
-        height: 14vh;
+        width: 220px;
+        height: 100px;
         background-color: var(--base-bg-footer);
         padding: 10px;
         border: 1px solid black;

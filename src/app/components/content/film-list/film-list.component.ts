@@ -104,8 +104,6 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
   }
 
   public rating(movie): void {
-    console.log(this.data.ratingData, movie);
-    
     if (this.data.ratingData) {
       this.data.ratingData.forEach((element) => {
         if (movie.title === element.title) {
