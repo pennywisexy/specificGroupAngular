@@ -42,7 +42,7 @@ export class EditPageComponent implements OnInit {
       this.data.getFilms()
         .subscribe((movies) => {
           this.data.movies = movies.categories[0].videos;
-          this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
+          this.setMovies.emit(this.data.movies);
         });
     }
 
@@ -61,7 +61,7 @@ export class EditPageComponent implements OnInit {
     this.data.movies.forEach(movie => {
       movie.genre = 'action';
     });
-    this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
+    this.setMovies.emit(this.data.movies);
     this.form.reset();
     this.notification = true;
 
@@ -89,6 +89,7 @@ export class EditPageComponent implements OnInit {
     editingMovie.sources = this.form.value.sources;
     editingMovie.title = this.form.value.title;
     editingMovie.subtitle = this.form.value.subtitle;
+    this.setMovies.emit(this.data.movies);
 
     this.form.reset();
   }

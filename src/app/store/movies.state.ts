@@ -1,4 +1,5 @@
 import { Selector, State, StateContext } from '@ngxs/store';
+import { patch } from '@ngxs/store/operators';
 import { Movies } from './../services/movies';
 import { EmitterAction, Receiver } from '@ngxs-labs/emitter';
 import { Injectable } from '@angular/core';
@@ -37,7 +38,7 @@ export class MoviesState {
   }
   @Receiver()
   public static setMovies(ctx: StateContext<MoviesStateModel>, { payload }: EmitterAction<Movies[]>): void {
-    ctx.patchState({ movies: payload });
+    ctx.patchState({ movies: JSON.parse(JSON.stringify(payload)) });
   }
   @Selector()
   public static getMovies(state: MoviesStateModel): Movies[] {

@@ -33,22 +33,22 @@
       <div *ngIf="this.data.ratingData && title; else noRatings">
         <div *ngIf="!isReset; else noRatings">
           <div class="rating-inner" *ngIf="isPopular">
-           <div class="rating-inner__main">
-            <div class="title">{{mostPopularMovieTitle}}</div>
-            <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-            <div *ngIf="this.data.isLogged" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
-            <div *ngIf="!this.data.isLogged" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
-           </div>
-           <div class="description">{{description}}</div>
+            <div class="rating-inner__main">
+              <div class="title">{{mostPopularMovieTitle}}</div>
+              <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
+              <div *ngIf="this.data.isEnLocale" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
+              <div *ngIf="!this.data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
+            </div>
+            <div class="description">{{description}}</div>
           </div>
           <div class="rating-inner" *ngIf="!isPopular && mostUnpopularMovieTitle.length !== 0">
             <div class="rating-inner__main">
               <div class="title">{{mostUnpopularMovieTitle}}</div>
               <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-              <div *ngIf="this.data.isLogged" class="rating-point">Movie rating: {{mostUnpopularMoviePoint}} points</div>
-              <div *ngIf="!this.data.isLogged" class="rating-point">Рейтинг фильм: {{mostUnpopularMoviePoint}} очков</div>
-             </div>
-             <div class="description">{{description}}</div>
+              <div *ngIf="this.data.isEnLocale" class="rating-point">Movie rating: {{mostUnpopularMoviePoint}} points</div>
+              <div *ngIf="!this.data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostUnpopularMoviePoint}} очков</div>
+            </div>
+            <div class="description">{{description}}</div>
           </div>
         </div>
       </div>
@@ -56,21 +56,21 @@
         <div *ngIf="isSavedRating && !this.data.ratingData && title; else noSavedRatings">
           <div *ngIf="!isReset; else noRatings">
             <div class="rating-inner" *ngIf="isPopular">
-             <div class="rating-inner__main">
-              <div class="title">{{mostPopularMovieTitle}}</div>
-              <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-              <div *ngIf="this.data.isLogged" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
-              <div *ngIf="!this.data.isLogged" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
-             </div>
-             <div class="description">{{description}}</div>
+              <div class="rating-inner__main">
+                <div class="title">{{mostPopularMovieTitle}}</div>
+                <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
+                <div *ngIf="this.data.isEnLocale" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
+                <div *ngIf="!this.data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
+              </div>
+              <div class="description">{{description}}</div>
             </div>
           </div>
         </div>
         <ng-template #noSavedRatings>
-          <div *ngIf="this.data.isLogged">
+          <div *ngIf="this.data.isEnLocale">
             No ratings yet
           </div>
-          <div *ngIf="!this.data.isLogged">
+          <div *ngIf="!this.data.isEnLocale">
             Нет сохраненных рейтингов
           </div>
         </ng-template>

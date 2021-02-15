@@ -95,7 +95,7 @@
       <div class="url">
         {{item.value.sources}}
       </div>
-      <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">Edit Movie
+      <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">
         <div *ngIf="this.data.isEnLocale">Edit Movie</div>
         <div *ngIf="!this.data.isEnLocale">Изменить фильм</div>
       </button>

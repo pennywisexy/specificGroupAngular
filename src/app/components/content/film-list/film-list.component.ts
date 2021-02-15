@@ -1,5 +1,5 @@
 import { Movies } from './../../../services/movies';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MoviesState } from './../../../store/movies.state';
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
@@ -38,25 +38,30 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
           this.data.movies.forEach(movie => {
             movie.genre = 'action';
           });
-          this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
+          this.setMovies.emit(this.data.movies);
         });
 
-
-      if (localStorage.length !== 0) {
+      
+      if (localStorage.title) {
         this.setMovie(localStorage);
+      } else if (!localStorage.title && localStorage.lastMovie) {
+        this.setMovie(JSON.parse(localStorage.lastMovie));
       }
     }
+
     this.data.dataForMovieNewWindow = '';
     this.data.currentMovie.subscribe(movie => this.rating(movie));
+
     if (this.data.movies) {
-      this.setMovies.emit(JSON.parse(JSON.stringify(this.data.movies)));
+      this.setMovies.emit(this.data.movies);
     }
+
     this.getMovies$.subscribe(mov => this.movies = mov);
     localStorage.locale = this.data.locale;
   }
 
   ngAfterViewChecked(): void {
-    let sub;
+    let sub: Subscription;
     if (this.data.searchStr) {
       sub = this.filteredMovies$.subscribe(filMov => this.movies = filMov);
     } else if (sub && !this.data.searchStr) {
@@ -66,6 +71,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
 
   public setMovie(movie): void {
     this.data.currentMovie.next(movie);
+    localStorage.lastMovie = JSON.stringify(movie);
 
     if (this.isActiveButton) {
       this.isActiveButton = false;
