@@ -50,6 +50,10 @@
         }
       }
 
+      .dark-theme {
+        color: var(--dark-base-text-color);
+      }
+
       .validation {
         color: var(--base-invalid-color);
         height: 2rem;
@@ -111,6 +115,7 @@
       }
     }
   }
+  @include darkThemeSecond();
 
   .btn {
     @include btnStyles();

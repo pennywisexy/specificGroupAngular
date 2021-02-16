@@ -1,3 +1,4 @@
+import { GetDataService } from './services/get-data.service';
 import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
@@ -5,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(public data: GetDataService) {
+  }
 }
 

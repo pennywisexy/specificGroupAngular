@@ -51,4 +51,8 @@ export class HeaderComponent implements OnInit {
     this.isEnLocale = false;
     this.data.isEnLocale = false;
   }
+
+  setTheme(): void {
+    this.data.isDarkTheme = !this.data.isDarkTheme;
+  }
 }

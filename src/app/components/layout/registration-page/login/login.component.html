@@ -1,14 +1,16 @@
 <div class="container">
-  <form class="card"  [formGroup]="this.parent.form" (ngSubmit)="submit()">
+  <form class="card" [ngClass]="{'dark-theme': this.data.isDarkTheme}"  [formGroup]="this.parent.form" (ngSubmit)="submit()">
     <h2 class="card-title">Sign-In</h2>
 
     <div
       class="form-control"
+      [ngClass]="{'dark-theme': this.data.isDarkTheme}"
       *ngIf="{invalid: this.parent.form.get('email').touched && this.parent.form.get('email').invalid}"
     >
       <label for="email">Email:</label>
       <input
         class="input-text"
+        [ngClass]="{'dark-theme': this.data.isDarkTheme}"
         id="email"
         type="email"
         formControlName="email">
@@ -27,11 +29,13 @@
 
     <div
       class="form-control"
+      [ngClass]="{'dark-theme': this.data.isDarkTheme}"
       *ngIf="{invalid: this.parent.form.get('password').touched && this.parent.form.get('password').invalid}"
       >
       <label for="password">Password:</label>
       <input
         class="input-text"
+        [ngClass]="{'dark-theme': this.data.isDarkTheme}"
         id="password"
         type="password"
         formControlName="password">

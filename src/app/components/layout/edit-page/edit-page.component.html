@@ -1,15 +1,15 @@
 <div
   *ngIf="this.data.isLogged; else registration"
   class="container">
-  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
 
-    <div class="form-control">
+    <div class="form-control" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
       <label class="head">
         <div *ngIf="this.data.isEnLocale">Title</div>
         <div *ngIf="!this.data.isEnLocale">Заглавие</div>
       </label>
-      <input *ngIf="this.data.isEnLocale" class="input-text" type="title" placeholder="Title" formControlName="title">
-      <input *ngIf="!this.data.isEnLocale" class="input-text" type="title" placeholder="Заглавие" formControlName="title">
+      <input [ngClass]="{'dark-theme': this.data.isDarkTheme}" *ngIf="this.data.isEnLocale" class="input-text" type="title" placeholder="Title" formControlName="title">
+      <input [ngClass]="{'dark-theme': this.data.isDarkTheme}" *ngIf="!this.data.isEnLocale" class="input-text" type="title" placeholder="Заглавие" formControlName="title">
       <div
         class="validation"
         *ngIf="form.get('title').invalid && form.get('title').touched">
@@ -20,13 +20,13 @@
       </div>
     </div>
 
-    <div class="form-control">
+    <div class="form-control" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
       <label class="head">
         <div *ngIf="this.data.isEnLocale">Subtitle</div>
         <div *ngIf="!this.data.isEnLocale">Подзаголовок</div>
       </label>
-      <input *ngIf="this.data.isEnLocale" class="input-text" type="text" placeholder="Subtitle" formControlName="subtitle">
-      <input *ngIf="!this.data.isEnLocale" class="input-text" type="text" placeholder="Подзаголовок" formControlName="subtitle">
+      <input [ngClass]="{'dark-theme': this.data.isDarkTheme}" *ngIf="this.data.isEnLocale" class="input-text" type="text" placeholder="Subtitle" formControlName="subtitle">
+      <input [ngClass]="{'dark-theme': this.data.isDarkTheme}" *ngIf="!this.data.isEnLocale" class="input-text" type="text" placeholder="Подзаголовок" formControlName="subtitle">
       <div
         class="validation"
         *ngIf="form.get('subtitle').invalid && form.get('subtitle').touched">
@@ -37,13 +37,13 @@
       </div>
     </div>
 
-    <div class="form-control">
+    <div class="form-control" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
       <label class="head">
         <div *ngIf="this.data.isEnLocale">Description</div>
         <div *ngIf="!this.data.isEnLocale">Описание</div>
       </label>
-      <input *ngIf="this.data.isEnLocale" class="input-text" type="text" placeholder="Description" formControlName="description">
-      <input *ngIf="!this.data.isEnLocale" class="input-text" type="text" placeholder="Описание" formControlName="description">
+      <input [ngClass]="{'dark-theme': this.data.isDarkTheme}" *ngIf="this.data.isEnLocale" class="input-text" type="text" placeholder="Description" formControlName="description">
+      <input [ngClass]="{'dark-theme': this.data.isDarkTheme}" *ngIf="!this.data.isEnLocale" class="input-text" type="text" placeholder="Описание" formControlName="description">
       <div class="validation"
       *ngIf="form.get('description').invalid && form.get('description').touched">
         <small>
@@ -53,13 +53,13 @@
       </div>
     </div>
 
-    <div class="form-control">
+    <div class="form-control" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
       <label class="head">
         <div *ngIf="this.data.isEnLocale">Movie Link</div>
         <div *ngIf="!this.data.isEnLocale">Ссылка на фильм</div>
       </label>
-      <input *ngIf="this.data.isEnLocale" class="input-text" type="url" placeholder="Movie Link" formControlName="sources">
-      <input *ngIf="!this.data.isEnLocale" class="input-text" type="url" placeholder="Ссылка на фильм" formControlName="sources">
+      <input [ngClass]="{'dark-theme': this.data.isDarkTheme}" *ngIf="this.data.isEnLocale" class="input-text" type="url" placeholder="Movie Link" formControlName="sources">
+      <input [ngClass]="{'dark-theme': this.data.isDarkTheme}" *ngIf="!this.data.isEnLocale" class="input-text" type="url" placeholder="Ссылка на фильм" formControlName="sources">
       <div class="validation"
       *ngIf="form.get('sources').invalid && form.get('sources').touched">
         <small>Field movie link cannot be empty.
@@ -88,7 +88,7 @@
   </form>
 
   <div class="movies-list" *ngFor="let item of this.movies | keyvalue">
-    <div class="movie-item">
+    <div [ngClass]="{'dark-theme': this.data.isDarkTheme}" class="movie-item">
       <h3 class="title">{{item.value.title}}</h3>
       <h4 class="title subtitle">{{item.value.subtitle}}</h4>
       <div class="description">{{item.value.description}}</div>

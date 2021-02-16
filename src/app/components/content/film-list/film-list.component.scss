@@ -73,7 +73,11 @@
         margin-right: 14%;
         padding: 10px 5px;
       }
+      @include darkThemeSecond();
+
     }
+
+
 
     .btn {
       background-color: var(--base-bg-color);
@@ -83,7 +87,14 @@
         color: var(--base-text-color);
       }
     }
+    @include darkThemeSecond();
   }
-
-
+  .dark-theme {
+    opacity: .7;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
+
+@include darkTheme();

@@ -1,13 +1,15 @@
 <div class="container">
-  <form class="card" [formGroup]="this.parent.formReg" (ngSubmit)="registration()">
+  <form class="card" [ngClass]="{'dark-theme': this.data.isDarkTheme}" [formGroup]="this.parent.formReg" (ngSubmit)="registration()">
     <h2 class="card-title">Create account</h2>
 
     <div
       class="form-control"
+      [ngClass]="{'dark-theme': this.data.isDarkTheme}"
       *ngIf="{invalid: this.parent.formReg.get('email').touched && this.parent.formReg.get('email').invalid}"
     >
-      <label for="email">Email:</label>
+      <label [ngClass]="{'dark-theme': this.data.isDarkTheme}" for="email">Email:</label>
       <input
+        [ngClass]="{'dark-theme': this.data.isDarkTheme}"
         class="input-text"
         id="email"
         type="email"
@@ -27,11 +29,13 @@
 
     <div
       class="form-control"
+      [ngClass]="{'dark-theme': this.data.isDarkTheme}"
       *ngIf="{invalid: this.parent.formReg.get('password').touched && this.parent.formReg.get('password').invalid}"
       >
-      <label for="password">Password:</label>
+      <label [ngClass]="{'dark-theme': this.data.isDarkTheme}" for="password">Password:</label>
       <input
         class="input-text"
+        [ngClass]="{'dark-theme': this.data.isDarkTheme}"
         id="password"
         type="password"
         formControlName="password">
@@ -49,11 +53,13 @@
     </div>
       <div
         class="form-control"
+        [ngClass]="{'dark-theme': this.data.isDarkTheme}"
         *ngIf="this.parent.isReg || {invalid: this.parent.formReg.get('first-name').touched && this.parent.formReg.get('first-name').invalid}"
         >
-        <label for="first-name">First Name:</label>
+        <label [ngClass]="{'dark-theme': this.data.isDarkTheme}" for="first-name">First Name:</label>
         <input
           class="input-text"
+          [ngClass]="{'dark-theme': this.data.isDarkTheme}"
           id="first-name"
           type="text"
           formControlName="first-name">
@@ -69,11 +75,13 @@
 
       <div
         class="form-control"
+        [ngClass]="{'dark-theme': this.data.isDarkTheme}"
         *ngIf="this.parent.isReg || {invalid: this.parent.formReg.get('last-name').touched && this.parent.formReg.get('last-name').invalid}"
         >
-        <label for="last-name">Last Name:</label>
+        <label [ngClass]="{'dark-theme': this.data.isDarkTheme}" for="last-name">Last Name:</label>
         <input
           class="input-text"
+          [ngClass]="{'dark-theme': this.data.isDarkTheme}"
           id="last-name"
           type="text"
           formControlName="last-name">

@@ -1,3 +1,4 @@
+import { GetDataService } from './../../../services/get-data.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-
+  constructor(public data: GetDataService) {
+  }
 }

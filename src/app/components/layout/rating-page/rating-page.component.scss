@@ -69,6 +69,7 @@
             }
           }
         }
+        @include darkThemeSecond();
       }
 
       .btn-item {
@@ -90,6 +91,7 @@
         }
       }
     }
+    @include darkThemeSecond();
 
     .rating {
       @include flexible();

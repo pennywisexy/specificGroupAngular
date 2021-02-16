@@ -2,12 +2,41 @@
 
 $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Public/Images/theme/specific-group.svg';
 
-
 .preheader {
   height: 33px;
   background-color: var(--base-bg-footer);
-  overflow: hidden;
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  
+  .container {
+    display: flex;
+    justify-content: flex-end;
+
+    &-inner {
+      display: flex;
+      width: 20%;
+      z-index: 1;
+  
+      .btn {
+        @include btnStyles();
+        background: none;
+        border: none;
+        outline: none;
+      }
+
+      .theme-black {
+        background: var(--base-bg-color);
+      }
+
+      .theme-white {
+        background: var(--dark-bg-color);
+      }
+    }
+  }
 }
+
+@include darkThemeSecond();
 
 .wrapper {
   background-color: var(--base-bg-header);
@@ -15,8 +44,6 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
   width: 100vw;
   display: flex;
   align-items: center;
-
-
 
   .container {
     display: flex;
@@ -54,6 +81,7 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
           background-repeat: no-repeat;
         }
       }
+      @include darkThemeSecond();
     }
 
 
@@ -144,14 +172,22 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
                 justify-content: center;
                 align-items: center;
               }
+
+              .dark-theme {
+                background-color: var(--base-devider-color);
+                height: 1px;
+              }
+
             }
 
             &.show {
               display: flex;
             }
           }
+          @include darkThemeSecond();
         }
       }
     }
+    @include darkTheme();
   }
 }

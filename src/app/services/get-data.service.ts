@@ -44,6 +44,8 @@ export class GetDataService {
   locale = 'en';
   isEnLocale = true;
 
+  isDarkTheme = false;
+
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<Movie> {

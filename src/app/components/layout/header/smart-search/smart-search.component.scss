@@ -17,6 +17,11 @@
     #name {
       width: 100%;
     }
+
+    @include darkThemeSecond();
+    .dark-theme {
+      border: none;
+    }
   }
 
   .buttons {

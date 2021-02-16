@@ -3,6 +3,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  
 
   .card {
     display: flex;
@@ -12,6 +13,8 @@
     border: var(--base-border-color) 1px dotted;
     margin: 0.7rem 0;
     height: 35rem;
+    @include darkThemeSecond();
+
 
     .form-control {
       display: flex;
@@ -44,8 +47,12 @@
         }
       }
 
+      .dark-theme {
+        color: var(--dark-base-text-color);
+      }
+
       .validation {
-        color: var(--base-invalid-color);
+        color: var(--v);
         height: 2rem;
       }
     }
@@ -90,6 +97,10 @@
         padding: 0 0 10px 0;
       }
     }
+    @include darkThemeSecond();
+    .dark-theme {
+      border-left: 25px solid #215a93;
+    }
   }
 
   .btn {
@@ -108,4 +119,5 @@
       opacity: 0.8;
     }
   }
+  @include darkThemeSecond();
 }
