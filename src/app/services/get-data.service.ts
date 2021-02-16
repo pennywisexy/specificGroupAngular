@@ -26,6 +26,7 @@ export class GetDataService {
     subtitle?: string,
     thumb?: string,
     title: string,
+    genre?: string,
     ratingValue?: number
   }>;
 
@@ -35,9 +36,23 @@ export class GetDataService {
   userRegData: [RegistrationData];
   isLogged = false;
 
+  searchStr = '';
+  searchBy = 'title';
+
+  videoCurrentTime: string;
+
+  locale = 'en';
+  isEnLocale = true;
+
   constructor(private http: HttpClient) {}
 
   getFilms(): Observable<Movie> {
     return this.http.get<Movie>(this.moviesUrl);
+  }
+
+  logged(): void {
+    if (localStorage.isLogged === 'true') {
+      this.isLogged = true;
+    }
   }
 }

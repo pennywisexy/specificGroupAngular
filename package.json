@@ -16,7 +16,7 @@
   },
   "lint-staged": {
     "*.{js,ts}": [
-       "eslint --fix"
+      "eslint --fix"
     ]
   },
   "private": true,
@@ -31,6 +31,10 @@
     "@angular/platform-browser-dynamic": "~9.1.1",
     "@angular/router": "~9.1.1",
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
+    "@ngxs-labs/dispatch-decorator": "^2.1.0",
+    "@ngxs-labs/emitter": "^2.0.0",
+    "@ngxs/logger-plugin": "^3.6.2-dev.master-eaa5d86",
+    "@ngxs/store": "^3.6.2-dev.master-eaa5d86",
     "angular-in-memory-web-api": "^0.11.0",
     "angularfire2": "^5.4.2",
     "bootstrap": "^4.5.3",

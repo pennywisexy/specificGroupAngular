@@ -1,3 +1,5 @@
+import { MoviesState } from './store/movies.state';
+import { environment } from './../environments/environment';
 import { AppGuard } from './app.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,6 +22,17 @@ import { LayoutItemComponent } from './components/layout/layout-item/layout-item
 import { RegistrationPageComponent } from './components/layout/registration-page/registration-page.component';
 import { RegistrationComponent } from './components/layout/registration-page/registration/registration.component';
 import { LoginComponent } from './components/layout/registration-page/login/login.component';
+import { SmartSearchComponent } from './components/layout/header/smart-search/smart-search.component';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsEmitPluginModule } from '@ngxs-labs/emitter';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import enLocale from '@angular/common/locales/en';
+import ruLocale from '@angular/common/locales/ru';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(enLocale, 'en');
+registerLocaleData(ruLocale, 'ru');
+
 
 @NgModule({
   declarations: [
@@ -34,7 +47,8 @@ import { LoginComponent } from './components/layout/registration-page/login/logi
     LayoutItemComponent,
     RegistrationPageComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    SmartSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +57,12 @@ import { LoginComponent } from './components/layout/registration-page/login/logi
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    RatingModule
+    RatingModule,
+    NgxsModule.forRoot([MoviesState], {
+      developmentMode: !environment.production
+    }),
+    NgxsEmitPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
   ],
   providers: [AppGuard],
   bootstrap: [AppComponent]

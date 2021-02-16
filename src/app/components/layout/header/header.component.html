@@ -10,6 +10,9 @@
       </div>
       </div>
     </a>
+    <div class="search">
+      <app-smart-search></app-smart-search>
+    </div>
     <div class="navbar">
       <ul class="navbar-items">
         <li class="navbar-item">
@@ -19,7 +22,10 @@
               [routerLink]="['/']"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
-            >Main</a>
+            >
+            <div *ngIf="isEnLocale">Main</div>
+            <div *ngIf="!isEnLocale">Главная</div>
+          </a>
           </button>
         </li>
         <li class="navbar-item">
@@ -29,7 +35,10 @@
               [routerLink]="['/edit-page']"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
-              >Edit</a>
+            >
+              <div *ngIf="isEnLocale">Edit</div>
+              <div *ngIf="!isEnLocale">Изменить</div>
+            </a>
           </button>
         </li>
         <li class="navbar-item">
@@ -39,7 +48,10 @@
               [routerLink]="['/rating-page']"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
-              >Rating</a>
+            >
+              <div *ngIf="isEnLocale">Rating</div>
+              <div *ngIf="!isEnLocale">Рейтинг</div>
+            </a>
           </button>
         </li>
         <li
@@ -52,7 +64,9 @@
               [routerLink]="['/registration']"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
-              >Sign&nbsp;In</a>
+            >
+              <div *ngIf="isEnLocale">Sign&nbsp;In</div>
+              <div *ngIf="!isEnLocale">Войти</div></a>
           </button>
         </li>
         <li
@@ -64,21 +78,28 @@
             class="navbar-item__link"
           >
             <div class="profile">
-              <img class="profile-img" src="https://www.iconspng.com/images/-abstract-user-icon-1/-abstract-user-icon-1.jpg" alt="profile">
+              <img class="profile-img" src="../../../../assets/main.jpg" alt="profile">
             </div>
           </a>
         </button>
         <div class="profile-menu" [ngClass]="{'show': profileShow}">
           <div class="profile">
-            <img class="profile-img" src="https://www.iconspng.com/images/-abstract-user-icon-1/-abstract-user-icon-1.jpg" alt="profile">
+            <img class="profile-img" src="../../../../assets/main.jpg" alt="profile">
           </div>
           <div class="info">
             <hr class="devider">
             <div class="name">{{this.data.user.name}}</div>
             <div class="email">{{this.data.user.email}}</div>
             <hr class="devider">
+            <div class="locale">
+              <button class="btn" (click)="enLocale()" [disabled]="isEnLocale">En</button>
+              <button class="btn" (click)="ruLocale()" [disabled]="!isEnLocale">Ru</button>
+            </div>
           </div>
-          <button class="btn signOut" (click)="signOut()">Sign Out</button>
+          <button class="btn signOut" (click)="signOut()">
+            <div *ngIf="isEnLocale">Sign Out</div>
+            <div *ngIf="!isEnLocale">Выйти</div>
+          </button>
         </div>
       </li>
       </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { GetDataService } from '../../../services/get-data.service';
 import { StarRatingComponent } from 'ng-starrating';
 
@@ -7,7 +7,9 @@ import { StarRatingComponent } from 'ng-starrating';
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss'],
 })
-export class VideoPlayerComponent implements OnInit {
+export class VideoPlayerComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('videoPlayer') videoPlayer: ElementRef;
 
   public posterUrl = 'https://media.newyorker.com/photos/5de540ecd1eff50008e2095a/master/w_2560%2Cc_limit/2019-Brody-Movies.gif';
 
@@ -23,6 +25,10 @@ export class VideoPlayerComponent implements OnInit {
   totalstars = 5;
   readonly = 'false';
 
+  currentTime: string;
+  videoEvent: string;
+  isCurrentTime = true;
+
   constructor(
     public data: GetDataService,
   ) { }
@@ -31,6 +37,12 @@ export class VideoPlayerComponent implements OnInit {
     this.data.currentMovie.subscribe((movie) => {
       this.movie = movie;
     });
+    this.isCurrentTime = true;
+  }
+
+  ngAfterViewInit(): void {
+    this.videoPlayer.nativeElement.muted = true;
+    this.videoPlayer.nativeElement.play();
   }
 
   onRate($event: {oldValue: number, newValue: number, starRating: StarRatingComponent}): void {
@@ -99,4 +111,14 @@ export class VideoPlayerComponent implements OnInit {
     }, 1500);
   }
 
+  getCurrentTime(event): void {
+    this.videoEvent = event;
+    this.currentTime = event.target.currentTime;
+    if (localStorage[`currentTime ${this.movie.title}`] && this.isCurrentTime) {
+      this.videoPlayer.nativeElement.currentTime = localStorage[`currentTime ${this.movie.title}`];
+      this.isCurrentTime = false;
+    }
+    localStorage[`currentTime ${this.movie.title}`] = this.currentTime;
+    this.data.videoCurrentTime = localStorage[`currentTime ${this.movie.title}`];
+  }
 }

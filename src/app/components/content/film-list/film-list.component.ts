@@ -1,39 +1,80 @@
-import { Component, OnInit } from '@angular/core';
+import { Movies } from './../../../services/movies';
+import { Observable, Subscription } from 'rxjs';
+import { MoviesState } from './../../../store/movies.state';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
 import { GetDataService } from '../../../services/get-data.service';
+import { Emittable, Emitter } from '@ngxs-labs/emitter';
 @Component({
   selector: 'app-film-list',
   templateUrl: './film-list.component.html',
   styleUrls: ['./film-list.component.scss'],
 })
-export class FilmListComponent implements OnInit {
+export class FilmListComponent implements OnInit, AfterViewChecked {
+
+  @Select(MoviesState.getMovies) getMovies$: Observable<Movies[]>;
+  @Select(MoviesState.getVisibleMovies) filteredMovies$: Observable<Movies[]>;
+
+  @Emitter(MoviesState.setMovies) setMovies: Emittable<Movies[]>;
+
+
   isActiveButton = false;
 
   showDescription = '';
 
   title = '';
 
+  movies: Movies[];
+
   constructor(
-    public data: GetDataService,
+    public data: GetDataService
   ) { }
 
   ngOnInit(): void {
-    this.data.getFilms();
-
     if (!this.data.movies) {
-
       this.data.getFilms()
-        .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+        .subscribe((movies) => {
+          this.data.movies = movies.categories[0].videos;
+          this.data.movies.forEach(movie => {
+            movie.genre = 'action';
+          });
+          this.setMovies.emit(this.data.movies);
+        });
 
-      if (localStorage.length !== 0) {
+      
+      if (localStorage.title) {
         this.setMovie(localStorage);
+      } else if (!localStorage.title && localStorage.lastMovie) {
+        this.setMovie(JSON.parse(localStorage.lastMovie));
       }
     }
+
     this.data.dataForMovieNewWindow = '';
     this.data.currentMovie.subscribe(movie => this.rating(movie));
+
+    if (this.data.movies) {
+      this.setMovies.emit(this.data.movies);
+    }
+
+    this.getMovies$.subscribe(mov => this.movies = mov);
+    localStorage.locale = this.data.locale;
+  }
+
+
+
+  ngAfterViewChecked(): void {
+    let sub: Subscription;
+    if (this.data.searchStr) {
+      sub = this.filteredMovies$.subscribe(filMov => this.movies = filMov);
+    } else if (sub && !this.data.searchStr) {
+      sub.unsubscribe();
+    }
+
   }
 
   public setMovie(movie): void {
     this.data.currentMovie.next(movie);
+    localStorage.lastMovie = JSON.stringify(movie);
 
     if (this.isActiveButton) {
       this.isActiveButton = false;
@@ -73,6 +114,9 @@ export class FilmListComponent implements OnInit {
         }
       });
     } else if (!this.data.ratingData && localStorage.length) {
+      if (!movie.ratingValue) {
+        return;
+      }
       this.data.ratingData = [
         {
           title: movie.title,

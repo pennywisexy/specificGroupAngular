@@ -4,60 +4,90 @@
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
 
     <div class="form-control">
-      <label class="head">Title</label>
-      <input class="input-text" type="title" placeholder="Title" formControlName="title">
+      <label class="head">
+        <div *ngIf="this.data.isEnLocale">Title</div>
+        <div *ngIf="!this.data.isEnLocale">Заглавие</div>
+      </label>
+      <input *ngIf="this.data.isEnLocale" class="input-text" type="title" placeholder="Title" formControlName="title">
+      <input *ngIf="!this.data.isEnLocale" class="input-text" type="title" placeholder="Заглавие" formControlName="title">
       <div
         class="validation"
         *ngIf="form.get('title').invalid && form.get('title').touched">
         <small>
-          Field title cannot be empty.
+          <div *ngIf="this.data.isEnLocale">Field title cannot be empty.</div>
+          <div *ngIf="!this.data.isEnLocale">Поле заглавие не может быть пустым.</div>
         </small>
       </div>
     </div>
 
     <div class="form-control">
-      <label class="head">Subtitle</label>
-      <input class="input-text" type="text" placeholder="Subtitle" formControlName="subtitle">
+      <label class="head">
+        <div *ngIf="this.data.isEnLocale">Subtitle</div>
+        <div *ngIf="!this.data.isEnLocale">Подзаголовок</div>
+      </label>
+      <input *ngIf="this.data.isEnLocale" class="input-text" type="text" placeholder="Subtitle" formControlName="subtitle">
+      <input *ngIf="!this.data.isEnLocale" class="input-text" type="text" placeholder="Подзаголовок" formControlName="subtitle">
       <div
         class="validation"
         *ngIf="form.get('subtitle').invalid && form.get('subtitle').touched">
         <small>
-          Field subtitle cannot be empty.
+          <div *ngIf="this.data.isEnLocale">Field subtitle cannot be empty.</div>
+          <div *ngIf="!this.data.isEnLocale">Поле подзаголовок не может быть пустым.</div>
         </small>
       </div>
     </div>
 
     <div class="form-control">
-      <label class="head">Description</label>
-      <input class="input-text" type="text" placeholder="Description" formControlName="description">
+      <label class="head">
+        <div *ngIf="this.data.isEnLocale">Description</div>
+        <div *ngIf="!this.data.isEnLocale">Описание</div>
+      </label>
+      <input *ngIf="this.data.isEnLocale" class="input-text" type="text" placeholder="Description" formControlName="description">
+      <input *ngIf="!this.data.isEnLocale" class="input-text" type="text" placeholder="Описание" formControlName="description">
       <div class="validation"
       *ngIf="form.get('description').invalid && form.get('description').touched">
         <small>
-          Field description cannot be empty.
+          <div *ngIf="this.data.isEnLocale">Field description cannot be empty.</div>
+          <div *ngIf="!this.data.isEnLocale">Поле описания не может быть пустым.</div>
         </small>
       </div>
     </div>
 
     <div class="form-control">
-      <label class="head">Movie Link</label>
-      <input class="input-text" type="url" placeholder="Movie Link" formControlName="sources">
+      <label class="head">
+        <div *ngIf="this.data.isEnLocale">Movie Link</div>
+        <div *ngIf="!this.data.isEnLocale">Ссылка на фильм</div>
+      </label>
+      <input *ngIf="this.data.isEnLocale" class="input-text" type="url" placeholder="Movie Link" formControlName="sources">
+      <input *ngIf="!this.data.isEnLocale" class="input-text" type="url" placeholder="Ссылка на фильм" formControlName="sources">
       <div class="validation"
       *ngIf="form.get('sources').invalid && form.get('sources').touched">
-        <small>Field movie link cannot be empty.</small>
+        <small>Field movie link cannot be empty.
+          <div *ngIf="this.data.isEnLocale">Field movie link cannot be empty.</div>
+          <div *ngIf="!this.data.isEnLocale">Поле ссылка на фильм не может быть пустым.</div>
+        </small>
       </div>
     </div>
 
-    <button *ngIf="!editBtn; else edit" class="btn" type="submit" [disabled]="form.invalid">Add Movie</button>
+    <button *ngIf="!editBtn; else edit" class="btn" type="submit" [disabled]="form.invalid">
+      <div *ngIf="this.data.isEnLocale">Add movie</div>
+      <div *ngIf="!this.data.isEnLocale">Добавить фильм</div></button>
     <ng-template #edit>
-      <button (click)="editChangedMovie()" class="btn" type="submit" [disabled]="form.invalid">Edit Movie</button>
+      <button (click)="editChangedMovie()" class="btn" type="submit" [disabled]="form.invalid">
+        <div *ngIf="this.data.isEnLocale">Edit Movie</div>
+        <div *ngIf="!this.data.isEnLocale">Изменить фильм</div>
+      </button>
     </ng-template>
     <div
       class="hint"
       [ngClass]="{'hint-show': notification}"
-      ><div class="hint-item">Movie Added</div></div>
+      ><div class="hint-item">
+        <div *ngIf="this.data.isEnLocale">Movie Added</div>
+        <div *ngIf="!this.data.isEnLocale">Фильм добавлен</div>
+      </div></div>
   </form>
 
-  <div class="movies-list" *ngFor="let item of this.data.movies | keyvalue">
+  <div class="movies-list" *ngFor="let item of this.movies | keyvalue">
     <div class="movie-item">
       <h3 class="title">{{item.value.title}}</h3>
       <h4 class="title subtitle">{{item.value.subtitle}}</h4>
@@ -65,7 +95,10 @@
       <div class="url">
         {{item.value.sources}}
       </div>
-      <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">Edit Movie</button>
+      <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">
+        <div *ngIf="this.data.isEnLocale">Edit Movie</div>
+        <div *ngIf="!this.data.isEnLocale">Изменить фильм</div>
+      </button>
     </div>
   </div>
 

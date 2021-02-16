@@ -1,13 +1,22 @@
+import { Movies } from './../../../services/movies';
+import { Observable } from 'rxjs';
+import { MoviesState } from './../../../store/movies.state';
 import { GetDataService } from '../../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Select } from '@ngxs/store';
+import { Emittable, Emitter } from '@ngxs-labs/emitter';
 @Component({
   selector: 'app-edit-page',
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss']
 })
 export class EditPageComponent implements OnInit {
+  @Select(MoviesState.getMovies) getMovies$: Observable<Movies[]>;
+
+  @Emitter(MoviesState.setMovies) setMovies: Emittable<Movies[]>;
+
 
   form: FormGroup;
 
@@ -19,12 +28,22 @@ export class EditPageComponent implements OnInit {
 
   notification = false;
 
-  constructor(public data: GetDataService, private router: Router) { }
+  movies: Movies[];
 
-  ngOnInit(): void {
+  constructor(
+    public data: GetDataService, 
+    private router: Router
+  ) { }
+
+  ngOnInit(): void { 
+    this.getMovies$.subscribe(mov => this.movies = mov);
+    
     if (this.data.movies === undefined) {
       this.data.getFilms()
-        .subscribe((movies) => this.data.movies = movies.categories[0].videos);
+        .subscribe((movies) => {
+          this.data.movies = movies.categories[0].videos;
+          this.setMovies.emit(this.data.movies);
+        });
     }
 
     this.form = new FormGroup({
@@ -39,6 +58,10 @@ export class EditPageComponent implements OnInit {
   submit(): void {
     this.formData = {...this.form.value};
     this.data.movies.unshift(this.formData);
+    this.data.movies.forEach(movie => {
+      movie.genre = 'action';
+    });
+    this.setMovies.emit(this.data.movies);
     this.form.reset();
     this.notification = true;
 
@@ -66,6 +89,7 @@ export class EditPageComponent implements OnInit {
     editingMovie.sources = this.form.value.sources;
     editingMovie.title = this.form.value.title;
     editingMovie.subtitle = this.form.value.subtitle;
+    this.setMovies.emit(this.data.movies);
 
     this.form.reset();
   }

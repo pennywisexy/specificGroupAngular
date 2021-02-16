@@ -1,0 +1,52 @@
+@import '../../../../../theme.scss';
+
+.search {
+  margin-top: 35%;
+  background-color: var(--base-bg-header);
+  border: none;
+
+  .form-control {
+    display: flex;
+    max-width: 800px;
+    width: 120%;
+    color: var(--btn-text-color);
+    background-color: var(--base-bg-header);
+    border: none;
+
+
+    #name {
+      width: 100%;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn {
+      color: var(--btn-text-color);
+      border: none;
+      outline: none;
+
+      &:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: var(--base-text-color);
+      }
+    }
+  }
+
+  .devider {
+    border-left: 1px solid var(--btn-text-color);
+    height: 2rem;
+  }
+}
