@@ -40,7 +40,8 @@ export const lightTheme = {
   '--base-text-hover': '#ccc',
   '--white-bg-color': 'white',
   '--base-shadow-color': '#000000',
-  '--base-devider-color': '#e7e7e7'
+  '--base-devider-color': '#e7e7e7',
+  '--base-opasity': '1'
 };
 
 @Injectable({providedIn: 'root'})

@@ -1,10 +1,10 @@
 <div class="container">
-  <form class="card"  [formGroup]="this.parent.form" (ngSubmit)="submit()">
+  <form class="card"  [formGroup]="parent.form" (ngSubmit)="submit()">
     <h2 class="card-title">Sign-In</h2>
 
     <div
       class="form-control"
-      *ngIf="{invalid: this.parent.form.get('email').touched && this.parent.form.get('email').invalid}"
+      *ngIf="{invalid: parent.form.get('email').touched && parent.form.get('email').invalid}"
     >
       <label for="email">Email:</label>
       <input
@@ -14,20 +14,20 @@
         formControlName="email">
       <div
         class="validation"
-        *ngIf="this.parent.form.get('email').touched && this.parent.form.get('email').invalid"
+        *ngIf="parent.form.get('email').touched && parent.form.get('email').invalid"
       >
         <small
-          *ngIf="this.parent.form.get('email').errors.required"
+          *ngIf="parent.form.get('email').errors.required"
         >Field email can not be empty.</small>
         <small
-          *ngIf="this.parent.form.get('email').errors.email"
+          *ngIf="parent.form.get('email').errors.email"
         >Enter correct email.</small>
       </div>
     </div>
 
     <div
       class="form-control"
-      *ngIf="{invalid: this.parent.form.get('password').touched && this.parent.form.get('password').invalid}"
+      *ngIf="{invalid: parent.form.get('password').touched && parent.form.get('password').invalid}"
       >
       <label for="password">Password:</label>
       <input
@@ -37,14 +37,14 @@
         formControlName="password">
       <div
         class="validation"
-        *ngIf="this.parent.form.get('password').touched && this.parent.form.get('password').invalid"
+        *ngIf="parent.form.get('password').touched && parent.form.get('password').invalid"
       >
         <small
-          *ngIf="this.parent.form.get('password').errors.required"
+          *ngIf="parent.form.get('password').errors.required"
         >Field password can not be empty.</small>
         <small
-          *ngIf="this.parent.form.get('password').errors.minlength"
-        >The password must be at least {{this.parent.form.get('password').errors.minlength.requiredLength}} characters long. He is now {{this.parent.form.get('password').errors.minlength.actualLength}} characters.</small>
+          *ngIf="parent.form.get('password').errors.minlength"
+        >The password must be at least {{parent.form.get('password').errors.minlength.requiredLength}} characters long. He is now {{parent.form.get('password').errors.minlength.actualLength}} characters.</small>
       </div>
     </div>
 
@@ -52,7 +52,7 @@
       <button
         class="btn"
         type="submit"
-        [disabled]="this.parent.form.invalid || this.data.isLogged || this.parent.isReg"
+        [disabled]="parent.form.invalid || data.isLogged || parent.isReg"
       >Sign-In</button>
     </div>
 
@@ -64,8 +64,8 @@
       <button
         class="btn"
         type="button"
-        [disabled]="this.data.isLogged"
-        (click)="this.parent.registrationForm()"
+        [disabled]="data.isLogged"
+        (click)="parent.registrationForm()"
       >Create your account</button>
     </div>
   </form>

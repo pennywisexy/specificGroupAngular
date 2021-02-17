@@ -3,8 +3,10 @@
     <div class="container-inner">
       <button class="btn" (click)="enLocale()" [disabled]="isEnLocale">En</button>
       <button class="btn" (click)="ruLocale()" [disabled]="!isEnLocale">Ru</button>
-      <button *ngIf="this.data.isDarkTheme" class="btn theme-black" (click)="setTheme()">Black</button>
-      <button *ngIf="!this.data.isDarkTheme" class="btn theme-white" (click)="setTheme()">White</button>
+      <button class="btn theme-black" [ngClass]="{'theme-black': data.isDarkTheme, 'theme-white': !data.isDarkTheme}" (click)="setTheme()">
+        <div *ngIf="data.isDarkTheme">Black</div>
+        <div *ngIf="!data.isDarkTheme">White</div>
+      </button>
     </div>
   </div>
 </div>
@@ -65,7 +67,7 @@
         </li>
         <li
           class="navbar-item"
-          *ngIf="!this.data.isLogged"
+          *ngIf="!data.isLogged"
         >
           <button class="navbar-item__button">
             <a
@@ -80,7 +82,7 @@
         </li>
         <li
           class="navbar-item"
-          *ngIf="this.data.isLogged"
+          *ngIf="data.isLogged"
         >
         <button class="navbar-item__button" (click)="toggleProfileMenu()">
           <a
@@ -97,8 +99,8 @@
           </div>
           <div class="info">
             <hr class="devider">
-            <div class="name">{{this.data.user.name}}</div>
-            <div class="email">{{this.data.user.email}}</div>
+            <div class="name">{{data.user.name}}</div>
+            <div class="email">{{data.user.email}}</div>
             <hr class="devider">
           </div>
           <button class="btn signOut" (click)="signOut()">

@@ -3,41 +3,41 @@
   <div class="container-inner">
     <div class="dropdown">
       <div class="dropdown-inner">
-        <span *ngIf="this.data.isEnLocale">Hover to select the rating type</span>
-        <span *ngIf="!this.data.isEnLocale">Наведите для выбора тип рейтинга</span>
+        <span *ngIf="data.isEnLocale">Hover to select the rating type</span>
+        <span *ngIf="!data.isEnLocale">Наведите для выбора тип рейтинга</span>
         <div class="dropdown-content">
           <div class="dropdown-content__item" (click)="getPopularMovie(mostPopularMovieTitle)">
-            <div *ngIf="this.data.isEnLocale">Most popular movie</div>
-            <div *ngIf="!this.data.isEnLocale">Самый популярный фильм</div>
+            <div *ngIf="data.isEnLocale">Most popular movie</div>
+            <div *ngIf="!data.isEnLocale">Самый популярный фильм</div>
           </div>
           <div class="dropdown-content__item" (click)="getUnpopularMovie(mostUnpopularMovieTitle)" *ngIf="mostUnpopularMovieTitle">
-            <div *ngIf="this.data.isEnLocale">Most unpopular movie</div>
-            <div *ngIf="!this.data.isEnLocale">Самый не популярный фильм</div>
+            <div *ngIf="data.isEnLocale">Most unpopular movie</div>
+            <div *ngIf="!data.isEnLocale">Самый не популярный фильм</div>
           </div>
         </div>
       </div>
       <div *ngIf="isPopular">
-        <div *ngIf="this.data.isEnLocale">Most popular movie</div>
-        <div *ngIf="!this.data.isEnLocale">Самый популярный фильм</div>
+        <div *ngIf="data.isEnLocale">Most popular movie</div>
+        <div *ngIf="!data.isEnLocale">Самый популярный фильм</div>
       </div>
       <div *ngIf="!isPopular">
-        <div *ngIf="this.data.isEnLocale">Most unpopular movie</div>
-        <div *ngIf="!this.data.isEnLocale">Самый не популярный фильм</div>
+        <div *ngIf="data.isEnLocale">Most unpopular movie</div>
+        <div *ngIf="!data.isEnLocale">Самый не популярный фильм</div>
       </div>
       <button class="btn-item" (click)="resetRating()">
-        <div *ngIf="this.data.isEnLocale">Reset rating</div>
-        <div *ngIf="!this.data.isEnLocale">Сбросить рейтинг</div>
+        <div *ngIf="data.isEnLocale">Reset rating</div>
+        <div *ngIf="!data.isEnLocale">Сбросить рейтинг</div>
       </button>
     </div>
     <div class="rating">
-      <div *ngIf="this.data.ratingData && title; else noRatings">
+      <div *ngIf="data.ratingData && title; else noRatings">
         <div *ngIf="!isReset; else noRatings">
           <div class="rating-inner" *ngIf="isPopular">
             <div class="rating-inner__main">
               <div class="title">{{mostPopularMovieTitle}}</div>
               <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-              <div *ngIf="this.data.isEnLocale" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
-              <div *ngIf="!this.data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
+              <div *ngIf="data.isEnLocale" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
+              <div *ngIf="!data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
             </div>
             <div class="description">{{description}}</div>
           </div>
@@ -45,32 +45,32 @@
             <div class="rating-inner__main">
               <div class="title">{{mostUnpopularMovieTitle}}</div>
               <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-              <div *ngIf="this.data.isEnLocale" class="rating-point">Movie rating: {{mostUnpopularMoviePoint}} points</div>
-              <div *ngIf="!this.data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostUnpopularMoviePoint}} очков</div>
+              <div *ngIf="data.isEnLocale" class="rating-point">Movie rating: {{mostUnpopularMoviePoint}} points</div>
+              <div *ngIf="!data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostUnpopularMoviePoint}} очков</div>
             </div>
             <div class="description">{{description}}</div>
           </div>
         </div>
       </div>
       <ng-template #noRatings>
-        <div *ngIf="isSavedRating && !this.data.ratingData && title; else noSavedRatings">
+        <div *ngIf="isSavedRating && !data.ratingData && title; else noSavedRatings">
           <div *ngIf="!isReset; else noRatings">
             <div class="rating-inner" *ngIf="isPopular">
               <div class="rating-inner__main">
                 <div class="title">{{mostPopularMovieTitle}}</div>
                 <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-                <div *ngIf="this.data.isEnLocale" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
-                <div *ngIf="!this.data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
+                <div *ngIf="data.isEnLocale" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
+                <div *ngIf="!data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
               </div>
               <div class="description">{{description}}</div>
             </div>
           </div>
         </div>
         <ng-template #noSavedRatings>
-          <div *ngIf="this.data.isEnLocale">
+          <div *ngIf="data.isEnLocale">
             No ratings yet
           </div>
-          <div *ngIf="!this.data.isEnLocale">
+          <div *ngIf="!data.isEnLocale">
             Нет сохраненных рейтингов
           </div>
         </ng-template>
