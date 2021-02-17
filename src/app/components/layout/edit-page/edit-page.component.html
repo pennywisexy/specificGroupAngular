@@ -5,85 +5,71 @@
 
     <div class="form-control">
       <label class="head">
-        <div *ngIf="data.isEnLocale">Title</div>
-        <div *ngIf="!data.isEnLocale">Заглавие</div>
+        <div>{{'EDIT.FORM.TITLE' | translate}}</div>
       </label>
-      <input *ngIf="data.isEnLocale" class="input-text" type="title" placeholder="Title" formControlName="title">
-      <input *ngIf="!data.isEnLocale" class="input-text" type="title" placeholder="Заглавие" formControlName="title">
+      <input class="input-text" type="title" placeholder="{{'EDIT.FORM.TITLE' | translate}}" formControlName="title">
       <div
         class="validation"
         *ngIf="form.get('title').invalid && form.get('title').touched">
         <small>
-          <div *ngIf="data.isEnLocale">Field title cannot be empty.</div>
-          <div *ngIf="!data.isEnLocale">Поле заглавие не может быть пустым.</div>
+          <div>{{'EDIT.NATIFICATION.EMPTYTITLE' | translate}}.</div>
         </small>
       </div>
     </div>
 
     <div class="form-control">
       <label class="head">
-        <div *ngIf="data.isEnLocale">Subtitle</div>
-        <div *ngIf="!data.isEnLocale">Подзаголовок</div>
+        <div>{{'EDIT.FORM.SUBTITLE' | translate}}</div>
       </label>
-      <input *ngIf="data.isEnLocale" class="input-text" type="text" placeholder="Subtitle" formControlName="subtitle">
-      <input *ngIf="!data.isEnLocale" class="input-text" type="text" placeholder="Подзаголовок" formControlName="subtitle">
+      <input class="input-text" type="text" placeholder="{{'EDIT.FORM.SUBTITLE' | translate}}" formControlName="subtitle">
       <div
         class="validation"
         *ngIf="form.get('subtitle').invalid && form.get('subtitle').touched">
         <small>
-          <div *ngIf="data.isEnLocale">Field subtitle cannot be empty.</div>
-          <div *ngIf="!data.isEnLocale">Поле подзаголовок не может быть пустым.</div>
+          <div>{{'EDIT.NATIFICATION.EMPTYSUBTITLE' | translate}}.</div>
         </small>
       </div>
     </div>
 
     <div class="form-control">
       <label class="head">
-        <div *ngIf="data.isEnLocale">Description</div>
-        <div *ngIf="!data.isEnLocale">Описание</div>
+        <div>{{'EDIT.FORM.DESCRIPTION' | translate}}</div>
       </label>
-      <input *ngIf="data.isEnLocale" class="input-text" type="text" placeholder="Description" formControlName="description">
-      <input *ngIf="!data.isEnLocale" class="input-text" type="text" placeholder="Описание" formControlName="description">
+      <input class="input-text" type="text" placeholder="{{'EDIT.FORM.DESCRIPTION' | translate}}" formControlName="description">
       <div class="validation"
       *ngIf="form.get('description').invalid && form.get('description').touched">
         <small>
-          <div *ngIf="data.isEnLocale">Field description cannot be empty.</div>
-          <div *ngIf="!data.isEnLocale">Поле описания не может быть пустым.</div>
+          <div>{{'EDIT.NATIFICATION.EMPTYDESCRIPTION' | translate}}.</div>
         </small>
       </div>
     </div>
 
     <div class="form-control">
       <label class="head">
-        <div *ngIf="data.isEnLocale">Movie Link</div>
-        <div *ngIf="!data.isEnLocale">Ссылка на фильм</div>
+        <div>{{'EDIT.FORM.MOVIELINK' | translate}}</div>
       </label>
-      <input *ngIf="data.isEnLocale" class="input-text" type="url" placeholder="Movie Link" formControlName="sources">
-      <input *ngIf="!data.isEnLocale" class="input-text" type="url" placeholder="Ссылка на фильм" formControlName="sources">
+      <input class="input-text" type="url" placeholder="{{'EDIT.FORM.MOVIELINK' | translate}}" formControlName="sources">
       <div class="validation"
       *ngIf="form.get('sources').invalid && form.get('sources').touched">
         <small>Field movie link cannot be empty.
-          <div *ngIf="data.isEnLocale">Field movie link cannot be empty.</div>
-          <div *ngIf="!data.isEnLocale">Поле ссылка на фильм не может быть пустым.</div>
+          <div>{{'EDIT.NATIFICATION.EMPTYLINK' | translate}}.</div>
         </small>
       </div>
     </div>
 
     <button *ngIf="!editBtn; else edit" class="btn" type="submit" [disabled]="form.invalid">
-      <div *ngIf="data.isEnLocale">Add movie</div>
-      <div *ngIf="!data.isEnLocale">Добавить фильм</div></button>
+      <div>{{'EDIT.FORM.ADDMOVIE' | translate}}</div>
+    </button>
     <ng-template #edit>
       <button (click)="editChangedMovie()" class="btn" type="submit" [disabled]="form.invalid">
-        <div *ngIf="data.isEnLocale">Edit Movie</div>
-        <div *ngIf="!data.isEnLocale">Изменить фильм</div>
+        <div>{{'EDIT.FORM.EDITMOVIE' | translate}}</div>
       </button>
     </ng-template>
     <div
       class="hint"
       [ngClass]="{'hint-show': notification}"
       ><div class="hint-item">
-        <div *ngIf="data.isEnLocale">Movie Added</div>
-        <div *ngIf="!data.isEnLocale">Фильм добавлен</div>
+        <div>{{'EDIT.NATIFICATION.MOVIEADDED' | translate}}</div>
       </div></div>
   </form>
 
@@ -96,8 +82,7 @@
         {{item.value.sources}}
       </div>
       <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">
-        <div *ngIf="data.isEnLocale">Edit Movie</div>
-        <div *ngIf="!data.isEnLocale">Изменить фильм</div>
+        <div>{{'EDIT.FORM.EDITMOVIE' | translate}}</div>
       </button>
     </div>
   </div>

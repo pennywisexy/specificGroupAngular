@@ -42,7 +42,6 @@ export class GetDataService {
   videoCurrentTime: string;
 
   locale = 'en';
-  isEnLocale = true;
 
   isDarkTheme = false;
 

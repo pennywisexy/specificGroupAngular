@@ -2,8 +2,7 @@
   <div class="search">
 
     <div class="form-control">
-      <input *ngIf="data.isEnLocale" id="name" class="input-text" type="text" placeholder="Input text for search" (keyup)="setSearch()" [(ngModel)]="data.searchStr">
-      <input *ngIf="!data.isEnLocale" id="name" class="input-text" type="text" placeholder="Введите текст для поиска" (keyup)="setSearch()" [(ngModel)]="data.searchStr">
+      <input id="name" class="input-text" type="text" placeholder="{{'NAV.SEARCH' | translate}}" (keyup)="setSearch()" [(ngModel)]="data.searchStr">
     </div>
     <div class="buttons">
     </div>

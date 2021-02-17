@@ -3,30 +3,24 @@
   <div class="container-inner">
     <div class="dropdown">
       <div class="dropdown-inner">
-        <span *ngIf="data.isEnLocale">Hover to select the rating type</span>
-        <span *ngIf="!data.isEnLocale">Наведите для выбора тип рейтинга</span>
+        <span>{{"RATING.BUTTON.DROPDOWNBTN" | translate}}</span>
         <div class="dropdown-content">
           <div class="dropdown-content__item" (click)="getPopularMovie(mostPopularMovieTitle)">
-            <div *ngIf="data.isEnLocale">Most popular movie</div>
-            <div *ngIf="!data.isEnLocale">Самый популярный фильм</div>
+            <div>{{"RATING.BUTTON.POPULAR" | translate}}</div>
           </div>
           <div class="dropdown-content__item" (click)="getUnpopularMovie(mostUnpopularMovieTitle)" *ngIf="mostUnpopularMovieTitle">
-            <div *ngIf="data.isEnLocale">Most unpopular movie</div>
-            <div *ngIf="!data.isEnLocale">Самый не популярный фильм</div>
+            <div>{{"RATING.BUTTON.UNPOPULAR" | translate}}</div>
           </div>
         </div>
       </div>
       <div *ngIf="isPopular">
-        <div *ngIf="data.isEnLocale">Most popular movie</div>
-        <div *ngIf="!data.isEnLocale">Самый популярный фильм</div>
+        <div>{{"RATING.BUTTON.POPULAR" | translate}}</div>
       </div>
       <div *ngIf="!isPopular">
-        <div *ngIf="data.isEnLocale">Most unpopular movie</div>
-        <div *ngIf="!data.isEnLocale">Самый не популярный фильм</div>
+        <div>{{"RATING.BUTTON.UNPOPULAR" | translate}}</div>
       </div>
       <button class="btn-item" (click)="resetRating()">
-        <div *ngIf="data.isEnLocale">Reset rating</div>
-        <div *ngIf="!data.isEnLocale">Сбросить рейтинг</div>
+        <div>{{"RATING.BUTTON.RESET" | translate}}</div>
       </button>
     </div>
     <div class="rating">
@@ -36,8 +30,7 @@
             <div class="rating-inner__main">
               <div class="title">{{mostPopularMovieTitle}}</div>
               <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-              <div *ngIf="data.isEnLocale" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
-              <div *ngIf="!data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
+              <div class="rating-point">{{"RATING.PRATINPOINTS" | translate}}</div>
             </div>
             <div class="description">{{description}}</div>
           </div>
@@ -45,8 +38,7 @@
             <div class="rating-inner__main">
               <div class="title">{{mostUnpopularMovieTitle}}</div>
               <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-              <div *ngIf="data.isEnLocale" class="rating-point">Movie rating: {{mostUnpopularMoviePoint}} points</div>
-              <div *ngIf="!data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostUnpopularMoviePoint}} очков</div>
+              <div class="rating-point">{{"RATING.UNPRATINPOINTS" | translate}}</div>
             </div>
             <div class="description">{{description}}</div>
           </div>
@@ -59,19 +51,15 @@
               <div class="rating-inner__main">
                 <div class="title">{{mostPopularMovieTitle}}</div>
                 <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-                <div *ngIf="data.isEnLocale" class="rating-point">Movie rating: {{mostPopularMoviePoint}} points</div>
-                <div *ngIf="!data.isEnLocale" class="rating-point">Рейтинг фильм: {{mostPopularMoviePoint}} очков</div>
+                <div class="rating-point">{{"RATING.PRATINPOINTS" | translate}}</div>
               </div>
               <div class="description">{{description}}</div>
             </div>
           </div>
         </div>
         <ng-template #noSavedRatings>
-          <div *ngIf="data.isEnLocale">
-            No ratings yet
-          </div>
-          <div *ngIf="!data.isEnLocale">
-            Нет сохраненных рейтингов
+          <div>
+            {{"RATING.NORATINGS" | translate}}
           </div>
         </ng-template>
       </ng-template>

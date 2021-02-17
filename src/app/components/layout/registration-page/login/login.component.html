@@ -1,12 +1,12 @@
 <div class="container">
   <form class="card"  [formGroup]="parent.form" (ngSubmit)="submit()">
-    <h2 class="card-title">Sign-In</h2>
+    <h2 class="card-title">{{"SIGNIN.LOGGIN.TEXT.SIGNIN" | translate}}</h2>
 
     <div
       class="form-control"
       *ngIf="{invalid: parent.form.get('email').touched && parent.form.get('email').invalid}"
     >
-      <label for="email">Email:</label>
+      <label for="email">{{"SIGNIN.LOGGIN.TEXT.EMAIL" | translate}}:</label>
       <input
         class="input-text"
         id="email"
@@ -18,10 +18,10 @@
       >
         <small
           *ngIf="parent.form.get('email').errors.required"
-        >Field email can not be empty.</small>
+        >{{"SIGNIN.LOGGIN.NOTIFICATION.EMPTY_EMAIL" | translate}}.</small>
         <small
           *ngIf="parent.form.get('email').errors.email"
-        >Enter correct email.</small>
+        >{{"SIGNIN.LOGGIN.NOTIFICATION.INCOR_EMAIL" | translate}}.</small>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
       class="form-control"
       *ngIf="{invalid: parent.form.get('password').touched && parent.form.get('password').invalid}"
       >
-      <label for="password">Password:</label>
+      <label for="password">{{"SIGNIN.LOGGIN.TEXT.PASS" | translate}}:</label>
       <input
         class="input-text"
         id="password"
@@ -41,10 +41,10 @@
       >
         <small
           *ngIf="parent.form.get('password').errors.required"
-        >Field password can not be empty.</small>
+        >{{"SIGNIN.LOGGIN.NOTIFICATION.EMPTY_PASS" | translate}}.</small>
         <small
           *ngIf="parent.form.get('password').errors.minlength"
-        >The password must be at least {{parent.form.get('password').errors.minlength.requiredLength}} characters long. He is now {{parent.form.get('password').errors.minlength.actualLength}} characters.</small>
+        >{{"SIGNIN.LOGGIN.NOTIFICATION.INCOR_PASS" | translate}}.</small>
       </div>
     </div>
 
@@ -53,11 +53,11 @@
         class="btn"
         type="submit"
         [disabled]="parent.form.invalid || data.isLogged || parent.isReg"
-      >Sign-In</button>
+      >{{"SIGNIN.LOGGIN.BUTTON.SIGNIN" | translate}}</button>
     </div>
 
     <div class="devider">
-      <h5 class="devider-item">New to SPG Movies?</h5>
+      <h5 class="devider-item">{{"SIGNIN.LOGGIN.TEXT.QUESTION" | translate}}?</h5>
     </div>
 
     <div class="btn-container">
@@ -66,11 +66,11 @@
         type="button"
         [disabled]="data.isLogged"
         (click)="parent.registrationForm()"
-      >Create your account</button>
+      >{{"SIGNIN.LOGGIN.BUTTON.CREATE" | translate}}</button>
     </div>
   </form>
   <div
     class="wrong-log"
     *ngIf="wrongLog"
-    [ngClass]="{'wrong-log__show': wrongLog}">Wrong login or password</div>
+    [ngClass]="{'wrong-log__show': wrongLog}">{{"SIGNIN.LOGGIN.NOTIFICATION.WRONG_LOG" | translate}}</div>
 </div>

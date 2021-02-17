@@ -1,11 +1,11 @@
 <div class="preheader">
   <div class="container">
     <div class="container-inner">
-      <button class="btn" (click)="enLocale()" [disabled]="isEnLocale">En</button>
-      <button class="btn" (click)="ruLocale()" [disabled]="!isEnLocale">Ru</button>
+      <button class="btn" (click)="setLocale('en')">{{'BUTTON.LANG.EN' | translate}}</button>
+      <button class="btn" (click)="setLocale('ru')">{{'BUTTON.LANG.RU' | translate}}</button>
       <button class="btn theme-black" [ngClass]="{'theme-black': data.isDarkTheme, 'theme-white': !data.isDarkTheme}" (click)="setTheme()">
-        <div *ngIf="data.isDarkTheme">Black</div>
-        <div *ngIf="!data.isDarkTheme">White</div>
+        <div *ngIf="data.isDarkTheme">{{'THEME.DARK' | translate}}</div>
+        <div *ngIf="!data.isDarkTheme">{{'THEME.LIGHT' | translate}}</div>
       </button>
     </div>
   </div>
@@ -34,8 +34,7 @@
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
             >
-            <div *ngIf="isEnLocale">Main</div>
-            <div *ngIf="!isEnLocale">Главная</div>
+            <div>{{'NAV.MAIN' | translate}}</div>
           </a>
           </button>
         </li>
@@ -47,8 +46,7 @@
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
             >
-              <div *ngIf="isEnLocale">Edit</div>
-              <div *ngIf="!isEnLocale">Изменить</div>
+              <div>{{'NAV.EDIT' | translate}}</div>
             </a>
           </button>
         </li>
@@ -60,8 +58,7 @@
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
             >
-              <div *ngIf="isEnLocale">Rating</div>
-              <div *ngIf="!isEnLocale">Рейтинг</div>
+              <div>{{'NAV.RATING' | translate}}</div>
             </a>
           </button>
         </li>
@@ -76,8 +73,8 @@
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
             >
-              <div *ngIf="isEnLocale">Sign&nbsp;In</div>
-              <div *ngIf="!isEnLocale">Войти</div></a>
+              <div>{{'NAV.SIGNIN' | translate}}</div>
+            </a>
           </button>
         </li>
         <li
@@ -104,8 +101,7 @@
             <hr class="devider">
           </div>
           <button class="btn signOut" (click)="signOut()">
-            <div *ngIf="isEnLocale">Sign Out</div>
-            <div *ngIf="!isEnLocale">Выйти</div>
+            <div>{{'NAV.SIGNOUT' | translate}}</div>
           </button>
         </div>
       </li>

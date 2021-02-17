@@ -1,0 +1,94 @@
+{
+  "HOME": {
+    "TITLE": "Hello"
+  },
+  "BUTTON": {
+    "LANG": {
+      "RU": "RU",
+      "EN": "EN"
+    }
+  },
+  "THEME": {
+    "LIGHT": "Light",
+    "DARK": "Dark"
+  },
+  "NAV": {
+    "MAIN": "Main",
+    "EDIT": "Edit",
+    "RATING": "Rating",
+    "SIGNIN": "Sign In",
+    "SIGNOUT": "Sign Out",
+    "PROFILE": {
+      "BUTTON": {
+        "SIGNOUT": "Sign Out"
+      }
+    },
+    "SEARCH": "Input text for search"
+  },
+  "MAIN": {
+    "RATE": "Rate the movie"
+  },
+  "EDIT": {
+    "FORM": {
+      "TITLE": "Title",
+      "SUBTITLE": "Subtitle",
+      "DESCRIPTION": "Description",
+      "MOVIELINK": "Movie Link",
+      "ADDMOVIE": "Add movie",
+      "EDITMOVIE": "Edit Movie"
+    },
+    "NATIFICATION": {
+      "EMPTYTITLE": "Field title cannot be empty",
+      "EMPTYSUBTITLE": "Field subtitle cannot be empty",
+      "EMPTYDESCRIPTION": "Field description cannot be empty",
+      "EMPTYLINK": "Field movie link cannot be empty",
+      "MOVIEADDED": "Movie Added"
+    }
+  },
+  "RATING": {
+    "BUTTON": {
+      "DROPDOWNBTN": "Hover to select the rating type",
+      "POPULAR":"Most popular movie",
+      "UNPOPULAR":"Most unpopular movie",
+      "RESET": "Reset rating"
+    },
+    "NORATINGS": "No ratings yet",
+    "PRATINPOINTS": "Movie rating: {{mostPopularMoviePoint}} points",
+    "UNPRATINPOINTS": "Movie rating: {{mostUnpopularMoviePoint}} points"
+  },
+  "SIGNIN": {
+    "REGISTRATION": {
+      "BUTTON": {
+        "CREATE": "Create account",
+        "BACK": "Back to log in"
+      },
+      "TEXT": {
+        "EMAIL": "Email",
+        "PASS": "Password",
+        "FNAME": "First Name",
+        "LNAME": "Last Name"
+      }
+    },
+    "LOGGIN": {
+      "BUTTON": {
+        "CREATE": "Create your account",
+        "SIGNIN": "Sign-In"
+      },
+      "TEXT": {
+        "SIGNIN": "Sign-In",
+        "EMAIL": "Email",
+        "PASS": "Password",
+        "QUESTION": "New to SPG Movies"
+      },
+      "NOTIFICATION": {
+        "EMPTY_EMAIL": "Field email cannot be empty",
+        "EMPTY_PASS": "Field password cannot be empty",
+        "EMPTY_FNAME": "Field first name cannot be empty",
+        "EMPTY_LNAME": "Field last name cannot be empty",
+        "INCOR_EMAIL": "Enter correct email",
+        "INCOR_PASS": "The password must be at least 6 characters long",
+        "WRONG_LOG": "Wrong login or password"
+      }
+    }
+  }
+}
