@@ -1,11 +1,11 @@
 <div class="container">
 
   <div class="container-inner">
-    <div class="dropdown" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
+    <div class="dropdown">
       <div class="dropdown-inner">
         <span *ngIf="this.data.isEnLocale">Hover to select the rating type</span>
         <span *ngIf="!this.data.isEnLocale">Наведите для выбора тип рейтинга</span>
-        <div class="dropdown-content" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
+        <div class="dropdown-content">
           <div class="dropdown-content__item" (click)="getPopularMovie(mostPopularMovieTitle)">
             <div *ngIf="this.data.isEnLocale">Most popular movie</div>
             <div *ngIf="!this.data.isEnLocale">Самый популярный фильм</div>

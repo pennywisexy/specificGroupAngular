@@ -33,5 +33,10 @@ dd {
 }
 html {
   font-family: "source-sans-pro", sans-serif;
+
 }
-@include darkTheme();
+
+.main {
+  background-color: var(--white-bg-color);
+  color: var(--base-text-color);
+}

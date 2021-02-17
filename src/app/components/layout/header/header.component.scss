@@ -36,8 +36,6 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
   }
 }
 
-@include darkThemeSecond();
-
 .wrapper {
   background-color: var(--base-bg-header);
   height: 74px;
@@ -81,7 +79,6 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
           background-repeat: no-repeat;
         }
       }
-      @include darkThemeSecond();
     }
 
 
@@ -165,6 +162,7 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
 
               .devider {
                 width: 100%;
+                background-color: var(--base-devider-color);
               }
 
               .locale {
@@ -172,22 +170,14 @@ $logoUrl: 'https://www.specific-group.by/typo3conf/ext/luktemplate/Resources/Pub
                 justify-content: center;
                 align-items: center;
               }
-
-              .dark-theme {
-                background-color: var(--base-devider-color);
-                height: 1px;
-              }
-
             }
 
             &.show {
               display: flex;
             }
           }
-          @include darkThemeSecond();
         }
       }
     }
-    @include darkTheme();
   }
 }

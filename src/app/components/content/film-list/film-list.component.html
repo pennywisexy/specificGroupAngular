@@ -1,8 +1,7 @@
 <app-video-player></app-video-player>
-<div class="container movies-list d-flex p-2 flex-wrap" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
+<div class="container movies-list d-flex p-2 flex-wrap">
   <div class="movies-list__item d-flex justify-content-between flex-column w-25 cursor-pointer"
     *ngFor="let item of movies"
-    [ngClass]="{'dark-theme': this.data.isDarkTheme}"
     (click)="setMovie(item)">
     <a
       class="title-link"
@@ -18,7 +17,6 @@
     <button 
       type="button"
       class="btn"
-      [ngClass]="{'dark-theme': this.data.isDarkTheme}"
       data-container="body"
       (click)="modalDescription($event, item)"
       id="description"
@@ -29,10 +27,10 @@
     <div
       [id]="item.title"
       [class]="item.title"
-      [ngClass]="{'modal-description-active' : isActiveButton, 'dark-theme': this.data.isDarkTheme}"
+      [ngClass]="{'modal-description-active' : isActiveButton}"
       *ngIf="isActiveButton && item.title === title"
       (click)="showFullDescription($event, item)">
-      <p class="description"   [ngClass]="{'dark-theme': this.data.isDarkTheme}">{{showDescription}}</p>
+      <p class="description">{{showDescription}}</p>
     </div>
   </div>
 </div>

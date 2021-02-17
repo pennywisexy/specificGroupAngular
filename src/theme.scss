@@ -17,8 +17,8 @@
 
 @mixin darkTheme {
   .dark-theme {
-    background-color: var(--dark-bg-color);
-    color: var(--dark-base-text-color);
+    background-color: var(--base-bg-color);
+    color: var(--base-text-color);
   }
 }
 
@@ -29,9 +29,9 @@
   }
 }
 
-:host {
+:root {
   --base-text-color: #000;
-  --base-bg-color: #f6fafd;
+  --base-bg-color: #ffffffde;
   --base-border-color: #ccc;
   --base-invalid-color: red;
   --base-valid-color: greenyellow;
@@ -48,6 +48,7 @@
   --white-bg-color: white;
   --base-shadow-color: #000000;
   --base-devider-color: #e7e7e7;
+  --base-opasity: 1;
 
   --dark-bg-color: #000;
   --dark-second-bg-color: rgb(19, 19, 19);

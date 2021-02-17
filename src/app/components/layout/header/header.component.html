@@ -1,4 +1,4 @@
-<div class="preheader" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
+<div class="preheader">
   <div class="container">
     <div class="container-inner">
       <button class="btn" (click)="enLocale()" [disabled]="isEnLocale">En</button>
@@ -14,13 +14,13 @@
     <a [routerLink]="['/']">
       <div class="logo">
         <div class="prelogo"></div>
-      <div class="header-logo" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
-        <div class="header-logo__item" [ngClass]="{'dark-theme': this.data.isDarkTheme}"></div>
+      <div class="header-logo">
+        <div class="header-logo__item"></div>
       </div>
       </div>
     </a>
     <div class="search">
-      <app-smart-search [ngClass]="{'dark-theme': this.data.isDarkTheme}"></app-smart-search>
+      <app-smart-search></app-smart-search>
     </div>
     <div class="navbar">
       <ul class="navbar-items">
@@ -91,15 +91,15 @@
             </div>
           </a>
         </button>
-        <div class="profile-menu" [ngClass]="{'show': profileShow, 'dark-theme': this.data.isDarkTheme}">
+        <div class="profile-menu" [ngClass]="{'show': profileShow}">
           <div class="profile">
             <img class="profile-img" src="../../../../assets/main.jpg" alt="profile">
           </div>
           <div class="info">
-            <hr class="devider" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
+            <hr class="devider">
             <div class="name">{{this.data.user.name}}</div>
             <div class="email">{{this.data.user.email}}</div>
-            <hr class="devider" [ngClass]="{'dark-theme': this.data.isDarkTheme}">
+            <hr class="devider">
           </div>
           <button class="btn signOut" (click)="signOut()">
             <div *ngIf="isEnLocale">Sign Out</div>

@@ -10,10 +10,10 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    border: var(--base-border-color) 1px dotted;
+    border: none;
     margin: 0.7rem 0;
     height: 35rem;
-    @include darkThemeSecond();
+    background-color: var(--base-bg-color);
 
 
     .form-control {
@@ -22,6 +22,8 @@
       margin-bottom: 4.3rem;
       flex-direction: column;
       border: none;
+      background-color: var(--base-bg-color);
+
 
       .head {
         display: block;
@@ -37,6 +39,7 @@
         font-size: 1.2rem;
         border: 1px solid var(--base-border-color);
         margin-bottom: 0;
+        background-color: var(--base-white-color);
 
         &.ng-invalid.ng-touched {
           border: 1px solid var(--base-invalid-color);
@@ -45,10 +48,6 @@
         &.ng-valid.ng-touched {
           border: 1px solid var(--base-valid-color);
         }
-      }
-
-      .dark-theme {
-        color: var(--dark-base-text-color);
       }
 
       .validation {
@@ -97,10 +96,6 @@
         padding: 0 0 10px 0;
       }
     }
-    @include darkThemeSecond();
-    .dark-theme {
-      border-left: 25px solid #215a93;
-    }
   }
 
   .btn {
@@ -119,5 +114,4 @@
       opacity: 0.8;
     }
   }
-  @include darkThemeSecond();
 }

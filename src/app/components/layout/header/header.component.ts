@@ -1,3 +1,4 @@
+import { ThemeService } from './../../../services/theme.service';
 import { GetDataService } from './../../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +12,7 @@ export class HeaderComponent implements OnInit {
   profileShow = false;
   isEnLocale = this.data.isEnLocale;
 
-  constructor(public data: GetDataService) {
+  constructor(public data: GetDataService, private themeService: ThemeService) {
 
   }
 
@@ -54,5 +55,10 @@ export class HeaderComponent implements OnInit {
 
   setTheme(): void {
     this.data.isDarkTheme = !this.data.isDarkTheme;
+    if (this.data.isDarkTheme) {
+      this.themeService.toggleDark();
+    } else {
+      this.themeService.toggleLight();
+    }
   }
 }

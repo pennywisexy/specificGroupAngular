@@ -13,14 +13,14 @@
     background-color: var(--base-bg-header);
     border: none;
 
+    .input-text {
+      background-color: var(--base-bg-color);
+      border: none;
+    }
+
 
     #name {
       width: 100%;
-    }
-
-    @include darkThemeSecond();
-    .dark-theme {
-      border: none;
     }
   }
 

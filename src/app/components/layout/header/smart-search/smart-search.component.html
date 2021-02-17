@@ -2,8 +2,8 @@
   <div class="search">
 
     <div class="form-control">
-      <input [ngClass]="{'dark-theme':this.data.isDarkTheme}" *ngIf="this.data.isEnLocale" id="name" class="input-text" type="text" placeholder="Input text for search" (keyup)="setSearch()" [(ngModel)]="this.data.searchStr">
-      <input [ngClass]="{'dark-theme':this.data.isDarkTheme}" *ngIf="!this.data.isEnLocale" id="name" class="input-text" type="text" placeholder="Введите текст для поиска" (keyup)="setSearch()" [(ngModel)]="this.data.searchStr">
+      <input *ngIf="this.data.isEnLocale" id="name" class="input-text" type="text" placeholder="Input text for search" (keyup)="setSearch()" [(ngModel)]="this.data.searchStr">
+      <input *ngIf="!this.data.isEnLocale" id="name" class="input-text" type="text" placeholder="Введите текст для поиска" (keyup)="setSearch()" [(ngModel)]="this.data.searchStr">
     </div>
     <div class="buttons">
     </div>
