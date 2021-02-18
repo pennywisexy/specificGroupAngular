@@ -54,8 +54,8 @@ export class ThemeService {
     this.setTheme(lightTheme);
   }
   setTheme(theme): void {
-    Object.keys(theme).forEach(k =>
-      document.documentElement.style.setProperty(`${k}`, theme[k])
+    Object.keys(theme).forEach(key =>
+      document.documentElement.style.setProperty(`${key}`, theme[key])
     );
   }
 }

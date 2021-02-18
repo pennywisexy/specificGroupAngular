@@ -51,7 +51,7 @@
       <input class="input-text" type="url" placeholder="{{'EDIT.FORM.MOVIELINK' | translate}}" formControlName="sources">
       <div class="validation"
       *ngIf="form.get('sources').invalid && form.get('sources').touched">
-        <small>Field movie link cannot be empty.
+        <small>
           <div>{{'EDIT.NATIFICATION.EMPTYLINK' | translate}}.</div>
         </small>
       </div>
