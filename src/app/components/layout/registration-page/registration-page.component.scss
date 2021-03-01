@@ -11,8 +11,8 @@
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    border: var(--base-border-color) 1px dotted;
     margin: 0.7rem 0;
+    background-color: var(--base-bg-color);
 
     &-title {
       color: var(--btn-text-color);
@@ -25,6 +25,7 @@
       flex-direction: column;
       border: none;
       color: var(--btn-text-color);
+      background-color: var(--base-bg-color);
 
       .head {
         display: block;
@@ -40,6 +41,9 @@
         font-size: 1.2rem;
         border: 1px solid var(--base-border-color);
         margin-bottom: 0;
+        background-color: var(--white-bg-color);
+        color: var(--base-text-color);
+
 
         &.ng-invalid.ng-touched {
           border: 1px solid var(--base-invalid-color);

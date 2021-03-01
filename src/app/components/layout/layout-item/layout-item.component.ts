@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout-item.component.scss']
 })
 export class LayoutItemComponent {
-
 }

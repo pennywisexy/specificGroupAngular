@@ -14,15 +14,15 @@
     <div class="preview">
       <img class="w-100" src={{item.thumb}} />
     </div>
-    <button type="button"
-            class="btn"
-            data-container="body"
-            (click)="modalDescription($event, item)"
-            id="description"
-            placement="bottom"
-            >
+    <button 
+      type="button"
+      class="btn"
+      data-container="body"
+      (click)="modalDescription($event, item)"
+      id="description"
+      placement="bottom"
+    >
       Description!
-
     </button>
     <div
       [id]="item.title"

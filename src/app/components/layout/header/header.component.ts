@@ -1,5 +1,7 @@
+import { ThemeService } from './../../../services/theme.service';
 import { GetDataService } from './../../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   profileShow = false;
-  isEnLocale = this.data.isEnLocale;
 
-  constructor(public data: GetDataService) {
+  constructor(
+    public data: GetDataService, 
+    private themeService: ThemeService,
+    public translate: TranslateService) {
 
   }
 
@@ -19,10 +23,6 @@ export class HeaderComponent implements OnInit {
     if (localStorage.isLogged === 'true') {
       this.data.isLogged = localStorage.isLogged;
       this.data.user = JSON.parse(localStorage.lastUser);
-    }
-    if (localStorage.locale === 'ru') {
-      this.data.isEnLocale = false;
-      this.isEnLocale = false;
     }
   }
 
@@ -40,15 +40,17 @@ export class HeaderComponent implements OnInit {
     this.profileShow = !this.profileShow;
   }
 
-  enLocale(): void {
-    localStorage.locale = 'en';
-    this.isEnLocale = true;
-    this.data.isEnLocale = true;
+  setLocale(locale: string): void {
+    console.log(locale);
+    this.translate.use(locale);
   }
 
-  ruLocale(): void {
-    localStorage.locale = 'ru';
-    this.isEnLocale = false;
-    this.data.isEnLocale = false;
+  setTheme(): void {
+    this.data.isDarkTheme = !this.data.isDarkTheme;
+    if (this.data.isDarkTheme) {
+      this.themeService.toggleDark();
+    } else {
+      this.themeService.toggleLight();
+    }
   }
 }

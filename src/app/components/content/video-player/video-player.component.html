@@ -19,10 +19,16 @@
   </div>
   <div class="rating" *ngIf="movie.sources">
     <div *ngIf="isRated" class="toast">Movie rated!</div>
-    <div class="rate-movie__text">Rate the movie: </div>
+    <div class="rate-movie__text">{{'MAIN.RATE' | translate}}: </div>
     <div *ngFor="let item of this.data.movies">
-      <star-rating *ngIf="item.title === movie.title" [(value)]="this.data.ratingValue" [(totalstars)]="totalstars"
-        checkedcolor="{{checkedcolor}}" uncheckedcolor="{{uncheckedcolor}}" size="{{size}}" readonly={{readonly}}
+      <star-rating 
+        *ngIf="item.title === movie.title" 
+        [(value)]="this.data.ratingValue" 
+        [(totalstars)]="totalstars"
+        checkedcolor="{{checkedcolor}}" 
+        uncheckedcolor="{{uncheckedcolor}}" 
+        size="{{size}}" 
+        readonly={{readonly}}
         (rate)="onRate($event)">
       </star-rating>
     </div>

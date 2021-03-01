@@ -11,6 +11,7 @@ export class GetDataService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+  // eslint-disable-next-line @typescript-eslint/ban-types
   public currentMovie: BehaviorSubject<object> = new BehaviorSubject({});
 
   dataForMovieNewWindow = '';
@@ -42,7 +43,8 @@ export class GetDataService {
   videoCurrentTime: string;
 
   locale = 'en';
-  isEnLocale = true;
+
+  isDarkTheme = false;
 
   constructor(private http: HttpClient) {}
 

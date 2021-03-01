@@ -10,7 +10,7 @@ import { VideoPlayerComponent } from './components/content/video-player/video-pl
 import { MovieNewWindowComponent } from './components/layout/movie-new-window/movie-new-window.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/layout/header/header.component';
@@ -29,10 +29,15 @@ import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import enLocale from '@angular/common/locales/en';
 import ruLocale from '@angular/common/locales/ru';
 import { registerLocaleData } from '@angular/common';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 registerLocaleData(enLocale, 'en');
 registerLocaleData(ruLocale, 'ru');
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -62,7 +67,15 @@ registerLocaleData(ruLocale, 'ru');
       developmentMode: !environment.production
     }),
     NgxsEmitPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot()
+    NgxsLoggerPluginModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      },
+      defaultLanguage: 'ru'
+    }),
   ],
   providers: [AppGuard],
   bootstrap: [AppComponent]

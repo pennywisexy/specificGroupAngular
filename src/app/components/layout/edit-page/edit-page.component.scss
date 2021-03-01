@@ -3,15 +3,18 @@
 .container {
   display: flex;
   flex-direction: column;
+  
 
   .card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
-    border: var(--base-border-color) 1px dotted;
+    border: none;
     margin: 0.7rem 0;
     height: 35rem;
+    background-color: var(--base-bg-color);
+
 
     .form-control {
       display: flex;
@@ -19,6 +22,8 @@
       margin-bottom: 4.3rem;
       flex-direction: column;
       border: none;
+      background-color: var(--base-bg-color);
+
 
       .head {
         display: block;
@@ -34,6 +39,7 @@
         font-size: 1.2rem;
         border: 1px solid var(--base-border-color);
         margin-bottom: 0;
+        background-color: var(--base-white-color);
 
         &.ng-invalid.ng-touched {
           border: 1px solid var(--base-invalid-color);
@@ -45,7 +51,6 @@
       }
 
       .validation {
-        color: var(--base-invalid-color);
         height: 2rem;
       }
     }
