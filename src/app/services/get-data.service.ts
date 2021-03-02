@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class GetDataService {
   private moviesUrl = `${environment.apiUrl}/api/movies`;
+  private editUrl = `${environment.apiUrl}/api/movies/edit`;
+  
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -45,6 +47,12 @@ export class GetDataService {
 
   getFilms(): Observable<Movies[]> {
     return this.http.get<Movies[]>(this.moviesUrl);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  editMovie(body: Movies): Observable<object> {
+    console.log(body);
+    return this.http.post(this.editUrl, body);
   }
 
   logged(): void {
