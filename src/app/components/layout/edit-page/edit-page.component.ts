@@ -41,7 +41,7 @@ export class EditPageComponent implements OnInit {
     if (this.data.movies === undefined) {
       this.data.getFilms()
         .subscribe((movies) => {
-          this.data.movies = movies.categories[0].videos;
+          this.data.movies = movies;
           this.setMovies.emit(this.data.movies);
         });
     }

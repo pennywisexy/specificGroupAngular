@@ -34,7 +34,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
     if (!this.data.movies) {
       this.data.getFilms()
         .subscribe((movies) => {
-          this.data.movies = movies.categories[0].videos;
+          this.data.movies = movies;
           this.data.movies.forEach(movie => {
             movie.genre = 'action';
           });
@@ -128,7 +128,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
 
       this.data.getFilms()
         .subscribe((movies) => {
-          movies.categories[0].videos.forEach(item => {
+          movies.forEach(item => {
             if (this.data.ratingData[0].title !== item.title) {
               this.data.ratingData.push({
                 title: item.title,

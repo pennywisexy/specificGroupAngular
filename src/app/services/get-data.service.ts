@@ -2,14 +2,17 @@ import { RegistrationData, User } from './user';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Movie } from './movies';
+import { Movies } from './movies';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'any'
 })
 export class GetDataService {
-  private moviesUrl = '../../assets/data.json';
+  private moviesUrl = `${environment.apiUrl}/api/movies`;
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
   };
   // eslint-disable-next-line @typescript-eslint/ban-types
   public currentMovie: BehaviorSubject<object> = new BehaviorSubject({});
@@ -21,15 +24,7 @@ export class GetDataService {
     ratingValue: [number]
   }>;
 
-  public movies: Array<{
-    description: string,
-    sources: [string],
-    subtitle?: string,
-    thumb?: string,
-    title: string,
-    genre?: string,
-    ratingValue?: number
-  }>;
+  public movies: Movies[];
 
   public ratingValue: number;
 
@@ -48,8 +43,8 @@ export class GetDataService {
 
   constructor(private http: HttpClient) {}
 
-  getFilms(): Observable<Movie> {
-    return this.http.get<Movie>(this.moviesUrl);
+  getFilms(): Observable<Movies[]> {
+    return this.http.get<Movies[]>(this.moviesUrl);
   }
 
   logged(): void {
