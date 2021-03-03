@@ -34,7 +34,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
     if (!this.data.movies) {
       this.data.getFilms()
         .subscribe((movies) => {
-          this.data.movies = movies;
+          this.data.movies = movies.reverse();
           this.data.movies.forEach(movie => {
             movie.genre = 'action';
           });
