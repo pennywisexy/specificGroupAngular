@@ -38,32 +38,19 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-
-    this.data.user = {...this.parent.form.value};
-    localStorage.user = JSON.stringify(this.data.user);
-
-    this.parent.form.reset();
-
-    if (this.data.userRegData) {
-      const regUser = this.data.userRegData.find((item) => item.email === this.data.user.email);
-
-      if (regUser) {
-        this.data.user.name = `${regUser['first-name']} ${regUser['last-name']}`;
+    const sub = this.data.login(this.parent.form.value).subscribe(user => {
+      console.log(user.isLog);
+      if (user.isLog !== false) {
+        this.data.user = {...user};
         this.wrongLog = false;
         this.data.isLogged = true;
-        localStorage.isLogged = true;
+        this.data.user.name = `${user['first-name']} ${user['last-name']}`;
         this.router.navigate(['/edit-page']);
-        localStorage.lastUser = JSON.stringify(this.data.user);
+        this.parent.form.reset();
       } else {
         this.wrongLog = true;
-        localStorage.removeItem('user');
-        localStorage.removeItem('lastUser');
       }
-    } else {
-      this.wrongLog = true;
-      localStorage.removeItem('user');
-      localStorage.removeItem('lastUser');
-    }
+    });
 
     setTimeout(() => {
       this.wrongLog = false;

@@ -61,6 +61,7 @@ export class EditPageComponent implements OnInit {
     this.data.movies.unshift(this.formData);
     this.data.movies.forEach(movie => {
       movie.genre = 'action';
+      movie.ratingValue = 0;
     });
     const sub = this.data.addMovie(this.formData).subscribe(e => e);
     this.setMovies.emit(this.data.movies);
@@ -80,6 +81,7 @@ export class EditPageComponent implements OnInit {
       thumb: new FormControl('https://render.fineartamerica.com/images/rendered/default/greeting-card/images-medium-5/captain-america-shield-digital-painting-georgeta-blanaru.jpg?&targetx=0&targety=-100&imagewidth=700&imageheight=700&modelwidth=700&modelheight=500&backgroundcolor=161718&orientation=0'),
       title: new FormControl(item.value.title, Validators.required),
       subtitle: new FormControl(item.value.subtitle, Validators.required),
+      ratingValue: new FormControl(item.value.ratingValue),
       _id: new FormControl(item.value._id)
     });
   }
@@ -93,6 +95,8 @@ export class EditPageComponent implements OnInit {
     editingMovie.sources = this.form.value.sources;
     editingMovie.title = this.form.value.title;
     editingMovie.subtitle = this.form.value.subtitle;
+    editingMovie.thumb = this.form.value.thumb;
+    editingMovie.ratingValue = this.form.value.ratingValue;
     editingMovie._id = this.form.value._id;
     this.setMovies.emit(this.data.movies);
     const sub = this.data.editMovie(editingMovie).subscribe(movie => console.log(movie));

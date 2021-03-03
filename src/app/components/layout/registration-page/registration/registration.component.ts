@@ -15,24 +15,24 @@ export class RegistrationComponent {
       return;
     }
 
-    if (!this.data.userRegData) {
-      this.data.userRegData = [{
-        email: this.parent.formReg.value.email,
-        password: this.parent.formReg.value.password,
-        'first-name': this.parent.formReg.value['first-name'],
-        'last-name': this.parent.formReg.value['last-name']
-      }];
+    // if (!this.data.userRegData) {
+    //   this.data.userRegData = [{
+    //     email: this.parent.formReg.value.email,
+    //     password: this.parent.formReg.value.password,
+    //     'first-name': this.parent.formReg.value['first-name'],
+    //     'last-name': this.parent.formReg.value['last-name']
+    //   }];
 
-      localStorage.userRegData = JSON.stringify(this.data.userRegData);
+    //   localStorage.userRegData = JSON.stringify(this.data.userRegData);
 
-    } else if (this.data.userRegData) {
-      this.data.userRegData.push(this.parent.formReg.value);
-      localStorage.userRegData = JSON.stringify(this.data.userRegData);
-    }
-
+    // } else if (this.data.userRegData) {
+    //   this.data.userRegData.push(this.parent.formReg.value);
+    //   localStorage.userRegData = JSON.stringify(this.data.userRegData);
+    // }
+    const sub = this.data.registration(this.parent.formReg.value).subscribe(reqData => reqData);
     this.parent.formReg.reset();
     this.parent.isReg = false;
-
+    sub.unsubscribe();
   }
 
   backToLogging(): void {
