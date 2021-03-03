@@ -62,12 +62,13 @@ export class EditPageComponent implements OnInit {
     this.data.movies.forEach(movie => {
       movie.genre = 'action';
     });
-    this.data.addMovie(this.formData);
+    const sub = this.data.addMovie(this.formData).subscribe(e => e);
     this.setMovies.emit(this.data.movies);
     this.form.reset();
     this.notification = true;
 
     setTimeout(() => this.notification = false, 2000);
+    sub.unsubscribe();
   }
 
   editMovie(item): void {
@@ -94,9 +95,10 @@ export class EditPageComponent implements OnInit {
     editingMovie.subtitle = this.form.value.subtitle;
     editingMovie._id = this.form.value._id;
     this.setMovies.emit(this.data.movies);
-    this.data.editMovie(editingMovie);
+    const sub = this.data.editMovie(editingMovie).subscribe(movie => console.log(movie));
 
     this.form.reset();
+    sub.unsubscribe();
   }
 
   redirect(): void {

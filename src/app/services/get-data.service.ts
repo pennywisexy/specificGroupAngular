@@ -51,7 +51,15 @@ export class GetDataService {
 
   editMovie(movie: Movies): Observable<Movies> {
     console.log(movie);
-    return this.http.post<Movies>(this.editUrl, JSON.stringify(movie), {
+    const body = {
+      title: movie.title,
+      description: movie.description,
+      sources: movie.sources,
+      subtitle: movie.subtitle,
+      thumb: movie.thumb,
+      _id: movie._id
+    };
+    return this.http.post<Movies>(this.editUrl, JSON.stringify(body), {
       headers: new HttpHeaders({
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -64,7 +72,7 @@ export class GetDataService {
       title: movie.title,
       description: movie.description,
       sources: movie.sources,
-      subtitle: movie.sources,
+      subtitle: movie.subtitle,
       thumb: movie.thumb
     };
 
