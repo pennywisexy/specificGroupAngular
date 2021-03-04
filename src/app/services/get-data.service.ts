@@ -12,6 +12,7 @@ export class GetDataService {
   private editUrl = `${environment.apiUrl}/api/movies/edit`;
   private registerUrl = `${environment.apiUrl}/register`;
   private loginUrl = `${environment.apiUrl}/login`;
+  private logoutUrl = `${environment.apiUrl}/logout`;
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -52,7 +53,6 @@ export class GetDataService {
   }
 
   editMovie(movie: Movies): Observable<Movies> {
-    console.log(movie);
     const body = {
       title: movie.title,
       description: movie.description,
@@ -104,6 +104,10 @@ export class GetDataService {
         'Content-Type': 'application/json'
       })
     });
+  }
+
+  logout(): Observable<User>{
+    return this.http.get<User>(this.logoutUrl);
   }
 
   logged(): void {

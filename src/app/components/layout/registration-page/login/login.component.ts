@@ -38,12 +38,13 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    const sub = this.data.login(this.parent.form.value).subscribe(user => {
-      console.log(user.isLog);
+    this.data.login(this.parent.form.value).subscribe(user => {
       if (user.isLog !== false) {
         this.data.user = {...user};
         this.wrongLog = false;
         this.data.isLogged = true;
+        localStorage.isLog = true;
+        localStorage.user = JSON.stringify(this.parent.form.value);
         this.data.user.name = `${user['first-name']} ${user['last-name']}`;
         this.router.navigate(['/edit-page']);
         this.parent.form.reset();

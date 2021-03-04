@@ -20,9 +20,14 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.isLogged === 'true') {
-      this.data.isLogged = localStorage.isLogged;
-      this.data.user = JSON.parse(localStorage.lastUser);
+    if (localStorage.isLog === 'true') {
+      this.data.isLogged = true;
+      this.data.login(JSON.parse(localStorage.user)).subscribe(user => {
+        this.data.user = {...user};
+        this.data.isLogged = true;
+        localStorage.isLog = true;
+        this.data.user.name = `${user['first-name']} ${user['last-name']}`;
+      });
     }
   }
 
@@ -31,9 +36,9 @@ export class HeaderComponent implements OnInit {
     delete this.data.user.password;
 
     this.data.isLogged = false;
-    localStorage.isLogged = false;
-    localStorage.removeItem('user');
-    localStorage.removeItem('lastUser');
+    this.data.logout().subscribe(() => {
+      localStorage.isLog = false;
+    });
   }
 
   toggleProfileMenu(): void {
@@ -41,7 +46,6 @@ export class HeaderComponent implements OnInit {
   }
 
   setLocale(locale: string): void {
-    console.log(locale);
     this.translate.use(locale);
   }
 
