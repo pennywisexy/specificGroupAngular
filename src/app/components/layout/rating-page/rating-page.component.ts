@@ -68,15 +68,19 @@ export class RatingPageComponent implements OnInit {
     const unPop = ratingArrWithTitle.find(movie => movie.ratingValue === ratingArr[0]);
     const pop = ratingArrWithTitle.find(movie => movie.ratingValue === ratingArr[ratingArr.length - 1]);
 
-    if (+unPop.ratingValue && ratingArr.length > 1) {
-      this.mostUnpopularMovieTitle = unPop.title;
-      this.mostUnpopularMoviePoint = +unPop.ratingValue.toFixed(2);
+    if (unPop) {
+      if (+unPop.ratingValue && ratingArr.length > 1) {
+        this.mostUnpopularMovieTitle = unPop.title;
+        this.mostUnpopularMoviePoint = +unPop.ratingValue.toFixed(2);
+      }
     }
     
-    if (+pop.ratingValue) {
-      this.mostPopularMovieTitle = pop.title;
-      this.mostPopularMoviePoint = +pop.ratingValue.toFixed(2);
-      localStorage.title = this.mostPopularMovieTitle;
+    if (pop) {
+      if (+pop.ratingValue) {
+        this.mostPopularMovieTitle = pop.title;
+        this.mostPopularMoviePoint = +pop.ratingValue.toFixed(2);
+        localStorage.title = this.mostPopularMovieTitle;
+      }
     }
   }
 
