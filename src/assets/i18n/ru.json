@@ -50,8 +50,8 @@
       "RESET": "Сбросить рейтинг"
     },
     "NORATINGS": "Оценок пока нет",
-    "PRATINPOINTS": "Рейтинг фильма: {{mostPopularMoviePoint}} очков",
-    "UNPRATINPOINTS": "Рейтинг фильма: {{mostUnpopularMoviePoint}} очков"
+    "RATING": "Рейтинг фильма",
+    "POINTS": "очков"
   },
   "SIGNIN": {
     "REGISTRATION": {

@@ -24,13 +24,13 @@
       </button>
     </div>
     <div class="rating">
-      <div *ngIf="data.ratingData && title; else noRatings">
+      <div *ngIf="title; else noRatings">
         <div *ngIf="!isReset; else noRatings">
           <div class="rating-inner" *ngIf="isPopular">
             <div class="rating-inner__main">
               <div class="title">{{mostPopularMovieTitle}}</div>
               <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-              <div class="rating-point">{{"RATING.PRATINPOINTS" | translate}}</div>
+              <div class="rating-point">{{"RATING.RATING" | translate}}: {{mostPopularMoviePoint}} {{"RATING.POINTS" | translate}}</div>
             </div>
             <div class="description">{{description}}</div>
           </div>
@@ -38,20 +38,20 @@
             <div class="rating-inner__main">
               <div class="title">{{mostUnpopularMovieTitle}}</div>
               <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-              <div class="rating-point">{{"RATING.UNPRATINPOINTS" | translate}}</div>
+              <div class="rating-point">{{"RATING.RATING" | translate}}: {{mostUnpopularMoviePoint}} {{"RATING.POINTS" | translate}}</div>
             </div>
             <div class="description">{{description}}</div>
           </div>
         </div>
       </div>
       <ng-template #noRatings>
-        <div *ngIf="isSavedRating && !data.ratingData && title; else noSavedRatings">
+        <div *ngIf="isSavedRating && title; else noSavedRatings">
           <div *ngIf="!isReset; else noRatings">
             <div class="rating-inner" *ngIf="isPopular">
               <div class="rating-inner__main">
                 <div class="title">{{mostPopularMovieTitle}}</div>
                 <div class="image"><img class="image-item" src={{thumb}} alt="prew"></div>
-                <div class="rating-point">{{"RATING.PRATINPOINTS" | translate}}</div>
+                <div class="rating-point">{{"RATING.RATING" | translate}}: {{mostPopularMovieTitle}} {{"RATING.POINTS" | translate}}</div>
               </div>
               <div class="description">{{description}}</div>
             </div>

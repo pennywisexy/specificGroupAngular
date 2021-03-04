@@ -1,3 +1,4 @@
+import { Movies } from './../../../services/movies';
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { GetDataService } from '../../../services/get-data.service';
 import { StarRatingComponent } from 'ng-starrating';
@@ -14,6 +15,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   public posterUrl = 'https://media.newyorker.com/photos/5de540ecd1eff50008e2095a/master/w_2560%2Cc_limit/2019-Brody-Movies.gif';
 
   public movie;
+  dbMovies: Movies[];
 
   haveMovie = false;
   isRated = false;
@@ -34,6 +36,10 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    this.data.getFilms().subscribe(movies => {
+      this.dbMovies = movies;
+    });
+
     this.data.currentMovie.subscribe((movie) => {
       this.movie = movie;
     });
@@ -46,61 +52,22 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
   }
 
   onRate($event: {oldValue: number, newValue: number, starRating: StarRatingComponent}): void {
-    if (!this.data.ratingData) {
-      this.data.ratingData = [{
-        title: this.movie.title,
-        ratingValue: [$event.newValue]
-      }];
-
-      this.data.movies.forEach((movieItem) => {
-        if (this.data.ratingData[0].title !== movieItem.title) {
-          this.data.ratingData.push({
-            title: movieItem.title,
-            ratingValue: [0]
-          });
-        }else {
-          this.data.ratingData[0].ratingValue.push(0);
+    this.dbMovies.forEach((movieItem) => {
+      if (movieItem._id === this.movie._id) {
+        if (+movieItem.ratingValue === 0) {
+          movieItem.ratingValue = +$event.newValue;
+        } else {
+          movieItem.ratingValue = (+movieItem.ratingValue + +$event.newValue) / 2;
         }
-      });
-    } else {
-      this.haveMovie = false;
-
-      this.data.ratingData.forEach((obj) => {
-        if (obj.title === this.movie.title) {
-          obj.ratingValue.push($event.newValue);
-          this.haveMovie = true;
-        }
-      });
-
-      if (!this.haveMovie) {
-        this.data.ratingData.push({
-          title: this.movie.title,
-          ratingValue: [$event.newValue]
-        });
+        this.haveMovie = true;
+        this.data.editMovie(movieItem).subscribe(movie => movie);
+        $event.starRating.value = movieItem.ratingValue;
+        this.data.ratingValue = movieItem.ratingValue;
+      } else {
+        this.haveMovie = false;
       }
-    }
-
-
-
+    });
     this.ratingToast();
-    if (this.data.ratingData) {
-      this.data.ratingData.forEach((element) => {
-        if (this.movie.title === element.title) {
-          $event.starRating.value = element.ratingValue.reduce((pre, cur) => pre + cur) / (element.ratingValue.length - 1);
-        }
-      });
-    }
-
-    localStorage.title = this.movie.title;
-
-    const movie = this.data.movies.find(el => el.title === localStorage.title);
-
-    localStorage.ratingValue = $event.starRating.value;
-    localStorage.description = movie.description;
-    localStorage.sources = movie.sources;
-    localStorage.subtitle = movie.subtitle;
-    localStorage.thumb = movie.thumb;
-
   }
 
   ratingToast(): void {
