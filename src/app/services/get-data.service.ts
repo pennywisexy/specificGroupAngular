@@ -107,7 +107,9 @@ export class GetDataService {
   }
 
   logout(): Observable<User>{
-    return this.http.get<User>(this.logoutUrl);
+    return this.http.get<User>(this.logoutUrl, {
+      withCredentials: true
+    });
   }
 
   logged(): void {

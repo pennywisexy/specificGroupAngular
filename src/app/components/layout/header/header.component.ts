@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.isLog === 'true') {
-      this.data.isLogged = true;
       this.data.login(JSON.parse(localStorage.user)).subscribe(user => {
+        this.data.isLogged = true;
         this.data.user = {...user};
         this.data.isLogged = true;
         localStorage.isLog = true;
