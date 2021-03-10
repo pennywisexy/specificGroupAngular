@@ -1,3 +1,40 @@
+@import '../../../../theme.scss';
+
 .container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   width: 1000px !important;
+  color: var(--base-text-color);
+
+  .form-control {
+    border:  none;
+    height: 100px;
+    background-color: var(--white-bg-color);
+  }
+
+  .editor {
+    background-color: var(--base-bg-color);
+    border: none !important;
+  }
+
+  .title {
+    color: var(--base-text-color);
+    font-size: 1.5rem;
+  }
+
+  .devider {
+    width: 100%;
+    border-top: 2px solid var(--base-devider-color);
+  }
 }
+
+.video {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: var(--base-bg-color);
+}
+
+

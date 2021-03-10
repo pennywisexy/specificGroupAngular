@@ -42,6 +42,8 @@
     "bootstrap": "^4.5.3",
     "jquery": "^3.5.1",
     "ng-starrating": "^1.0.20",
+    "ngx-quill": "^13.2.0",
+    "quill": "^1.3.7",
     "rxjs": "~6.5.4",
     "save": "^2.4.0",
     "tslib": "^1.10.0",

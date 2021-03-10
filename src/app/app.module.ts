@@ -31,6 +31,7 @@ import ruLocale from '@angular/common/locales/ru';
 import { registerLocaleData } from '@angular/common';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { QuillModule } from 'ngx-quill';
 
 registerLocaleData(enLocale, 'en');
 registerLocaleData(ruLocale, 'ru');
@@ -76,6 +77,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       defaultLanguage: 'en'
     }),
+    QuillModule.forRoot()
   ],
   providers: [AppGuard],
   bootstrap: [AppComponent]

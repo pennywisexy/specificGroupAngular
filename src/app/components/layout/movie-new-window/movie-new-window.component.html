@@ -1,5 +1,24 @@
-<app-video-player></app-video-player>
-<div id="movie" class="container filmList d-flex p-2 justify-content-between
-bg-light flex-wrap w-100">
-  {{movieDescription}}
+<div class="video">
+  <app-video-player class="w-75"></app-video-player>
+</div>
+
+<div id="movie" class="container d-flex p-2 justify-content-between flex-wrap w-100">
+  <div>
+    {{movieDescription}}
+  </div>
+
+  <div class="title">
+    COMMENTS
+  </div>
+  <hr class="devider">
+
+  
+
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-control">
+      <quill-editor formControlName="text" class="editor input-text"></quill-editor>
+    </div>
+
+    <button (click)="submit()">Shared</button>
+  </form>
 </div>

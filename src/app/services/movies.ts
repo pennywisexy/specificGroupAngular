@@ -1,3 +1,4 @@
+import { RegistrationData } from './user';
 export interface Movie {
   categories: [
     {
@@ -24,4 +25,10 @@ export interface Movies {
   ratingValue?: number,
   _id?: string,
   _v?: number
+}
+
+export interface Comment {
+  text: string,
+  author: RegistrationData,
+  date: Date
 }

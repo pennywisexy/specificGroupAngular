@@ -35,7 +35,7 @@ export class EditPageComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.getMovies$.subscribe(mov => this.movies = mov);
     
     if (this.data.movies === undefined) {
