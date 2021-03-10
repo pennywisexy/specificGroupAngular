@@ -2,7 +2,7 @@ import { RegistrationData, User } from './user';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Movies } from './movies';
+import { Comment, Movies } from './movies';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'any'
@@ -13,6 +13,9 @@ export class GetDataService {
   private registerUrl = `${environment.apiUrl}/register`;
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
+  private commentsUrl = `${environment.apiUrl}/api/comments`;
+
+
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -116,5 +119,25 @@ export class GetDataService {
     if (localStorage.isLogged === 'true') {
       this.isLogged = true;
     }
+  }
+
+  getComments(): Observable<Comment[]>{
+    return this.http.get<Comment[]>(this.commentsUrl);
+  }
+
+  createComment(comment: Comment): Observable<Comment> {
+    const body = {
+      text: comment.text,
+      date: comment.date,
+      author: comment.author,
+      userId: comment.userId
+    };
+
+    return this.http.post<Comment>(this.commentsUrl, JSON.stringify(body), {
+      headers: new HttpHeaders({
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      })
+    });
   }
 }

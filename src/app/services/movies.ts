@@ -29,5 +29,6 @@ export interface Movies {
 export interface Comment {
   text: string,
   author: string,
-  date: Date
+  date: Date,
+  userId: string
 }

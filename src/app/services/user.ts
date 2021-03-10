@@ -2,7 +2,8 @@ export interface User {
   email: string;
   password: string;
   name: string;
-  isLog?: boolean
+  isLog?: boolean,
+  _id?: string
 }
 
 export interface RegistrationData {

@@ -13,7 +13,7 @@
   </div>
   <hr class="devider">
 
-  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <form class="card" [formGroup]="form">
     <div class="form-control">
       <quill-editor formControlName="text" class="editor input-text"></quill-editor>
     </div>
@@ -21,8 +21,21 @@
     <div class="btn">
       <button 
         (click)="submit()"
-        class="btn-item"  
+        class="btn-item"
       >{{"DETAILS.COMMENT" | translate}}</button>
     </div>
   </form>
+
+  <div class="comments">
+    <div class="comments-inner" *ngFor="let comment of comments">
+      <div class="profile-img"></div>
+      <div class="right">
+        <div class="up">
+          <div class="name">{{comment.author}}</div>
+          <div class="date">{{comment.date | date:'MM.dd.yyyy HH:mm:ss'}}</div>
+        </div>
+        <div class="text">{{comment.text}}</div>
+      </div>
+    </div>
+  </div>
 </div>

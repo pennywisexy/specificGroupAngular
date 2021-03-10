@@ -63,6 +63,61 @@
       }
     }
   }
+
+  .comments {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    flex-direction: column;
+
+    &-inner {
+      display: flex;
+      width: 100%;
+      padding: 20px 0;
+
+      .profile-img {
+        width: 50px;
+        height: 50px;
+        background: url('../../../../assets/main.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      .right {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        margin-left: 10px;
+        color: var(--base-text-color);
+
+        .up {
+          display: flex;
+          min-width: 100px;
+          width: 100%;
+          justify-content: space-between;
+
+          .name {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+          }
+
+          .date {
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: .7;
+          }
+        }
+
+        .text {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
 }
 
 .video {

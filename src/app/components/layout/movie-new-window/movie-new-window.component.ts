@@ -14,6 +14,9 @@ export class MovieNewWindowComponent implements OnInit {
   movieDescription = '';
   form: FormGroup;
 
+  comments: Comment[];
+  isCommented = false;
+
   constructor(private data: GetDataService) {
   }
 
@@ -24,16 +27,20 @@ export class MovieNewWindowComponent implements OnInit {
       text: new FormControl('', Validators.required),
       author: new FormControl(null),
       date: new FormControl(null),
+      userId: new FormControl(null)
     });
+
+    this.data.getComments().subscribe(comments => this.comments = comments);
   }
 
   submit(): void {
     const comment: Comment = {
       text: this.form.value.text,
       author: `${this.data.user.name}`,
-      date: new Date()
+      date: new Date(),
+      userId: this.data.user._id
     };
-
-    console.log(comment, this.data.user);
+    console.log(comment);
+    this.data.createComment(comment).subscribe(() => this.form.reset());
   }
 }
