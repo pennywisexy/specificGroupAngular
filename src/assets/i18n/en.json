@@ -90,5 +90,9 @@
         "WRONG_LOG": "Wrong login or password"
       }
     }
+  },
+  "DETAILS": {
+    "COMMENTS": "COMMENTS",
+    "COMMENT": "Comment"
   }
 }
