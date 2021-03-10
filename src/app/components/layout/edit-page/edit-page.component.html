@@ -48,13 +48,20 @@
       <label class="head">
         <div>{{'EDIT.FORM.MOVIELINK' | translate}}</div>
       </label>
-      <input class="input-text" type="url" placeholder="{{'EDIT.FORM.MOVIELINK' | translate}}" formControlName="sources">
+      <input class="input-text" type="text" placeholder="{{'EDIT.FORM.MOVIELINK' | translate}}" formControlName="sources">
       <div class="validation"
       *ngIf="form.get('sources').invalid && form.get('sources').touched">
         <small>
           <div>{{'EDIT.NATIFICATION.EMPTYLINK' | translate}}.</div>
         </small>
       </div>
+    </div>
+
+    <div class="form-control" *ngIf="false">
+      <label class="head">
+        <div>{{'EDIT.FORM.MOVIELINK' | translate}}</div>
+      </label>
+      <input class="input-text" type="text" formControlName="id">
     </div>
 
     <button *ngIf="!editBtn; else edit" class="btn" type="submit" [disabled]="form.invalid">

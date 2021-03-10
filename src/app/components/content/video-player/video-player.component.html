@@ -17,13 +17,13 @@
         (timeupdate)="getCurrentTime($event)"
         ></video>
   </div>
-  <div class="rating" *ngIf="movie.sources">
+  <div class="rating" *ngIf="movie.sources && data.isLogged">
     <div *ngIf="isRated" class="toast">Movie rated!</div>
     <div class="rate-movie__text">{{'MAIN.RATE' | translate}}: </div>
-    <div *ngFor="let item of this.data.movies">
+    <div *ngFor="let item of data.movies">
       <star-rating 
         *ngIf="item.title === movie.title" 
-        [(value)]="this.data.ratingValue" 
+        [(value)]="data.ratingValue" 
         [(totalstars)]="totalstars"
         checkedcolor="{{checkedcolor}}" 
         uncheckedcolor="{{uncheckedcolor}}" 

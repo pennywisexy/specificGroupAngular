@@ -53,8 +53,8 @@
       "RESET": "Reset rating"
     },
     "NORATINGS": "No ratings yet",
-    "PRATINPOINTS": "Movie rating: {{mostPopularMoviePoint}} points",
-    "UNPRATINPOINTS": "Movie rating: {{mostUnpopularMoviePoint}} points"
+    "RATING": "Movie rating",
+    "POINTS": "points"
   },
   "SIGNIN": {
     "REGISTRATION": {

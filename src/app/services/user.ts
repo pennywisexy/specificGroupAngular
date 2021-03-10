@@ -2,6 +2,7 @@ export interface User {
   email: string;
   password: string;
   name: string;
+  isLog?: boolean
 }
 
 export interface RegistrationData {

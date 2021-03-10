@@ -21,5 +21,7 @@ export interface Movies {
   thumb?: string,
   title: string,
   genre?: string,
-  ratingValue?: number
+  ratingValue?: number,
+  _id?: string,
+  _v?: number
 }
