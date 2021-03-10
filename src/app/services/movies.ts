@@ -1,4 +1,3 @@
-import { RegistrationData } from './user';
 export interface Movie {
   categories: [
     {
@@ -29,6 +28,6 @@ export interface Movies {
 
 export interface Comment {
   text: string,
-  author: RegistrationData,
+  author: string,
   date: Date
 }

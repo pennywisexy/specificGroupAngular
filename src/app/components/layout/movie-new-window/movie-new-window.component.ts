@@ -30,10 +30,10 @@ export class MovieNewWindowComponent implements OnInit {
   submit(): void {
     const comment: Comment = {
       text: this.form.value.text,
-      author: this.form.value.author,
+      author: `${this.data.user.name}`,
       date: new Date()
     };
 
-    console.log(comment, this.data.userRegData);
+    console.log(comment, this.data.user);
   }
 }

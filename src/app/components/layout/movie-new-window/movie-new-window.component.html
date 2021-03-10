@@ -2,23 +2,27 @@
   <app-video-player class="w-75"></app-video-player>
 </div>
 
-<div id="movie" class="container d-flex p-2 justify-content-between flex-wrap w-100">
+<div id="comments" class="container d-flex p-2 justify-content-between flex-wrap w-100">
   <div>
     {{movieDescription}}
   </div>
 
+  <hr class="devider">
   <div class="title">
     COMMENTS
   </div>
   <hr class="devider">
-
-  
 
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <div class="form-control">
       <quill-editor formControlName="text" class="editor input-text"></quill-editor>
     </div>
 
-    <button (click)="submit()">Shared</button>
+    <div class="btn">
+      <button 
+        (click)="submit()"
+        class="btn-item"  
+      >Comment</button>
+    </div>
   </form>
 </div>

@@ -8,25 +8,60 @@
   width: 1000px !important;
   color: var(--base-text-color);
 
-  .form-control {
-    border:  none;
-    height: 100px;
-    background-color: var(--white-bg-color);
-  }
-
   .editor {
     background-color: var(--base-bg-color);
     border: none !important;
   }
 
   .title {
-    color: var(--base-text-color);
+    color: var(--header-text-color);
     font-size: 1.5rem;
   }
 
   .devider {
     width: 100%;
     border-top: 2px solid var(--base-devider-color);
+  }
+
+  .card {
+    display: flex;
+    min-height: 280px;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+    background-color: var(--white-bg-color);
+
+    .form-control {
+      border:  none;
+      height: 100px;
+      background-color: var(--white-bg-color);
+    }
+
+    .btn {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      &-item {
+        display: inline-block;
+        background: var(--btn-bg-color);
+        color: var(--btn-text-color);
+        padding: 0.4rem 1.3rem;
+        font-size: 1rem;
+        border: none;
+        margin-right: 0.5rem;
+        transition: opacity 0.2s ease-in;
+        outline: none;
+        width: 20%;
+        border-radius: 2px;
+    
+        &:hover {
+          opacity: 0.8;
+          color: var(--base-text-hover);
+        }
+      }
+    }
   }
 }
 
