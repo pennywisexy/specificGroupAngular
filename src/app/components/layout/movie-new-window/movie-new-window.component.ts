@@ -16,21 +16,24 @@ export class MovieNewWindowComponent implements OnInit {
 
   comments: Comment[];
   isCommented = false;
+  isValid = false;
 
-  constructor(private data: GetDataService) {
+  constructor(public data: GetDataService) {
   }
 
   ngOnInit(): void {
-    this.movieDescription = this.data.dataForMovieNewWindow;
-
+    if (this.data.dataForMovieNewWindow) {
+      this.movieDescription = this.data.dataForMovieNewWindow.description;
+      this.data.getComments(this.data.dataForMovieNewWindow._id).subscribe(comments => this.comments = comments);
+    }
     this.form = new FormGroup({
       text: new FormControl('', Validators.required),
       author: new FormControl(null),
       date: new FormControl(null),
-      userId: new FormControl(null)
+      userId: new FormControl(null),
+      movieId: new FormControl(null)
     });
 
-    this.data.getComments().subscribe(comments => this.comments = comments);
   }
 
   submit(): void {
@@ -38,9 +41,12 @@ export class MovieNewWindowComponent implements OnInit {
       text: this.form.value.text,
       author: `${this.data.user.name}`,
       date: new Date(),
-      userId: this.data.user._id
+      userId: this.data.user._id,
+      movieId: this.data.dataForMovieNewWindow._id
     };
-    console.log(comment);
-    this.data.createComment(comment).subscribe(() => this.form.reset());
+    this.data.createComment(comment).subscribe((com) => {
+      this.comments.unshift(com);
+      this.form.reset();
+    });
   }
 }

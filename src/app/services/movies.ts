@@ -30,5 +30,6 @@ export interface Comment {
   text: string,
   author: string,
   date: Date,
-  userId: string
+  userId: string,
+  movieId: string
 }

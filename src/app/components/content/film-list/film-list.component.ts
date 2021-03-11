@@ -49,7 +49,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
       }
     }
 
-    this.data.dataForMovieNewWindow = '';
+    // this.data.dataForMovieNewWindow = '';
     this.data.currentMovie.subscribe(movie => this.rating(movie));
 
     if (this.data.movies) {
@@ -97,7 +97,7 @@ export class FilmListComponent implements OnInit, AfterViewChecked {
 
   public movieNewWindow(item): void {
     this.data.currentMovie.next(item);
-    this.data.dataForMovieNewWindow = item.description;
+    this.data.dataForMovieNewWindow = item;
   }
 
   public showFullDescription(event: { stopPropagation: () => void; }, item: { description: string; }): void {

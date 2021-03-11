@@ -1,8 +1,8 @@
-<div class="video">
-  <app-video-player class="w-75"></app-video-player>
+<div class="video-player__details">
+  <app-video-player class="w-100"></app-video-player>
 </div>
 
-<div id="comments" class="container d-flex p-2 justify-content-between flex-wrap w-100">
+<div *ngIf="data.dataForMovieNewWindow" id="comments" class="container d-flex p-2 justify-content-between flex-wrap w-100">
   <div>
     {{movieDescription}}
   </div>
@@ -13,7 +13,7 @@
   </div>
   <hr class="devider">
 
-  <form class="card" [formGroup]="form">
+  <form *ngIf="data.isLogged" class="card" [formGroup]="form">
     <div class="form-control">
       <quill-editor formControlName="text" class="editor input-text"></quill-editor>
     </div>
@@ -22,6 +22,7 @@
       <button 
         (click)="submit()"
         class="btn-item"
+        [disabled]="form.get('text').invalid"
       >{{"DETAILS.COMMENT" | translate}}</button>
     </div>
   </form>

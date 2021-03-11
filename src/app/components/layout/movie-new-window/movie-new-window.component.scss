@@ -78,10 +78,11 @@
 
       .profile-img {
         width: 50px;
-        height: 50px;
+        height: 47px;
         background: url('../../../../assets/main.jpg');
         background-size: contain;
         background-repeat: no-repeat;
+        border-radius: 40px;
       }
 
       .right {
@@ -120,11 +121,9 @@
   }
 }
 
-.video {
+.video-player__details {
   display: flex;
   width: 100%;
   justify-content: center;
   background-color: var(--base-bg-color);
 }
-
-

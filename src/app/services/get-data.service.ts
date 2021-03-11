@@ -1,7 +1,7 @@
 import { RegistrationData, User } from './user';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Comment, Movies } from './movies';
 import { environment } from 'src/environments/environment';
 @Injectable({
@@ -14,6 +14,7 @@ export class GetDataService {
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
   private commentsUrl = `${environment.apiUrl}/api/comments`;
+  private getCommentsUrl = `${environment.apiUrl}/api/comments/`;
 
 
   
@@ -25,7 +26,7 @@ export class GetDataService {
   // eslint-disable-next-line @typescript-eslint/ban-types
   public currentMovie: BehaviorSubject<object> = new BehaviorSubject({});
 
-  dataForMovieNewWindow = '';
+  dataForMovieNewWindow: Movies;
 
   public ratingData: Array<{
     title: string,
@@ -121,8 +122,10 @@ export class GetDataService {
     }
   }
 
-  getComments(): Observable<Comment[]>{
-    return this.http.get<Comment[]>(this.commentsUrl);
+  getComments(id: string): Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.getCommentsUrl}${id}`, {
+      params: new HttpParams().append('id', id)
+    });
   }
 
   createComment(comment: Comment): Observable<Comment> {
@@ -130,7 +133,8 @@ export class GetDataService {
       text: comment.text,
       date: comment.date,
       author: comment.author,
-      userId: comment.userId
+      userId: comment.userId,
+      movieId: comment.movieId
     };
 
     return this.http.post<Comment>(this.commentsUrl, JSON.stringify(body), {
