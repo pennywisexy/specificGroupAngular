@@ -10,8 +10,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {path: 'movie/:id', component: MovieNewWindowComponent},
   {path: '', component: FilmListComponent},
-  {path: 'edit-page', component: EditPageComponent, canActivate: [AppGuard]},
-  {path: 'rating-page', component: RatingPageComponent},
+  {path: 'edit', component: EditPageComponent, canActivate: [AppGuard], children: [
+    {path: ':id', component: EditPageComponent}
+  ]},
+  {path: 'rating', component: RatingPageComponent},
   {path: 'registration', component: RegistrationPageComponent},
 ];
 

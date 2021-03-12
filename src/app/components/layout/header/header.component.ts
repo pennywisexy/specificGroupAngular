@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
     this.data.isLogged = false;
     this.data.logout().subscribe(() => {
       localStorage.isLog = false;
+      localStorage.removeItem('isLog');
     });
   }
 
