@@ -33,9 +33,9 @@
       <div class="right">
         <div class="up">
           <div class="name">{{comment.author}}</div>
-          <div class="date">{{comment.date | date:'MM.dd.yyyy HH:mm:ss'}}</div>
+          <div class="date">{{comment.date | date:'yyyy.MM.dd HH:mm:ss'}}</div>
         </div>
-        <div class="text">{{comment.text}}</div>
+        <div class="text"><quill-view-html [content]="comment.text"></quill-view-html></div>
       </div>
     </div>
   </div>

@@ -24,7 +24,12 @@ export class MovieNewWindowComponent implements OnInit {
   ngOnInit(): void {
     if (this.data.dataForMovieNewWindow) {
       this.movieDescription = this.data.dataForMovieNewWindow.description;
-      this.data.getComments(this.data.dataForMovieNewWindow._id).subscribe(comments => this.comments = comments);
+      this.data.getComments(this.data.dataForMovieNewWindow._id).subscribe(comments => {
+        this.comments = comments;
+        if (this.comments) {
+          this.comments.reverse();
+        }
+      });
     }
     this.form = new FormGroup({
       text: new FormControl('', Validators.required),
