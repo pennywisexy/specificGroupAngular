@@ -2,6 +2,7 @@ import { Movies } from './../../../services/movies';
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { GetDataService } from '../../../services/get-data.service';
 import { StarRatingComponent } from 'ng-starrating';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-video-player',
@@ -33,6 +34,7 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
 
   constructor(
     public data: GetDataService,
+    private activateRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +46,14 @@ export class VideoPlayerComponent implements OnInit, AfterViewInit {
       this.movie = movie;
     });
     this.isCurrentTime = true;
+
+    if (this.activateRoute.snapshot.params['id']) {
+      const id = this.activateRoute.snapshot.params['id'];
+      this.data.getMovieById(id).subscribe(movie => {
+        this.movie = movie;
+        this.data.dataForMovieNewWindow = movie;
+      });
+    }
   }
 
   ngAfterViewInit(): void {

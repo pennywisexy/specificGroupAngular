@@ -9,7 +9,7 @@
     (click)="setMovie(item)">
     <a
       class="title-link"
-      [routerLink]="['/movie']"
+      [routerLink]="['/movie', item._id]"
       (click)="movieNewWindow(item)"
     >
       <h1 class="title">{{item.title}}</h1>

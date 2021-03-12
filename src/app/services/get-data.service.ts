@@ -14,7 +14,7 @@ export class GetDataService {
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
   private commentsUrl = `${environment.apiUrl}/api/comments`;
-  private getCommentsUrl = `${environment.apiUrl}/api/comments/`;
+  private getCommentsUrl = `${environment.apiUrl}/api/movie/`;
 
 
   
@@ -54,6 +54,10 @@ export class GetDataService {
 
   getFilms(): Observable<Movies[]> {
     return this.http.get<Movies[]>(this.moviesUrl);
+  }
+
+  getMovieById(id): Observable<Movies> {
+    return this.http.get<Movies>(`${this.moviesUrl}/${id}`);
   }
 
   editMovie(movie: Movies): Observable<Movies> {
@@ -123,7 +127,7 @@ export class GetDataService {
   }
 
   getComments(id: string): Observable<Comment[]>{
-    return this.http.get<Comment[]>(`${this.getCommentsUrl}${id}`, {
+    return this.http.get<Comment[]>(`${this.getCommentsUrl}${id}/comments`, {
       params: new HttpParams().append('id', id)
     });
   }

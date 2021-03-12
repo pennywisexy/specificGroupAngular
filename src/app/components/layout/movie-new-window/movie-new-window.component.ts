@@ -1,7 +1,9 @@
+import { Movies } from './../../../services/movies';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { GetDataService } from '../../../services/get-data.service';
 import { OnInit, Component } from '@angular/core';
 import { Comment } from 'src/app/services/movies';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-new-window',
@@ -13,16 +15,23 @@ export class MovieNewWindowComponent implements OnInit {
 
   movieDescription = '';
   form: FormGroup;
+  movie: Movies
 
   comments: Comment[];
   isCommented = false;
   isValid = false;
 
-  constructor(public data: GetDataService) {
+  constructor(
+    public data: GetDataService,
+    private activateRoute: ActivatedRoute
+  ) {
   }
 
   ngOnInit(): void {
-    if (this.data.dataForMovieNewWindow) {
+    const id = this.activateRoute.snapshot.params['id'];
+    this.data.getMovieById(id).subscribe(movie => {
+      this.movie = movie;
+      this.data.dataForMovieNewWindow = movie;
       this.movieDescription = this.data.dataForMovieNewWindow.description;
       this.data.getComments(this.data.dataForMovieNewWindow._id).subscribe(comments => {
         this.comments = comments;
@@ -30,7 +39,8 @@ export class MovieNewWindowComponent implements OnInit {
           this.comments.reverse();
         }
       });
-    }
+    });
+
     this.form = new FormGroup({
       text: new FormControl('', Validators.required),
       author: new FormControl(null),
@@ -38,7 +48,6 @@ export class MovieNewWindowComponent implements OnInit {
       userId: new FormControl(null),
       movieId: new FormControl(null)
     });
-
   }
 
   submit(): void {
