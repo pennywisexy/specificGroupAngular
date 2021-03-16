@@ -1,5 +1,42 @@
-<app-video-player></app-video-player>
-<div id="movie" class="container filmList d-flex p-2 justify-content-between
-bg-light flex-wrap w-100">
-  {{movieDescription}}
+<div class="video-player__details">
+  <app-video-player class="w-100"></app-video-player>
+</div>
+
+<div *ngIf="data.dataForMovieNewWindow" id="comments" class="container d-flex p-2 justify-content-between flex-wrap w-100">
+  <div>
+    {{movieDescription}}
+  </div>
+
+  <hr class="devider">
+  <div class="title">
+    {{"DETAILS.COMMENTS" | translate}}
+  </div>
+  <hr class="devider">
+
+  <form *ngIf="data.isLogged" class="card" [formGroup]="form">
+    <div class="form-control">
+      <quill-editor formControlName="text" class="editor input-text"></quill-editor>
+    </div>
+
+    <div class="btn">
+      <button 
+        (click)="submit()"
+        class="btn-item"
+        [disabled]="form.get('text').invalid"
+      >{{"DETAILS.COMMENT" | translate}}</button>
+    </div>
+  </form>
+
+  <div class="comments">
+    <div class="comments-inner" *ngFor="let comment of comments">
+      <div class="profile-img"></div>
+      <div class="right">
+        <div class="up">
+          <div class="name">{{comment.author}}</div>
+          <div class="date">{{comment.date | date:'yyyy.MM.dd HH:mm:ss'}}</div>
+        </div>
+        <div class="text"><quill-view-html [content]="comment.text"></quill-view-html></div>
+      </div>
+    </div>
+  </div>
 </div>

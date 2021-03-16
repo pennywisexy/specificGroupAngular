@@ -1,11 +1,15 @@
-<app-video-player></app-video-player>
+<div class="movie-filmlist">
+  <div class="movie-filmlist__inner">
+    <app-video-player class="w-100"></app-video-player>
+  </div>
+</div>
 <div class="container movies-list d-flex p-2 flex-wrap">
   <div class="movies-list__item d-flex justify-content-between flex-column w-25 cursor-pointer"
     *ngFor="let item of movies"
     (click)="setMovie(item)">
     <a
       class="title-link"
-      [routerLink]="['/movie']"
+      [routerLink]="['/movie', item._id]"
       (click)="movieNewWindow(item)"
     >
       <h1 class="title">{{item.title}}</h1>

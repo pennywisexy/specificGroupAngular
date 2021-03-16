@@ -1,3 +1,129 @@
+@import '../../../../theme.scss';
+
 .container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   width: 1000px !important;
+  color: var(--base-text-color);
+
+  .editor {
+    background-color: var(--base-bg-color);
+    border: none !important;
+  }
+
+  .title {
+    color: var(--header-text-color);
+    font-size: 1.5rem;
+  }
+
+  .devider {
+    width: 100%;
+    border-top: 2px solid var(--base-devider-color);
+  }
+
+  .card {
+    display: flex;
+    min-height: 280px;
+    height: auto;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+    background-color: var(--white-bg-color);
+
+    .form-control {
+      border:  none;
+      height: 100px;
+      background-color: var(--white-bg-color);
+    }
+
+    .btn {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      &-item {
+        display: inline-block;
+        background: var(--btn-bg-color);
+        color: var(--btn-text-color);
+        padding: 0.4rem 1.3rem;
+        font-size: 1rem;
+        border: none;
+        margin-right: 0.5rem;
+        transition: opacity 0.2s ease-in;
+        outline: none;
+        width: 20%;
+        border-radius: 2px;
+    
+        &:hover {
+          opacity: 0.8;
+          color: var(--base-text-hover);
+        }
+      }
+    }
+  }
+
+  .comments {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    flex-direction: column;
+
+    &-inner {
+      display: flex;
+      width: 100%;
+      padding: 20px 0;
+
+      .profile-img {
+        width: 50px;
+        height: 47px;
+        background: url('../../../../assets/main.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        border-radius: 40px;
+      }
+
+      .right {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        margin-left: 10px;
+        color: var(--base-text-color);
+
+        .up {
+          display: flex;
+          min-width: 100px;
+          width: 100%;
+          justify-content: space-between;
+
+          .name {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+          }
+
+          .date {
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: .7;
+          }
+        }
+
+        .text {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+.video-player__details {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  background-color: var(--base-bg-color);
 }

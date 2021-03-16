@@ -4,7 +4,7 @@ import { MoviesState } from './../../../store/movies.state';
 import { GetDataService } from '../../../services/get-data.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Select } from '@ngxs/store';
 import { Emittable, Emitter } from '@ngxs-labs/emitter';
 @Component({
@@ -32,10 +32,19 @@ export class EditPageComponent implements OnInit {
 
   constructor(
     public data: GetDataService, 
-    private router: Router
+    private router: Router,
+    private activateRoute: ActivatedRoute
   ) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
+    this.activateRoute.queryParams.subscribe(params => {
+      if (params.id) {
+        this.data.getMovieById(params.id).subscribe(movie => {
+          this.editMovie(movie);
+        });
+      }
+    });
+    this.data.isLogged = localStorage.isLog;
     this.getMovies$.subscribe(mov => this.movies = mov);
     
     if (this.data.movies === undefined) {
@@ -74,15 +83,27 @@ export class EditPageComponent implements OnInit {
 
   editMovie(item): void {
     this.editBtn = !this.editBtn;
-    this.itemId = item.value._id;
+    if (item.value) {
+      this.itemId = item.value._id;
+      this.form = new FormGroup({
+        description: new FormControl(item.value.description, Validators.required),
+        sources: new FormControl(item.value.sources, Validators.required),
+        thumb: new FormControl('https://render.fineartamerica.com/images/rendered/default/greeting-card/images-medium-5/captain-america-shield-digital-painting-georgeta-blanaru.jpg?&targetx=0&targety=-100&imagewidth=700&imageheight=700&modelwidth=700&modelheight=500&backgroundcolor=161718&orientation=0'),
+        title: new FormControl(item.value.title, Validators.required),
+        subtitle: new FormControl(item.value.subtitle, Validators.required),
+        ratingValue: new FormControl(item.value.ratingValue),
+        _id: new FormControl(item.value._id)
+      });
+    }
+    this.itemId = item._id;
     this.form = new FormGroup({
-      description: new FormControl(item.value.description, Validators.required),
-      sources: new FormControl(item.value.sources, Validators.required),
+      description: new FormControl(item.description, Validators.required),
+      sources: new FormControl(item.sources, Validators.required),
       thumb: new FormControl('https://render.fineartamerica.com/images/rendered/default/greeting-card/images-medium-5/captain-america-shield-digital-painting-georgeta-blanaru.jpg?&targetx=0&targety=-100&imagewidth=700&imageheight=700&modelwidth=700&modelheight=500&backgroundcolor=161718&orientation=0'),
-      title: new FormControl(item.value.title, Validators.required),
-      subtitle: new FormControl(item.value.subtitle, Validators.required),
-      ratingValue: new FormControl(item.value.ratingValue),
-      _id: new FormControl(item.value._id)
+      title: new FormControl(item.title, Validators.required),
+      subtitle: new FormControl(item.subtitle, Validators.required),
+      ratingValue: new FormControl(item.ratingValue),
+      _id: new FormControl(item._id)
     });
   }
 

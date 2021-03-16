@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         localStorage.isLog = true;
         localStorage.user = JSON.stringify(this.parent.form.value);
         this.data.user.name = `${user['first-name']} ${user['last-name']}`;
-        this.router.navigate(['/edit-page']);
+        this.router.navigate(['/edit']);
         this.parent.form.reset();
       } else {
         this.wrongLog = true;

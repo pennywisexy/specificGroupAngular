@@ -10,13 +10,9 @@
     }
   }
 
-  .movie {
-    width: 106% !important;
-  }
-
   .rating {
     display: flex;
-    width: 50%;
+    width: 100%;
     justify-content: flex-end;
 
     .toast {

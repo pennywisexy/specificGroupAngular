@@ -68,9 +68,11 @@
       <div>{{'EDIT.FORM.ADDMOVIE' | translate}}</div>
     </button>
     <ng-template #edit>
-      <button (click)="editChangedMovie()" class="btn" type="submit" [disabled]="form.invalid">
-        <div>{{'EDIT.FORM.EDITMOVIE' | translate}}</div>
-      </button>
+      <a [routerLink]="['/edit']">
+        <button (click)="editChangedMovie()" class="btn" type="submit" [disabled]="form.invalid">
+          <div>{{'EDIT.FORM.EDITMOVIE' | translate}}</div>
+        </button>
+      </a>
     </ng-template>
     <div
       class="hint"
@@ -88,9 +90,11 @@
       <div class="url">
         {{item.value.sources}}
       </div>
-      <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">
-        <div>{{'EDIT.FORM.EDITMOVIE' | translate}}</div>
-      </button>
+      <a [routerLink]="['/edit', item.value.title]" [queryParams]="{id: item.value._id}">
+        <button class="btn" (click)="editMovie(item)" [disabled]="editBtn">
+          <div>{{'EDIT.FORM.EDITMOVIE' | translate}}</div>
+        </button>
+      </a>
     </div>
   </div>
 

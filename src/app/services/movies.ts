@@ -25,3 +25,11 @@ export interface Movies {
   _id?: string,
   _v?: number
 }
+
+export interface Comment {
+  text: string,
+  author: string,
+  date: Date,
+  userId: string,
+  movieId: string
+}

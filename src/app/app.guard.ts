@@ -11,6 +11,7 @@ export class AppGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    this.data.isLogged = localStorage.isLog;
     if (this.data.isLogged) {
       return true;
     } else {

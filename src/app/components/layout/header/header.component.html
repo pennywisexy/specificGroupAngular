@@ -42,7 +42,7 @@
           <button class="navbar-item__button">
             <a
               class="navbar-item__link"
-              [routerLink]="['/edit-page']"
+              [routerLink]="['/edit']"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
             >
@@ -54,7 +54,7 @@
           <button class="navbar-item__button">
             <a
               class="navbar-item__link"
-              [routerLink]="['/rating-page']"
+              [routerLink]="['/rating']"
               routerLinkActive="active"
               [routerLinkActiveOptions]="{exact: true}"
             >
@@ -94,7 +94,7 @@
           <div class="profile">
             <img class="profile-img" src="../../../../assets/main.jpg" alt="profile">
           </div>
-          <div class="info">
+          <div class="info" *ngIf="data.user">
             <hr class="devider">
             <div class="name">{{data.user.name}}</div>
             <div class="email">{{data.user.email}}</div>

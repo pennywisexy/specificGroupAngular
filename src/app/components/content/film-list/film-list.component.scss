@@ -1,5 +1,26 @@
 @import '../../../../theme.scss';
 
+
+.movie-filmlist {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--base-bg-color);
+  
+  &__inner {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .movie {
+      width: 100% !important;
+    }
+  }
+}
+
 .movies-list {
   display: flex;
   justify-content: flex-start;
